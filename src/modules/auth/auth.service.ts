@@ -112,9 +112,29 @@ export class AuthService {
       throw new HttpException('Erro ao criar usuário', HttpStatus.BAD_REQUEST);
     }
 
+    const payload = {
+      email: user.email,
+      sub: user.id,
+      roles: user.roles.map(role => role.name),
+      permissions: user.permissions.map(permission => permission.name),
+    };
+
+    const token = this.jwtService.sign(payload);
+    const tokenHash = this.generateTokenHash(token);
+
+    // Salvar o hash do token no banco de dados
+    await this.prisma.authToken.create({
+      data: {
+        userId: user.id,
+        tokenHash,
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 horas
+      },
+    });
+
     return new ResponseDto(false, 'Usuário criado com sucesso', {
       ...user,
       password: '',
+      access_token: token,
     });
   }
 
