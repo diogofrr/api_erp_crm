@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
@@ -9,7 +8,6 @@ import * as bcrypt from 'bcrypt';
 describe('AuthController (e2e)', () => {
   let app: INestApplication;
   let prisma: PrismaService;
-  let authToken: string;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -44,10 +42,9 @@ describe('AuthController (e2e)', () => {
         })
         .expect(201)
         .expect(res => {
-          expect(res.body).toHaveProperty('id');
-          expect(res.body.email).toBe('test@example.com');
-          expect(res.body.name).toBe('Test User');
-          expect(res.body.password).toBe('');
+          expect(res.body.result).toHaveProperty('id');
+          expect(res.body.result.email).toBe('test@example.com');
+          expect(res.body.result.name).toBe('Test User');
         });
     });
 
@@ -64,10 +61,13 @@ describe('AuthController (e2e)', () => {
         .post('/auth/register')
         .send({
           email: 'test@example.com',
-          password: 'password456',
-          name: 'Another User',
+          password: 'password123',
+          name: 'Test User',
         })
-        .expect(400);
+        .expect(400)
+        .expect(res => {
+          expect(res.body.message).toBe('Usuário já existe');
+        });
     });
   });
 
@@ -94,9 +94,8 @@ describe('AuthController (e2e)', () => {
         .expect(201)
         .expect(res => {
           expect(res.body.result).toHaveProperty('access_token');
-          expect(res.body.result).toHaveProperty('user');
+          expect(res.body.result.user).toHaveProperty('id');
           expect(res.body.result.user.email).toBe('test@example.com');
-          authToken = res.body.result.access_token;
         });
     });
 
@@ -105,29 +104,46 @@ describe('AuthController (e2e)', () => {
         .post('/auth/login')
         .send({
           email: 'test@example.com',
-          password: 'wrong_password',
+          password: 'wrongpassword',
         })
-        .expect(401);
+        .expect(401)
+        .expect(res => {
+          expect(res.body.message).toBe('Credenciais inválidas');
+        });
     });
   });
 
   describe('/auth/logout (POST)', () => {
+    let authToken: string;
+
     beforeEach(async () => {
-      // Faz login e obtém o token
-      const response = await request(app.getHttpServer())
+      // Cria um usuário e faz login
+      const hashedPassword = await bcrypt.hash('password123', 10);
+      await prisma.user.create({
+        data: {
+          email: 'test@example.com',
+          password: hashedPassword,
+          name: 'Test User',
+        },
+      });
+
+      const loginResponse = await request(app.getHttpServer())
         .post('/auth/login')
         .send({
           email: 'test@example.com',
           password: 'password123',
         });
-      authToken = response.body.access_token;
+      authToken = loginResponse.body.result.access_token;
     });
 
     it('deve fazer logout com sucesso', () => {
       return request(app.getHttpServer())
         .post('/auth/logout')
         .set('Authorization', `Bearer ${authToken}`)
-        .expect(201);
+        .expect(201)
+        .expect(res => {
+          expect(res.body.message).toBe('Logout realizado com sucesso');
+        });
     });
 
     it('deve retornar erro ao tentar fazer logout sem token', () => {
@@ -136,15 +152,26 @@ describe('AuthController (e2e)', () => {
   });
 
   describe('/auth/refresh (GET)', () => {
+    let authToken: string;
+
     beforeEach(async () => {
-      // Faz login e obtém o token
-      const response = await request(app.getHttpServer())
+      // Cria um usuário e faz login
+      const hashedPassword = await bcrypt.hash('password123', 10);
+      await prisma.user.create({
+        data: {
+          email: 'test@example.com',
+          password: hashedPassword,
+          name: 'Test User',
+        },
+      });
+
+      const loginResponse = await request(app.getHttpServer())
         .post('/auth/login')
         .send({
           email: 'test@example.com',
           password: 'password123',
         });
-      authToken = response.body.access_token;
+      authToken = loginResponse.body.result.access_token;
     });
 
     it('deve renovar o token com sucesso', () => {
@@ -153,15 +180,15 @@ describe('AuthController (e2e)', () => {
         .set('Authorization', `Bearer ${authToken}`)
         .expect(200)
         .expect(res => {
-          expect(res.body).toHaveProperty('access_token');
-          expect(res.body.access_token).not.toBe(authToken);
+          expect(res.body.result).toHaveProperty('access_token');
+          expect(res.body.result.access_token).not.toBe(authToken);
         });
     });
 
     it('deve retornar erro ao tentar renovar token inválido', () => {
       return request(app.getHttpServer())
         .get('/auth/refresh')
-        .set('Authorization', 'Bearer invalid_token')
+        .set('Authorization', 'Bearer invalid-token')
         .expect(401);
     });
   });
