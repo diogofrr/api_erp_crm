@@ -25,6 +25,9 @@ model User {
   authTokens    AuthToken[]
   roles         Role[]
   permissions   Permission[]
+  Event Event[]
+  EventTicket EventTicket[]
+  EventOrganizer EventOrganizer[]
 }
 
 model Profile {
@@ -68,3 +71,60 @@ model Permission {
   updatedAt   DateTime  @updatedAt
 }
 
+model Event {
+  id             String    @id @default(uuid())
+  name           String
+  description    String?
+  date           DateTime
+  location       String
+  price          Float
+  createdById    String
+  createdBy      User      @relation(fields: [createdById], references: [id])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  EventTicket    EventTicket[]
+  EventOrganizer EventOrganizer[]
+}
+
+
+model EventOrganizer {
+  id          String    @id @default(uuid())
+  eventId     String
+  event       Event     @relation(fields: [eventId], references: [id])
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+}
+
+model EventTicket {
+  eventId     String
+  ticketId    String
+  userId      String
+  event       Event     @relation(fields: [eventId], references: [id])
+  ticket      Ticket    @relation(fields: [ticketId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
+  qrCode      String    @unique
+  status      TicketStatus
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@id([eventId, ticketId, userId])
+}
+
+model Ticket {
+  id          String    @id @default(uuid())
+  fullName    String
+  email       String
+  phone       String
+  birthDate   DateTime
+  cpf         String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  EventTicket EventTicket[]
+}
+
+enum TicketStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
