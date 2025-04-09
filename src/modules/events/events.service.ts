@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../../database/prisma/prisma.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { IncomingHttpHeaders } from 'http2';
 import { ResponseDto } from 'src/dto/response.dto';
@@ -22,12 +22,18 @@ export class EventsService {
     }
 
     const token = headers.authorization.replace('Bearer ', '');
-    const decodedToken = this.jwtService.verify(token);
+    const decodedToken = this.jwtService.verify(token, {
+      secret: process.env.JWT_SECRET,
+    });
+
+    if (!decodedToken) {
+      throw new HttpException('Token inválido', HttpStatus.UNAUTHORIZED);
+    }
 
     const event = await this.prisma.event.create({
       data: {
         ...createEventDto,
-        createdBy: decodedToken.sub,
+        createdById: decodedToken.sub,
       },
     });
 

@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
   IsDate,
   IsNotEmpty,
@@ -15,6 +16,7 @@ export class CreateEventDto {
   @IsOptional()
   description: string;
 
+  @Type(() => Date)
   @IsDate()
   @IsNotEmpty()
   date: Date;

@@ -94,9 +94,9 @@ export class TicketsService {
     }
 
     const token = headers.authorization.replace('Bearer ', '');
-    const decodedToken = this.jwtService.verify(token);
-
-    console.log(decodedToken);
+    const decodedToken = this.jwtService.verify(token, {
+      secret: process.env.JWT_SECRET,
+    });
 
     const event = await this.prisma.event.findUnique({
       where: { id: createTicketDto.eventId },
@@ -106,12 +106,14 @@ export class TicketsService {
       throw new HttpException('Evento não encontrado', HttpStatus.NOT_FOUND);
     }
 
+    const { eventId, ...ticketData } = createTicketDto;
+
     const ticket = await this.prisma.ticket.create({
       data: {
-        ...createTicketDto,
+        ...ticketData,
         EventTicket: {
           create: {
-            eventId: createTicketDto.eventId,
+            eventId,
             qrCode: this.generateQRCode(createTicketDto.cpf),
             status: TicketStatus.PENDING,
             userId: decodedToken.sub,
@@ -211,7 +213,9 @@ export class TicketsService {
     }
 
     const token = headers.authorization.replace('Bearer ', '');
-    const decodedToken = this.jwtService.verify(token);
+    const decodedToken = this.jwtService.verify(token, {
+      secret: process.env.JWT_SECRET,
+    });
 
     const eventTicket = await this.prisma.eventTicket.findFirst({
       where: {

@@ -10,11 +10,11 @@ import {
   UseGuards,
   Req,
 } from '@nestjs/common';
+import { Request } from 'express';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { TicketsService } from './tickets.service';
 import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { Request } from 'express';
 
 @Controller('tickets')
 @UseGuards(JwtAuthGuard)

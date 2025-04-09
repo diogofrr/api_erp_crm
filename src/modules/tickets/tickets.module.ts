@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
 import { TicketsController } from './tickets.controller';
 import { TicketsService } from './tickets.service';
 import { PrismaModule } from '../../database/prisma/prisma.module';
-import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [PrismaModule, JwtModule],

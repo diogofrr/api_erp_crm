@@ -11,13 +11,13 @@ import {
 } from '@nestjs/common';
 import { Request } from 'express';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { EventsService } from './event.service';
+import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 
 @Controller('events')
 @UseGuards(JwtAuthGuard)
-export class TicketsController {
+export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
 
   @Post()

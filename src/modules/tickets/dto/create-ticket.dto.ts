@@ -1,10 +1,5 @@
-import {
-  IsString,
-  IsEmail,
-  IsDateString,
-  IsNotEmpty,
-  IsUUID,
-} from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsString, IsEmail, IsNotEmpty, IsUUID, IsDate } from 'class-validator';
 
 export class CreateTicketDto {
   @IsString()
@@ -19,7 +14,8 @@ export class CreateTicketDto {
   @IsNotEmpty()
   phone: string;
 
-  @IsDateString()
+  @Type(() => Date)
+  @IsDate()
   @IsNotEmpty()
   birthDate: Date;
 
