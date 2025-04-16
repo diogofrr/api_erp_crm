@@ -100,16 +100,29 @@ export class EventsService {
   }
 
   async deleteEvent(id: string): Promise<ResponseDto> {
+    if (!id) {
+      throw new HttpException('ID não fornecido', HttpStatus.BAD_REQUEST);
+    }
+
     const event = await this.prisma.event.findUnique({
       where: { id },
+      include: {
+        EventTicket: true,
+      },
     });
 
     if (!event) {
       throw new HttpException('Evento não encontrado', HttpStatus.NOT_FOUND);
     }
 
-    const deletedEvent = await this.prisma.event.delete({
-      where: { id },
+    const deletedEvent = await this.prisma.$transaction(async prisma => {
+      await prisma.eventTicket.deleteMany({
+        where: { eventId: id },
+      });
+
+      return prisma.event.delete({
+        where: { id },
+      });
     });
 
     if (!deletedEvent) {
