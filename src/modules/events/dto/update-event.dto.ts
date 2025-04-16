@@ -1,5 +1,12 @@
 import { Type } from 'class-transformer';
-import { IsDate, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsDate,
+  IsEnum,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
+import { EventStatus } from '@prisma/client';
 
 export class UpdateEventDto {
   @IsString()
@@ -9,6 +16,11 @@ export class UpdateEventDto {
   @IsString()
   @IsOptional()
   description: string;
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  @IsEnum(EventStatus)
+  @IsOptional()
+  status: EventStatus;
 
   @Type(() => Date)
   @IsDate()

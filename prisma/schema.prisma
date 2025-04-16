@@ -74,6 +74,7 @@ model Permission {
 model Event {
   id             String    @id @default(uuid())
   name           String
+  status         EventStatus
   description    String?
   date           DateTime
   location       String
@@ -121,6 +122,13 @@ model Ticket {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   EventTicket EventTicket[]
+}
+
+enum EventStatus {
+  PENDING
+  ACTIVE
+  CANCELLED
+  COMPLETED
 }
 
 enum TicketStatus {

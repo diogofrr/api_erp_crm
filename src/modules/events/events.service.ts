@@ -5,6 +5,7 @@ import { CreateEventDto } from './dto/create-event.dto';
 import { IncomingHttpHeaders } from 'http2';
 import { ResponseDto } from 'src/dto/response.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
+import { EventStatus } from '@prisma/client';
 
 @Injectable()
 export class EventsService {
@@ -33,6 +34,7 @@ export class EventsService {
     const event = await this.prisma.event.create({
       data: {
         ...createEventDto,
+        status: EventStatus.PENDING,
         createdById: decodedToken.sub,
       },
     });
