@@ -27,5 +27,9 @@ export class CreateEventDto {
 
   @IsNumber()
   @IsNotEmpty()
+  totalTickets: number;
+
+  @IsNumber()
+  @IsNotEmpty()
   price: number;
 }

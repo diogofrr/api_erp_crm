@@ -33,5 +33,9 @@ export class UpdateEventDto {
 
   @IsNumber()
   @IsOptional()
+  totalTickets: number;
+
+  @IsNumber()
+  @IsOptional()
   price: number;
 }
