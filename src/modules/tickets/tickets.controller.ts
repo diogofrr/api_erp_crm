@@ -45,6 +45,11 @@ export class TicketsController {
     return this.ticketsService.findOne(id);
   }
 
+  @Get('event')
+  async findByEventId(@Query('eventId') eventId: string) {
+    return this.ticketsService.findByEventId(eventId);
+  }
+
   // @Get(':eventId/:ticketId/pdf')
   // async generatePDF(
   //   @Param('eventId') eventId: string,

@@ -66,6 +66,31 @@ export class TicketsService {
     });
   }
 
+  async findByEventId(eventId: string): Promise<ResponseDto> {
+    if (!eventId) {
+      throw new HttpException('Evento não encontrado', HttpStatus.NOT_FOUND);
+    }
+
+    const tickets = await this.prisma.ticket.findMany({
+      where: {
+        EventTicket: {
+          some: {
+            eventId,
+          },
+        },
+      },
+      include: {
+        EventTicket: {
+          include: {
+            event: true,
+          },
+        },
+      },
+    });
+
+    return new ResponseDto(false, 'Ingressos encontrados com sucesso', tickets);
+  }
+
   async findOne(id: string): Promise<ResponseDto> {
     const ticket = await this.prisma.ticket.findUnique({
       where: { id },
