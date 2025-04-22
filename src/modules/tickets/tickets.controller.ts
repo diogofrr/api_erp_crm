@@ -21,12 +21,6 @@ import { UpdateTicketDto } from './dto/update-ticket.dto';
 export class TicketsController {
   constructor(private readonly ticketsService: TicketsService) {}
 
-  @Post()
-  async create(@Body() createTicketDto: CreateTicketDto, @Req() req: Request) {
-    const headers = req.headers;
-    return this.ticketsService.create(createTicketDto, headers);
-  }
-
   @Get()
   async findAll(
     @Query('page') page: string = '1',
@@ -40,29 +34,21 @@ export class TicketsController {
     return this.ticketsService.search(query);
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    return this.ticketsService.findOne(id);
-  }
-
   @Get('event')
   async findByEventId(@Query('eventId') eventId: string) {
     return this.ticketsService.findByEventId(eventId);
   }
 
-  // @Get(':eventId/:ticketId/pdf')
-  // async generatePDF(
-  //   @Param('eventId') eventId: string,
-  //   @Param('ticketId') ticketId: string,
-  //   @Res() res: Response,
-  // ) {
-  //   const ticketData = await this.ticketsService.generateTicketPDF(
-  //     eventId,
-  //     ticketId,
-  //     res,
-  //   );
-  //   return ticketData;
-  // }
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return this.ticketsService.findOne(id);
+  }
+
+  @Post()
+  async create(@Body() createTicketDto: CreateTicketDto, @Req() req: Request) {
+    const headers = req.headers;
+    return this.ticketsService.create(createTicketDto, headers);
+  }
 
   @Patch(':id')
   async update(
