@@ -70,7 +70,7 @@ export class AuthService {
       },
     });
 
-    return new ResponseDto(false, 'Login realizado com sucesso', {
+    return new ResponseDto('Login realizado com sucesso', {
       access_token: token,
       user: {
         id: user.id,
@@ -131,7 +131,7 @@ export class AuthService {
       },
     });
 
-    return new ResponseDto(false, 'Usuário criado com sucesso', {
+    return new ResponseDto('Usuário criado com sucesso', {
       ...user,
       password: '',
       access_token: token,
@@ -150,7 +150,7 @@ export class AuthService {
       where: { tokenHash },
     });
 
-    return new ResponseDto(false, 'Logout realizado com sucesso', {});
+    return new ResponseDto('Logout realizado com sucesso', {});
   }
 
   async refreshToken(authHeader: IncomingHttpHeaders): Promise<ResponseDto> {
@@ -186,7 +186,7 @@ export class AuthService {
       },
     });
 
-    return new ResponseDto(false, 'Token renovado com sucesso', {
+    return new ResponseDto('Token renovado com sucesso', {
       access_token: newToken,
     });
   }

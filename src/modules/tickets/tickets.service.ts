@@ -55,7 +55,7 @@ export class TicketsService {
       this.prisma.ticket.count(),
     ]);
 
-    return new ResponseDto(false, 'Tickets encontrados com sucesso', {
+    return new ResponseDto('Tickets encontrados com sucesso', {
       data: tickets,
       meta: {
         total,
@@ -88,7 +88,7 @@ export class TicketsService {
       },
     });
 
-    return new ResponseDto(false, 'Ingressos encontrados com sucesso', tickets);
+    return new ResponseDto('Ingressos encontrados com sucesso', tickets);
   }
 
   async findOne(id: string): Promise<ResponseDto> {
@@ -107,7 +107,7 @@ export class TicketsService {
       throw new HttpException('Ingresso não encontrado', HttpStatus.NOT_FOUND);
     }
 
-    return new ResponseDto(false, 'Ingresso encontrado com sucesso', ticket);
+    return new ResponseDto('Ingresso encontrado com sucesso', ticket);
   }
 
   async create(
@@ -154,7 +154,7 @@ export class TicketsService {
       },
     });
 
-    return new ResponseDto(false, 'Ingresso criado com sucesso', ticket);
+    return new ResponseDto('Ingresso criado com sucesso', ticket);
   }
 
   async update(
@@ -181,11 +181,7 @@ export class TicketsService {
       },
     });
 
-    return new ResponseDto(
-      false,
-      'Ingresso atualizado com sucesso',
-      updatedTicket,
-    );
+    return new ResponseDto('Ingresso atualizado com sucesso', updatedTicket);
   }
 
   async remove(id: string): Promise<ResponseDto> {
@@ -201,7 +197,7 @@ export class TicketsService {
       where: { id },
     });
 
-    return new ResponseDto(false, 'Ingresso removido com sucesso', null);
+    return new ResponseDto('Ingresso removido com sucesso', null);
   }
 
   async search(query: string): Promise<ResponseDto> {
@@ -225,7 +221,7 @@ export class TicketsService {
       );
     }
 
-    return new ResponseDto(false, 'Ingressos encontrados com sucesso', tickets);
+    return new ResponseDto('Ingressos encontrados com sucesso', tickets);
   }
 
   async confirmEntry(
@@ -282,30 +278,8 @@ export class TicketsService {
     }
 
     return new ResponseDto(
-      false,
       'Ingresso confirmado com sucesso',
       updatedEventTicket,
     );
   }
-
-  // async generateTicketPDF(eventId: string, ticketId: string, res: Response) {
-  //   const eventTicket = await this.prisma.eventTicket.findFirst({
-  //     where: {
-  //       eventId,
-  //       ticketId,
-  //     },
-  //     include: {
-  //       event: true,
-  //       ticket: true,
-  //     },
-  //   });
-
-  //   if (!eventTicket) {
-  //     throw new HttpException('Ingresso não encontrado', HttpStatus.NOT_FOUND);
-  //   }
-
-  //   // Aqui você implementaria a lógica para gerar o PDF
-  //   // Por enquanto, vamos apenas retornar os dados do ingresso
-  //   return eventTicket;
-  // }
 }
