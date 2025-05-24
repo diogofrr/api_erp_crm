@@ -43,7 +43,7 @@ export class EventsService {
       throw new HttpException('Erro ao criar evento', HttpStatus.BAD_REQUEST);
     }
 
-    return new ResponseDto(false, 'Evento criado com sucesso', event);
+    return new ResponseDto('Evento criado com sucesso', event);
   }
 
   async findAllEvents(): Promise<ResponseDto> {
@@ -53,7 +53,7 @@ export class EventsService {
       throw new HttpException('Nenhum evento encontrado', HttpStatus.NOT_FOUND);
     }
 
-    return new ResponseDto(false, 'Eventos encontrados com sucesso', events);
+    return new ResponseDto('Eventos encontrados com sucesso', events);
   }
 
   async findEventById(id: string): Promise<ResponseDto> {
@@ -65,7 +65,7 @@ export class EventsService {
       throw new HttpException('Evento não encontrado', HttpStatus.NOT_FOUND);
     }
 
-    return new ResponseDto(false, 'Evento encontrado com sucesso', event);
+    return new ResponseDto('Evento encontrado com sucesso', event);
   }
 
   async updateEvent(
@@ -92,11 +92,7 @@ export class EventsService {
       );
     }
 
-    return new ResponseDto(
-      false,
-      'Evento atualizado com sucesso',
-      updatedEvent,
-    );
+    return new ResponseDto('Evento atualizado com sucesso', updatedEvent);
   }
 
   async deleteEvent(id: string): Promise<ResponseDto> {
@@ -129,6 +125,6 @@ export class EventsService {
       throw new HttpException('Erro ao deletar evento', HttpStatus.BAD_REQUEST);
     }
 
-    return new ResponseDto(false, 'Evento deletado com sucesso', null);
+    return new ResponseDto('Evento deletado com sucesso', null);
   }
 }

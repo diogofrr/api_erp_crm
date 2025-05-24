@@ -1,11 +1,9 @@
 export class ResponseDto {
-  constructor(error: boolean, message: string, result: any) {
-    this.error = error;
+  constructor(message: string, result: unknown) {
     this.message = message;
     this.result = result;
   }
 
-  error: boolean;
   message: string;
-  result: any;
+  result: unknown;
 }
