@@ -1,98 +1,312 @@
+# 🎫 CRM API - Sistema de Gerenciamento de Eventos e Ingressos
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <img src="https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white" alt="NestJS" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## 📋 Descrição
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+API REST robusta e escalável para gerenciamento de eventos e ingressos, desenvolvida com NestJS, TypeScript e PostgreSQL. Sistema completo de CRM para controle de usuários, eventos, ingressos e autenticação JWT.
 
-## Description
+**Desenvolvido por:** Diogo Henrique Ferreira
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## ✨ Funcionalidades
 
-## Project setup
+### 🔐 Autenticação & Autorização
+
+- Registro e login de usuários
+- Autenticação JWT com tokens seguros
+- Sistema de roles e permissões
+- Logout e refresh de tokens
+- Hash seguro de senhas com bcrypt
+
+### 🎉 Gerenciamento de Eventos
+
+- CRUD completo de eventos
+- Status de eventos (PENDING, ACTIVE, CANCELLED, COMPLETED)
+- Controle de organizadores
+- Limitação de ingressos por evento
+- Preços e localização
+
+### 🎫 Sistema de Ingressos
+
+- Geração automática de QR Codes únicos
+- Status de ingressos (PENDING, CONFIRMED, CANCELLED)
+- Busca avançada por CPF e nome
+- Paginação de resultados
+- Confirmação de entrada em eventos
+- Validação de dados pessoais
+
+### 👤 Gestão de Usuários
+
+- Perfis de usuário com avatar, telefone e endereço
+- Sistema hierárquico de permissões
+- Controle de usuários ativos/inativos
+- Histórico de tokens de autenticação
+
+## 🚀 Tecnologias Utilizadas
+
+- **Backend:** NestJS 11.x
+- **Linguagem:** TypeScript 5.x
+- **Banco de Dados:** PostgreSQL 16
+- **ORM:** Prisma 6.x
+- **Autenticação:** JWT + Passport
+- **Validação:** Class Validator & Class Transformer
+- **Containerização:** Docker & Docker Compose
+- **Testes:** Jest (Unit & E2E)
+- **Linting:** ESLint + Prettier
+
+## 📦 Instalação e Configuração
+
+### Pré-requisitos
+
+- Node.js 18+
+- npm ou yarn
+- Docker & Docker Compose
+- PowerShell (para scripts de automação)
+
+### 1. Clone o repositório
 
 ```bash
-$ npm install
+git clone <repository-url>
+cd api-crm
 ```
 
-## Compile and run the project
+### 2. Instale as dependências
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+### 3. Configure as variáveis de ambiente
+
+Crie um arquivo `.env` na raiz do projeto:
+
+```env
+# Database
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/crm_db"
+
+# JWT
+JWT_SECRET="your-super-secret-jwt-key-here"
+
+# Application
+NODE_ENV="development"
+PORT=3000
+```
+
+### 4. Inicialize o banco de dados
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# Inicia o PostgreSQL via Docker e aplica as migrações
+npm run db:init
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### 5. Execute a aplicação
 
 ```bash
-$ npm install -g mau
-$ mau deploy
+# Modo desenvolvimento (com reload automático)
+npm run start:dev
+
+# Modo produção
+npm run start:prod
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+A API estará disponível em `http://localhost:3000`
 
-## Resources
+## 🗄️ Estrutura do Banco de Dados
 
-Check out a few resources that may come in handy when working with NestJS:
+### Principais Entidades
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+- **User**: Usuários do sistema
+- **Profile**: Perfis dos usuários
+- **AuthToken**: Tokens de autenticação
+- **Role**: Funções/roles dos usuários
+- **Permission**: Permissões do sistema
+- **Event**: Eventos criados
+- **Ticket**: Ingressos dos participantes
+- **EventTicket**: Relacionamento entre eventos e ingressos
 
-## Support
+## 🛠️ Scripts Disponíveis
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+# Desenvolvimento
+npm run start:dev          # Executa em modo desenvolvimento
+npm run start:debug        # Executa com debug
 
-## Stay in touch
+# Build e Produção
+npm run build              # Compila o projeto
+npm run start:prod         # Executa em modo produção
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# Banco de Dados
+npm run db:init            # Inicializa BD com Docker + Prisma
+npm run db:reset           # Reseta completamente o banco
 
-## License
+# Testes
+npm run test               # Testes unitários
+npm run test:e2e           # Testes end-to-end
+npm run test:cov           # Coverage dos testes
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+# Qualidade de Código
+npm run lint               # Lint e correção automática
+npm run format             # Formata código com Prettier
+```
+
+## 📚 Endpoints da API
+
+### 🔐 Autenticação (`/auth`)
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| POST | `/auth/register` | Registro de usuário |
+| POST | `/auth/login` | Login do usuário |
+| POST | `/auth/logout` | Logout (requer token) |
+| GET | `/auth/refresh` | Renovação de token |
+
+### 🎉 Eventos (`/events`)
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| GET | `/events` | Lista todos os eventos |
+| GET | `/events/:id` | Busca evento por ID |
+| POST | `/events` | Cria novo evento |
+| PATCH | `/events/:id` | Atualiza evento |
+| DELETE | `/events/:id` | Remove evento |
+
+### 🎫 Ingressos (`/tickets`)
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| GET | `/tickets` | Lista ingressos (paginado) |
+| GET | `/tickets/:id` | Busca ingresso por ID |
+| GET | `/tickets/search?query=` | Busca por CPF/nome |
+| GET | `/tickets/event?eventId=` | Ingressos por evento |
+| POST | `/tickets` | Cria novo ingresso |
+| PATCH | `/tickets/:id` | Atualiza ingresso |
+| PATCH | `/tickets/:eventId/:ticketId/confirm` | Confirma entrada |
+| DELETE | `/tickets/:id` | Remove ingresso |
+
+### 📋 Exemplos de Requisições
+
+#### Registro de Usuário
+
+```json
+POST /auth/register
+{
+  "name": "João Silva",
+  "email": "joao@email.com",
+  "password": "minhasenha123"
+}
+```
+
+#### Criação de Evento
+
+```json
+POST /events
+{
+  "name": "Show de Rock",
+  "description": "Grande show de rock nacional",
+  "date": "2024-12-31T20:00:00Z",
+  "location": "Arena São Paulo",
+  "totalTickets": 5000,
+  "price": 89.90
+}
+```
+
+#### Criação de Ingresso
+
+```json
+POST /tickets
+{
+  "fullName": "Maria Santos",
+  "email": "maria@email.com",
+  "phone": "(11) 99999-9999",
+  "birthDate": "1990-05-15T00:00:00Z",
+  "cpf": "12345678900",
+  "eventId": "uuid-do-evento"
+}
+```
+
+## 🧪 Testes
+
+O projeto conta com cobertura completa de testes:
+
+```bash
+# Executa todos os testes
+npm run test
+
+# Testes com coverage
+npm run test:cov
+
+# Testes E2E específicos
+npm run test:e2e
+```
+
+### Estrutura de Testes
+
+- **Unit Tests**: Testes dos services e controllers
+- **E2E Tests**: Testes de integração completos
+- **Coverage**: Relatórios de cobertura detalhados
+
+## 🔒 Segurança
+
+- Senhas criptografadas com bcrypt
+- Tokens JWT com expiração configurável
+- Validação rigorosa de entrada de dados
+- Proteção contra ataques de injeção SQL
+- Headers de segurança configurados
+
+## 🐳 Docker
+
+O projeto inclui configuração completa do Docker:
+
+```bash
+# Subir apenas o banco de dados
+docker-compose up -d
+
+# Parar e remover volumes
+docker-compose down -v
+```
+
+## 📈 Monitoramento e Logs
+
+- Logs estruturados com Winston
+- Métricas de performance
+- Health checks configurados
+- Monitoramento de queries do Prisma
+
+## 🤝 Contribuição
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença UNLICENSED. Consulte o arquivo `LICENSE` para mais detalhes.
+
+## 👨‍💻 Autor
+
+**Diogo Henrique Ferreira**
+
+- GitHub: [@ddiog](https://github.com/ddiog)
+- Email: <contato@diogoferreira.dev>
+
+## 🎯 Roadmap
+
+- [ ] Implementação de WebSockets para notificações em tempo real
+- [ ] Sistema de relatórios e analytics
+- [ ] Integração com gateways de pagamento
+- [ ] API de envio de emails
+- [ ] Sistema de cupons e promoções
+- [ ] App mobile com React Native
+- [ ] Dashboard administrativo com React
+
+---
+
+⭐ **Se este projeto foi útil para você, considere dar uma estrela!** ⭐
