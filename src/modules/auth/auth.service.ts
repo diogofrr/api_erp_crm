@@ -61,7 +61,6 @@ export class AuthService {
     const token = this.jwtService.sign(payload);
     const tokenHash = this.generateTokenHash(token);
 
-    // Salvar o hash do token no banco de dados
     await this.prisma.authToken.create({
       data: {
         userId: user.id,
@@ -106,6 +105,12 @@ export class AuthService {
         roles: true,
         permissions: true,
       },
+      omit: {
+        createdAt: true,
+        updatedAt: true,
+        password: true,
+        isActive: true,
+      },
     });
 
     if (!user) {
@@ -122,18 +127,16 @@ export class AuthService {
     const token = this.jwtService.sign(payload);
     const tokenHash = this.generateTokenHash(token);
 
-    // Salvar o hash do token no banco de dados
     await this.prisma.authToken.create({
       data: {
         userId: user.id,
         tokenHash,
-        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 horas
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
       },
     });
 
     return new ResponseDto('Usuário criado com sucesso', {
-      ...user,
-      password: '',
+      user,
       access_token: token,
     });
   }
@@ -150,7 +153,7 @@ export class AuthService {
       where: { tokenHash },
     });
 
-    return new ResponseDto('Logout realizado com sucesso', {});
+    return new ResponseDto('Logout realizado com sucesso', null);
   }
 
   async refreshToken(authHeader: IncomingHttpHeaders): Promise<ResponseDto> {
