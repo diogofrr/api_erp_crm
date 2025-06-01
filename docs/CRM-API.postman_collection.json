@@ -1,0 +1,870 @@
+{
+	"info": {
+		"_postman_id": "crm-api-collection-2024",
+		"name": "CRM API - Sistema de Eventos e Ingressos",
+		"description": "Coleção completa da API do CRM para gerenciamento de eventos e ingressos.\n\n**Desenvolvido por:** Diogo Henrique Ferreira\n\n**Funcionalidades:**\n- Autenticação JWT\n- Gerenciamento de Eventos\n- Sistema de Ingressos com QR Code\n- Validação de CPF único por evento\n- Controle de entrada em eventos\n\n**Base URL:** http://localhost:3000\n\n**Autenticação:** Bearer Token (JWT)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "crm-api"
+	},
+	"item": [
+		{
+			"name": "🔐 Autenticação",
+			"item": [
+				{
+					"name": "Registrar Usuário",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    const responseJson = pm.response.json();",
+									"    if (responseJson.result && responseJson.result.access_token) {",
+									"        pm.environment.set('access_token', responseJson.result.access_token);",
+									"        pm.environment.set('user_id', responseJson.result.user.id);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"João Silva\",\n  \"email\": \"joao@email.com\",\n  \"password\": \"minhasenha123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "Registra um novo usuário no sistema.\n\n**Campos obrigatórios:**\n- name: Nome completo (máx. 100 caracteres)\n- email: Email válido\n- password: Senha (mín. 8 caracteres)\n\n**Retorna:**\n- Token JWT de acesso\n- Dados do usuário criado"
+					}
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    const responseJson = pm.response.json();",
+									"    if (responseJson.result && responseJson.result.access_token) {",
+									"        pm.environment.set('access_token', responseJson.result.access_token);",
+									"        pm.environment.set('user_id', responseJson.result.user.id);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"joao@email.com\",\n  \"password\": \"minhasenha123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Autentica um usuário no sistema.\n\n**Campos obrigatórios:**\n- email: Email válido\n- password: Senha (mín. 8 caracteres)\n\n**Retorna:**\n- Token JWT de acesso\n- Dados do usuário\n- Roles e permissões"
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "Realiza logout do usuário invalidando o token atual.\n\n**Autenticação:** Bearer Token obrigatório\n\n**Retorna:**\n- Confirmação de logout"
+					}
+				},
+				{
+					"name": "Renovar Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    const responseJson = pm.response.json();",
+									"    if (responseJson.result && responseJson.result.access_token) {",
+									"        pm.environment.set('access_token', responseJson.result.access_token);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						},
+						"description": "Renova o token JWT atual.\n\n**Autenticação:** Bearer Token obrigatório\n\n**Retorna:**\n- Novo token JWT de acesso"
+					}
+				}
+			],
+			"description": "Endpoints para autenticação e autorização dos usuários."
+		},
+		{
+			"name": "🎉 Eventos",
+			"item": [
+				{
+					"name": "Listar Todos os Eventos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/events?page=1&limit=10&search=&status=&location=",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Número da página (padrão: 1)"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Itens por página (padrão: 10)"
+								},
+								{
+									"key": "search",
+									"value": "",
+									"description": "Busca por nome, descrição ou localização"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "Filtrar por status (PENDING, ACTIVE, CANCELED, COMPLETED)"
+								},
+								{
+									"key": "location",
+									"value": "",
+									"description": "Filtrar por localização específica"
+								},
+								{
+									"key": "startDate",
+									"value": "",
+									"description": "Data inicial (formato: YYYY-MM-DD)",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "",
+									"description": "Data final (formato: YYYY-MM-DD)",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Lista todos os eventos cadastrados no sistema com suporte a paginação e filtros.\n\n**Parâmetros de Query:**\n- `page`: Número da página (padrão: 1)\n- `limit`: Itens por página (padrão: 10)\n- `search`: Busca por nome, descrição ou localização\n- `status`: Filtrar por status do evento\n- `location`: Filtrar por localização\n- `startDate`: Data inicial para filtro\n- `endDate`: Data final para filtro\n\n**Autenticação:** Bearer Token obrigatório\n\n**Retorna:**\n- Lista paginada de eventos\n- Metadados de paginação\n- Contagem de ingressos vendidos por evento"
+					}
+				},
+				{
+					"name": "Buscar Evento por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/events/{{event_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"{{event_id}}"
+							]
+						},
+						"description": "Busca um evento específico pelo ID.\n\n**Parâmetros:**\n- event_id: UUID do evento\n\n**Autenticação:** Bearer Token obrigatório\n\n**Retorna:**\n- Dados completos do evento"
+					}
+				},
+				{
+					"name": "Criar Evento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    const responseJson = pm.response.json();",
+									"    if (responseJson.result && responseJson.result.id) {",
+									"        pm.environment.set('event_id', responseJson.result.id);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Show de Rock Nacional\",\n  \"description\": \"Grande festival de rock com as melhores bandas nacionais\",\n  \"date\": \"2024-12-31T00:00:00.000Z\",\n  \"startTime\": \"2024-12-31T20:00:00.000Z\",\n  \"endTime\": \"2024-12-31T23:59:00.000Z\",\n  \"location\": \"Arena São Paulo - SP\",\n  \"totalTickets\": 5000,\n  \"price\": 89.90\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/events",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events"
+							]
+						},
+						"description": "Cria um novo evento no sistema.\n\n**Campos obrigatórios:**\n- name: Nome do evento\n- date: Data do evento (ISO 8601)\n- startTime: Horário de início (ISO 8601)\n- endTime: Horário de término (ISO 8601)\n- location: Local do evento\n- totalTickets: Número total de ingressos\n- price: Preço do ingresso (decimal)\n\n**Campos opcionais:**\n- description: Descrição do evento\n\n**Autenticação:** Bearer Token obrigatório\n\n**Status criado:** PENDING"
+					}
+				},
+				{
+					"name": "Atualizar Evento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Show de Rock Nacional - ATUALIZADO\",\n  \"description\": \"Festival atualizado com novas atrações\",\n  \"status\": \"ACTIVE\",\n  \"price\": 99.90\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/events/{{event_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"{{event_id}}"
+							]
+						},
+						"description": "Atualiza dados de um evento existente.\n\n**Parâmetros:**\n- event_id: UUID do evento\n\n**Campos atualizáveis:**\n- name: Nome do evento\n- description: Descrição\n- status: PENDING, ACTIVE, CANCELLED, COMPLETED\n- date: Data do evento\n- startTime: Horário de início\n- endTime: Horário de término\n- location: Local\n- totalTickets: Total de ingressos\n- price: Preço\n\n**Autenticação:** Bearer Token obrigatório"
+					}
+				},
+				{
+					"name": "Atualizar Status do Evento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"ACTIVE\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/events/{{event_id}}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"{{event_id}}",
+								"status"
+							]
+						},
+						"description": "Atualiza apenas o status de um evento com validações de transição.\n\n**Parâmetros:**\n- event_id: UUID do evento\n\n**Body JSON:**\n- `status`: Novo status (PENDING, ACTIVE, CANCELED, COMPLETED)\n\n**Regras de Transição:**\n- PENDING → ACTIVE ou CANCELED\n- ACTIVE → COMPLETED ou CANCELED\n- CANCELED → não pode mudar\n- COMPLETED → não pode mudar\n\n**Validações Temporais:**\n- ACTIVE: só se a data não passou\n- COMPLETED: só após horário de término\n\n**Autenticação:** Bearer Token obrigatório"
+					}
+				},
+				{
+					"name": "Deletar Evento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/events/{{event_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"events",
+								"{{event_id}}"
+							]
+						},
+						"description": "Remove um evento do sistema.\n\n**⚠️ ATENÇÃO:** Esta operação só funciona em modo desenvolvimento!\n\n**Parâmetros:**\n- event_id: UUID do evento\n\n**Autenticação:** Bearer Token obrigatório\n\n**Comportamento:**\n- Remove todos os ingressos associados\n- Remove o evento permanentemente"
+					}
+				}
+			],
+			"description": "Endpoints para gerenciamento de eventos."
+		},
+		{
+			"name": "🎫 Ingressos",
+			"item": [
+				{
+					"name": "Listar Ingressos (Paginado)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tickets?eventId={{event_id}}&page=1&limit=10&search=",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tickets"
+							],
+							"query": [
+								{
+									"key": "eventId",
+									"value": "{{event_id}}",
+									"description": "ID do evento (obrigatório)"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Página (padrão: 1)"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Itens por página (padrão: 10, máx: 100)"
+								},
+								{
+									"key": "search",
+									"value": "",
+									"description": "Busca por CPF ou nome"
+								}
+							]
+						},
+						"description": "Lista ingressos de um evento com paginação e busca.\n\n**Parâmetros obrigatórios:**\n- eventId: UUID do evento\n\n**Parâmetros opcionais:**\n- page: Página (padrão: 1)\n- limit: Itens por página (padrão: 10, máx: 100)\n- search: Busca por CPF ou nome\n\n**Autenticação:** Bearer Token obrigatório\n\n**Retorna:**\n- Lista paginada de ingressos\n- Metadados de paginação"
+					}
+				},
+				{
+					"name": "Buscar Ingresso por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "Busca um ingresso específico pelo ID.\n\n**Parâmetros:**\n- ticket_id: UUID do ingresso\n\n**Autenticação:** Bearer Token obrigatório\n\n**Retorna:**\n- Dados completos do ingresso\n- Informações do evento\n- QR Code e status"
+					}
+				},
+				{
+					"name": "Criar Ingresso",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    const responseJson = pm.response.json();",
+									"    if (responseJson.result && responseJson.result.id) {",
+									"        pm.environment.set('ticket_id', responseJson.result.id);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Maria Santos Silva\",\n  \"email\": \"maria.santos@email.com\",\n  \"phone\": \"(11) 99999-9999\",\n  \"birthDate\": \"1990-05-15T00:00:00.000Z\",\n  \"cpf\": \"12345678900\",\n  \"eventId\": \"{{event_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tickets",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tickets"
+							]
+						},
+						"description": "Cria um novo ingresso para um evento.\n\n**⚠️ REGRA DE NEGÓCIO:** Um CPF só pode ter um ingresso por evento!\n\n**Campos obrigatórios:**\n- fullName: Nome completo\n- email: Email válido\n- phone: Telefone\n- birthDate: Data de nascimento (ISO 8601)\n- cpf: CPF (11 dígitos)\n- eventId: UUID do evento\n\n**Autenticação:** Bearer Token obrigatório\n\n**Comportamento:**\n- Gera QR Code único baseado no CPF\n- Status inicial: PENDING\n- Valida CPF único por evento"
+					}
+				},
+				{
+					"name": "Atualizar Ingresso",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Maria Santos Silva - ATUALIZADO\",\n  \"email\": \"maria.santos.novo@email.com\",\n  \"phone\": \"(11) 88888-8888\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "Atualiza dados de um ingresso existente.\n\n**⚠️ REGRA DE NEGÓCIO:** Se alterar CPF, valida unicidade por evento!\n\n**Parâmetros:**\n- ticket_id: UUID do ingresso\n\n**Campos atualizáveis:**\n- fullName: Nome completo\n- email: Email\n- phone: Telefone\n- birthDate: Data de nascimento\n- cpf: CPF (validação de unicidade)\n\n**Autenticação:** Bearer Token obrigatório"
+					}
+				},
+				{
+					"name": "Confirmar Entrada no Evento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"eventId\": \"{{event_id}}\",\n  \"ticketId\": \"{{ticket_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tickets/confirm",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tickets",
+								"confirm"
+							]
+						},
+						"description": "Confirma a entrada de um participante no evento.\n\n**Campos obrigatórios:**\n- eventId: UUID do evento\n- ticketId: UUID do ingresso\n\n**Regras de negócio:**\n- Ingresso deve estar com status PENDING\n- Evento deve estar no dia correto\n- Evento deve ter começado\n- Muda status para CONFIRMED\n\n**Autenticação:** Bearer Token obrigatório"
+					}
+				},
+				{
+					"name": "Cancelar Ingresso",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"eventId\": \"{{event_id}}\",\n  \"ticketId\": \"{{ticket_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tickets/cancel",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tickets",
+								"cancel"
+							]
+						},
+						"description": "Cancela um ingresso do evento.\n\n**Campos obrigatórios:**\n- eventId: UUID do evento\n- ticketId: UUID do ingresso\n\n**Regras de negócio:**\n- Ingresso deve estar com status PENDING\n- Evento não pode estar ocorrendo ou ter ocorrido\n- Muda status para CANCELED\n\n**Autenticação:** Bearer Token obrigatório"
+					}
+				},
+				{
+					"name": "Deletar Ingresso",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "Remove um ingresso do sistema.\n\n**⚠️ ATENÇÃO:** Esta operação só funciona em modo desenvolvimento!\n\n**Parâmetros:**\n- ticket_id: UUID do ingresso\n\n**Autenticação:** Bearer Token obrigatório\n\n**Comportamento:**\n- Remove o ingresso permanentemente\n- Remove associações com eventos"
+					}
+				}
+			],
+			"description": "Endpoints para gerenciamento de ingressos com validação de CPF único por evento."
+		},
+		{
+			"name": "👥 Permissões",
+			"item": [
+				{
+					"name": "Listar Permissões",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/permissions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"permissions"
+							]
+						},
+						"description": "Lista todas as permissões do sistema.\n\n**Nota:** Este endpoint está em desenvolvimento."
+					}
+				},
+				{
+					"name": "Buscar Permissão por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/permissions/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"permissions",
+								"1"
+							]
+						},
+						"description": "Busca uma permissão específica pelo ID.\n\n**Nota:** Este endpoint está em desenvolvimento."
+					}
+				},
+				{
+					"name": "Criar Permissão",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{base_url}}/permissions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"permissions"
+							]
+						},
+						"description": "Cria uma nova permissão.\n\n**Nota:** Este endpoint está em desenvolvimento."
+					}
+				},
+				{
+					"name": "Atualizar Permissão",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{base_url}}/permissions/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"permissions",
+								"1"
+							]
+						},
+						"description": "Atualiza uma permissão existente.\n\n**Nota:** Este endpoint está em desenvolvimento."
+					}
+				},
+				{
+					"name": "Deletar Permissão",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/permissions/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"permissions",
+								"1"
+							]
+						},
+						"description": "Remove uma permissão do sistema.\n\n**Nota:** Este endpoint está em desenvolvimento."
+					}
+				}
+			],
+			"description": "Endpoints para gerenciamento de permissões (em desenvolvimento)."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "event_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "ticket_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

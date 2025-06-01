@@ -2,11 +2,12 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../../database/prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
-import { UserData } from './dto/user-data.dto';
 import { ResponseDto } from 'src/dto/response.dto';
 import * as crypto from 'crypto';
 import { LoginDto } from './dto/login.dto';
 import { IncomingHttpHeaders } from 'http2';
+import { JwtPayload } from './interfaces/jwt-payload.interface';
+import { Permission, Role, User } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
@@ -19,7 +20,10 @@ export class AuthService {
     return crypto.createHash('sha256').update(token).digest('hex');
   }
 
-  async validateUser(email: string, password: string): Promise<UserData> {
+  async validateUser(
+    email: string,
+    password: string,
+  ): Promise<User & { roles: Role[]; permissions: Permission[] }> {
     const user = await this.prisma.user.findUnique({
       where: { email },
       include: {
@@ -42,10 +46,7 @@ export class AuthService {
   }
 
   async login(loginDto: LoginDto): Promise<ResponseDto> {
-    const user: UserData = await this.validateUser(
-      loginDto.email,
-      loginDto.password,
-    );
+    const user = await this.validateUser(loginDto.email, loginDto.password);
 
     if (!user) {
       throw new HttpException('Usuário não encontrado', HttpStatus.NOT_FOUND);
@@ -192,5 +193,35 @@ export class AuthService {
     return new ResponseDto('Token renovado com sucesso', {
       access_token: newToken,
     });
+  }
+
+  verifyIsDevelopmentMode(): boolean {
+    const isProductionMode = process.env.NODE_ENV === 'production';
+
+    if (isProductionMode) {
+      throw new HttpException(
+        'Operação não permitida em ambiente de produção',
+        HttpStatus.FORBIDDEN,
+      );
+    }
+
+    return true;
+  }
+
+  decodeToken(headers: IncomingHttpHeaders): JwtPayload {
+    if (!headers.authorization) {
+      throw new HttpException('Token não fornecido', HttpStatus.UNAUTHORIZED);
+    }
+
+    const token = headers.authorization.replace('Bearer ', '');
+    const decodedToken = this.jwtService.verify<JwtPayload>(token, {
+      secret: process.env.JWT_SECRET,
+    });
+
+    if (!decodedToken) {
+      throw new HttpException('Token inválido', HttpStatus.UNAUTHORIZED);
+    }
+
+    return decodedToken;
   }
 }

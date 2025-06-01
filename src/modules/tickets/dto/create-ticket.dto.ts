@@ -2,28 +2,28 @@ import { Type } from 'class-transformer';
 import { IsString, IsEmail, IsNotEmpty, IsUUID, IsDate } from 'class-validator';
 
 export class CreateTicketDto {
-  @IsString()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'fullName não pode ser vazio' })
+  @IsString({ message: 'fullName deve ser uma string' })
   fullName: string;
 
-  @IsEmail()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'email não pode ser vazio' })
+  @IsEmail(undefined, { message: 'o campo deve ser um email válido' })
   email: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'phone não pode ser vazio' })
+  @IsString({ message: 'phone deve ser uma string' })
   phone: string;
 
+  @IsNotEmpty({ message: 'birthDate não pode ser vazio' })
   @Type(() => Date)
-  @IsDate()
-  @IsNotEmpty()
+  @IsDate({ message: 'birthDate deve ser uma data válida' })
   birthDate: Date;
 
-  @IsString()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'cpf não pode ser vazio' })
+  @IsString({ message: 'cpf deve ser uma string' })
   cpf: string;
 
-  @IsUUID()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'eventId não pode ser vazio' })
+  @IsUUID(undefined, { message: 'eventId deve ser um UUID válido' })
   eventId: string;
 }

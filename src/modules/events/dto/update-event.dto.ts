@@ -9,32 +9,51 @@ import {
 import { EventStatus } from '@prisma/client';
 
 export class UpdateEventDto {
-  @IsString()
   @IsOptional()
+  @IsString({ message: 'name deve ser uma string' })
   name: string;
 
-  @IsString()
   @IsOptional()
+  @IsString({ message: 'description deve ser uma string' })
   description: string;
 
-  @IsEnum(EventStatus)
   @IsOptional()
+  @IsEnum(EventStatus, {
+    message:
+      'status deve ser um dos seguintes valores: PENDING, ACTIVE, CANCELLED, COMPLETED',
+  })
   status: EventStatus;
 
-  @Type(() => Date)
-  @IsDate()
   @IsOptional()
+  @Type(() => Date)
+  @IsDate({ message: 'date deve ser uma data válida' })
   date: Date;
 
-  @IsString()
   @IsOptional()
+  @Type(() => Date)
+  @IsDate({ message: 'startTime deve ser uma data válida' })
+  startTime: Date;
+
+  @IsOptional()
+  @Type(() => Date)
+  @IsDate({ message: 'startTime deve ser uma data válida' })
+  endTime: Date;
+
+  @IsOptional()
+  @IsString({ message: 'location deve ser uma string' })
   location: string;
 
-  @IsNumber()
   @IsOptional()
+  @IsNumber(
+    { maxDecimalPlaces: 0 },
+    { message: 'totalTickets deve ser um número inteiro' },
+  )
   totalTickets: number;
 
-  @IsNumber()
   @IsOptional()
+  @IsNumber(
+    { maxDecimalPlaces: 2 },
+    { message: 'price deve ser um número com até duas casas decimais' },
+  )
   price: number;
 }

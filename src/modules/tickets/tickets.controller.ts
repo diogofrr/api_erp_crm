@@ -15,6 +15,9 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { TicketsService } from './tickets.service';
 import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
+import { FindAllTicketsDto } from './dto/find-all-tickets.dto';
+import { ConfirmEntryDto } from './dto/confirm-entry.dto';
+import { CancelTicketDto } from './dto/cancel-ticket.dto';
 
 @Controller('tickets')
 @UseGuards(JwtAuthGuard)
@@ -22,32 +25,19 @@ export class TicketsController {
   constructor(private readonly ticketsService: TicketsService) {}
 
   @Get()
-  async findAll(
-    @Query('page') page: string = '1',
-    @Query('limit') limit: string = '10',
-  ) {
-    return this.ticketsService.findAll(parseInt(page), parseInt(limit));
-  }
-
-  @Get('search')
-  async search(@Query('query') query: string) {
-    return this.ticketsService.search(query);
-  }
-
-  @Get('event')
-  async findByEventId(@Query('eventId') eventId: string) {
-    return this.ticketsService.findByEventId(eventId);
+  async findAll(@Query() findAllTicketsDto: FindAllTicketsDto) {
+    return await this.ticketsService.findAll(findAllTicketsDto);
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return this.ticketsService.findOne(id);
+    return await this.ticketsService.findOne(id);
   }
 
   @Post()
   async create(@Body() createTicketDto: CreateTicketDto, @Req() req: Request) {
     const headers = req.headers;
-    return this.ticketsService.create(createTicketDto, headers);
+    return await this.ticketsService.create(createTicketDto, headers);
   }
 
   @Patch(':id')
@@ -55,21 +45,29 @@ export class TicketsController {
     @Param('id') id: string,
     @Body() updateTicketDto: UpdateTicketDto,
   ) {
-    return this.ticketsService.update(id, updateTicketDto);
+    return await this.ticketsService.update(id, updateTicketDto);
   }
 
-  @Patch(':eventId/:ticketId/confirm')
+  @Patch('/confirm')
   async confirmEntry(
-    @Param('eventId') eventId: string,
-    @Param('ticketId') ticketId: string,
+    @Body() confirmEntryDto: ConfirmEntryDto,
     @Req() req: Request,
   ) {
     const headers = req.headers;
-    return this.ticketsService.confirmEntry(eventId, ticketId, headers);
+    return await this.ticketsService.confirmEntry(confirmEntryDto, headers);
+  }
+
+  @Patch('/cancel')
+  async cancelTicket(
+    @Body() cancelTicketDto: CancelTicketDto,
+    @Req() req: Request,
+  ) {
+    const headers = req.headers;
+    return await this.ticketsService.cancelTicket(cancelTicketDto, headers);
   }
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
-    return this.ticketsService.remove(id);
+    return await this.ticketsService.remove(id);
   }
 }

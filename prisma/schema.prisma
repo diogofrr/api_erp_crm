@@ -71,6 +71,8 @@ model Event {
   status         EventStatus
   description    String?
   date           DateTime
+  startTime      DateTime
+  endTime        DateTime
   location       String
   price          Float
   totalTickets   Int

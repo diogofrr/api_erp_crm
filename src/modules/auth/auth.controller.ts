@@ -11,25 +11,25 @@ export class AuthController {
 
   @Post('register')
   async register(@Body() registerDto: RegisterDto) {
-    return this.authService.register(registerDto);
+    return await this.authService.register(registerDto);
   }
 
   @Post('login')
   async login(@Body() loginDto: LoginDto) {
-    return this.authService.login(loginDto);
+    return await this.authService.login(loginDto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Post('logout')
   async logout(@Req() req: Request) {
     const authHeader = req.headers;
-    return this.authService.logout(authHeader);
+    return await this.authService.logout(authHeader);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('refresh')
   async refreshToken(@Req() req: Request) {
     const authHeader = req.headers;
-    return this.authService.refreshToken(authHeader);
+    return await this.authService.refreshToken(authHeader);
   }
 }

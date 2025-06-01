@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
 import { EventsController } from './events.controller';
 import { EventsService } from './events.service';
 import { PrismaModule } from '../../database/prisma/prisma.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports: [PrismaModule, JwtModule],
+  imports: [PrismaModule, AuthModule],
   controllers: [EventsController],
   providers: [EventsService],
   exports: [EventsService],
