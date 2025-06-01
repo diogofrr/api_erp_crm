@@ -17,7 +17,6 @@ export class UpdateEventDto {
   @IsOptional()
   description: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   @IsEnum(EventStatus)
   @IsOptional()
   status: EventStatus;

@@ -253,7 +253,7 @@ export class TicketsService {
       throw new HttpException('Ingresso já confirmado', HttpStatus.BAD_REQUEST);
     }
 
-    if (eventTicket.status === TicketStatus.CANCELLED) {
+    if (eventTicket.status === TicketStatus.CANCELED) {
       throw new HttpException('Ingresso cancelado', HttpStatus.BAD_REQUEST);
     }
 

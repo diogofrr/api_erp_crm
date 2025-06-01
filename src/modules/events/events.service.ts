@@ -95,6 +95,36 @@ export class EventsService {
     return new ResponseDto('Evento atualizado com sucesso', updatedEvent);
   }
 
+  async cancelEvent(id: string): Promise<ResponseDto> {
+    if (!id) {
+      throw new HttpException('ID não fornecido', HttpStatus.BAD_REQUEST);
+    }
+
+    const event = await this.prisma.event.findUnique({
+      where: { id },
+    });
+
+    if (!event) {
+      throw new HttpException('Evento não encontrado', HttpStatus.NOT_FOUND);
+    }
+
+    const updatedEvent = await this.prisma.event.update({
+      where: { id },
+      data: {
+        status: EventStatus.CANCELED,
+      },
+    });
+
+    if (!updatedEvent) {
+      throw new HttpException(
+        'Erro ao cancelar evento',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    return new ResponseDto('Evento cancelado com sucesso', updatedEvent);
+  }
+
   async deleteEvent(id: string): Promise<ResponseDto> {
     if (!id) {
       throw new HttpException('ID não fornecido', HttpStatus.BAD_REQUEST);

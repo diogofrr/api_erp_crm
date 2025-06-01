@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,65 +8,65 @@ datasource db {
 }
 
 model User {
-  id            String      @id @default(uuid())
-  email         String      @unique
-  password      String
-  name          String
-  isActive      Boolean     @default(true)
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  profile       Profile?
-  authTokens    AuthToken[]
-  roles         Role[]
-  permissions   Permission[]
-  Event Event[]
-  EventTicket EventTicket[]
+  id             String           @id @default(uuid())
+  email          String           @unique
+  password       String
+  name           String
+  isActive       Boolean          @default(true)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  authTokens     AuthToken[]
+  Event          Event[]
   EventOrganizer EventOrganizer[]
+  EventTicket    EventTicket[]
+  profile        Profile?
+  permissions    Permission[]     @relation("PermissionToUser")
+  roles          Role[]           @relation("RoleToUser")
 }
 
 model Profile {
-  id          String    @id @default(uuid())
-  userId      String    @unique
-  user        User      @relation(fields: [userId], references: [id])
-  avatar      String?
-  phone       String?
-  address     String?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  avatar    String?
+  phone     String?
+  address   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model AuthToken {
-  id          String    @id @default(uuid())
-  userId      String
-  user        User      @relation(fields: [userId], references: [id])
-  tokenHash   String    @unique
-  expiresAt   DateTime
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id        String   @id @default(uuid())
+  userId    String
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model Role {
-  id          String    @id @default(uuid())
-  name        String    @unique
+  id          String       @id @default(uuid())
+  name        String       @unique
   description String?
-  users       User[]
-  permissions Permission[]
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  permissions Permission[] @relation("PermissionToRole")
+  users       User[]       @relation("RoleToUser")
 }
 
 model Permission {
-  id          String    @id @default(uuid())
-  name        String    @unique
+  id          String   @id @default(uuid())
+  name        String   @unique
   description String?
-  users       User[]
-  roles       Role[]
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  roles       Role[]   @relation("PermissionToRole")
+  users       User[]   @relation("PermissionToUser")
 }
 
 model Event {
-  id             String    @id @default(uuid())
+  id             String           @id @default(uuid())
   name           String
   status         EventStatus
   description    String?
@@ -81,59 +75,57 @@ model Event {
   price          Float
   totalTickets   Int
   createdById    String
-  createdBy      User      @relation(fields: [createdById], references: [id])
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-
-  EventTicket    EventTicket[]
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  createdBy      User             @relation(fields: [createdById], references: [id])
   EventOrganizer EventOrganizer[]
+  EventTicket    EventTicket[]
 }
 
-
 model EventOrganizer {
-  id          String    @id @default(uuid())
-  eventId     String
-  event       Event     @relation(fields: [eventId], references: [id])
-  userId      String
-  user        User      @relation(fields: [userId], references: [id])
+  id      String @id @default(uuid())
+  eventId String
+  userId  String
+  event   Event  @relation(fields: [eventId], references: [id])
+  user    User   @relation(fields: [userId], references: [id])
 }
 
 model EventTicket {
-  eventId     String
-  ticketId    String
-  userId      String
-  event       Event     @relation(fields: [eventId], references: [id])
-  ticket      Ticket    @relation(fields: [ticketId], references: [id])
-  user        User      @relation(fields: [userId], references: [id])
-  qrCode      String    @unique
-  status      TicketStatus
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  eventId   String
+  ticketId  String
+  userId    String
+  qrCode    String       @unique
+  status    TicketStatus
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  event     Event        @relation(fields: [eventId], references: [id])
+  ticket    Ticket       @relation(fields: [ticketId], references: [id])
+  user      User         @relation(fields: [userId], references: [id])
 
   @@id([eventId, ticketId, userId])
 }
 
 model Ticket {
-  id          String    @id @default(uuid())
+  id          String        @id @default(uuid())
   fullName    String
   email       String
   phone       String
   birthDate   DateTime
   cpf         String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
   EventTicket EventTicket[]
 }
 
 enum EventStatus {
   PENDING
   ACTIVE
-  CANCELLED
+  CANCELED
   COMPLETED
 }
 
 enum TicketStatus {
   PENDING
   CONFIRMED
-  CANCELLED
+  CANCELED
 }

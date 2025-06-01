@@ -25,7 +25,7 @@ API REST robusta e escalável para gerenciamento de eventos e ingressos, desenvo
 ### 🎉 Gerenciamento de Eventos
 
 - CRUD completo de eventos
-- Status de eventos (PENDING, ACTIVE, CANCELLED, COMPLETED)
+- Status de eventos (PENDING, ACTIVE, CANCELED, COMPLETED)
 - Controle de organizadores
 - Limitação de ingressos por evento
 - Preços e localização
@@ -33,7 +33,7 @@ API REST robusta e escalável para gerenciamento de eventos e ingressos, desenvo
 ### 🎫 Sistema de Ingressos
 
 - Geração automática de QR Codes únicos
-- Status de ingressos (PENDING, CONFIRMED, CANCELLED)
+- Status de ingressos (PENDING, CONFIRMED, CANCELED)
 - Busca avançada por CPF e nome
 - Paginação de resultados
 - Confirmação de entrada em eventos
