@@ -1,46 +1,53 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
   Query,
-  UseGuards,
   Req,
+  UseGuards,
 } from '@nestjs/common';
+import { UserRole } from '@prisma/client';
 import { Request } from 'express';
+import { Roles } from '../auth/decorators/roles.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { TicketsService } from './tickets.service';
-import { CreateTicketDto } from './dto/create-ticket.dto';
-import { UpdateTicketDto } from './dto/update-ticket.dto';
-import { FindAllTicketsDto } from './dto/find-all-tickets.dto';
-import { ConfirmEntryDto } from './dto/confirm-entry.dto';
+import { RolesGuard } from '../auth/guards/roles.guard';
 import { CancelTicketDto } from './dto/cancel-ticket.dto';
+import { ConfirmEntryDto } from './dto/confirm-entry.dto';
+import { CreateTicketDto } from './dto/create-ticket.dto';
+import { FindAllTicketsDto } from './dto/find-all-tickets.dto';
+import { UpdateTicketDto } from './dto/update-ticket.dto';
+import { TicketsService } from './tickets.service';
 
 @Controller('tickets')
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class TicketsController {
   constructor(private readonly ticketsService: TicketsService) {}
 
   @Get()
+  @Roles(UserRole.ADMIN, UserRole.TICKET_MANAGER, UserRole.USER)
   async findAll(@Query() findAllTicketsDto: FindAllTicketsDto) {
     return await this.ticketsService.findAll(findAllTicketsDto);
   }
 
   @Get(':id')
+  @Roles(UserRole.ADMIN, UserRole.TICKET_MANAGER, UserRole.USER)
   async findOne(@Param('id') id: string) {
     return await this.ticketsService.findOne(id);
   }
 
   @Post()
+  @Roles(UserRole.ADMIN, UserRole.TICKET_MANAGER)
   async create(@Body() createTicketDto: CreateTicketDto, @Req() req: Request) {
     const headers = req.headers;
     return await this.ticketsService.create(createTicketDto, headers);
   }
 
   @Patch(':id')
+  @Roles(UserRole.ADMIN, UserRole.TICKET_MANAGER)
   async update(
     @Param('id') id: string,
     @Body() updateTicketDto: UpdateTicketDto,
@@ -49,6 +56,7 @@ export class TicketsController {
   }
 
   @Patch('/confirm')
+  @Roles(UserRole.ADMIN, UserRole.TICKET_MANAGER)
   async confirmEntry(
     @Body() confirmEntryDto: ConfirmEntryDto,
     @Req() req: Request,
@@ -58,6 +66,7 @@ export class TicketsController {
   }
 
   @Patch('/cancel')
+  @Roles(UserRole.ADMIN, UserRole.TICKET_MANAGER)
   async cancelTicket(
     @Body() cancelTicketDto: CancelTicketDto,
     @Req() req: Request,
@@ -67,6 +76,7 @@ export class TicketsController {
   }
 
   @Delete(':id')
+  @Roles(UserRole.ADMIN)
   async remove(@Param('id') id: string) {
     return await this.ticketsService.remove(id);
   }

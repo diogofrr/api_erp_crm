@@ -47,7 +47,7 @@ model AuthToken {
 
 model Role {
   id          String       @id @default(uuid())
-  name        String       @unique
+  name        UserRole     @unique
   description String?
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
@@ -117,6 +117,13 @@ model Ticket {
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
   EventTicket EventTicket[]
+}
+
+enum UserRole {
+  ADMIN
+  EVENT_MANAGER
+  TICKET_MANAGER
+  USER
 }
 
 enum EventStatus {

@@ -17,9 +17,10 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-		"db:init": "pwsh ./src/scripts/init-db.ps1",
-		"db:reset": "pwsh ./src/scripts/reset-db.ps1"
+    "test:e2e": "jest --config ./jest-e2e.json",
+    "db:init": "pwsh ./src/scripts/init-db.ps1",
+    "db:reset": "pwsh ./src/scripts/reset-db.ps1",
+    "roles:init": "pwsh ./src/scripts/init-roles.ps1"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
