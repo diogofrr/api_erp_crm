@@ -1,13 +1,13 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { PrismaService } from '../../database/prisma/prisma.service';
-import { CreateEventDto } from './dto/create-event.dto';
+import { Event, EventStatus } from '@prisma/client';
 import { IncomingHttpHeaders } from 'http2';
 import { ResponseDto } from 'src/dto/response.dto';
-import { UpdateEventDto } from './dto/update-event.dto';
-import { Event, EventStatus } from '@prisma/client';
+import { PrismaService } from '../../database/prisma/prisma.service';
 import { AuthService } from '../auth/auth.service';
+import { CreateEventDto } from './dto/create-event.dto';
 import { FindAllEventsDto } from './dto/find-all-events.dto';
 import { UpdateEventStatusDto } from './dto/update-event-status.dto';
+import { UpdateEventDto } from './dto/update-event.dto';
 
 @Injectable()
 export class EventsService {
@@ -199,7 +199,6 @@ export class EventsService {
         limit,
         totalPages: Math.ceil(total / limit),
         status,
-        location,
         dateRange: { startDate, endDate },
       },
     });
