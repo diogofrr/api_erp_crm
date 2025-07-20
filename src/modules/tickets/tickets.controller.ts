@@ -46,15 +46,6 @@ export class TicketsController {
     return await this.ticketsService.create(createTicketDto, headers);
   }
 
-  @Patch(':id')
-  @Roles(UserRole.ADMIN, UserRole.TICKET_MANAGER)
-  async update(
-    @Param('id') id: string,
-    @Body() updateTicketDto: UpdateTicketDto,
-  ) {
-    return await this.ticketsService.update(id, updateTicketDto);
-  }
-
   @Patch('/confirm')
   @Roles(UserRole.ADMIN, UserRole.TICKET_MANAGER)
   async confirmEntry(
@@ -73,6 +64,15 @@ export class TicketsController {
   ) {
     const headers = req.headers;
     return await this.ticketsService.cancelTicket(cancelTicketDto, headers);
+  }
+
+  @Patch(':id')
+  @Roles(UserRole.ADMIN, UserRole.TICKET_MANAGER)
+  async update(
+    @Param('id') id: string,
+    @Body() updateTicketDto: UpdateTicketDto,
+  ) {
+    return await this.ticketsService.update(id, updateTicketDto);
   }
 
   @Delete(':id')
