@@ -1,14 +1,15 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
-import { PrismaService } from '../../database/prisma/prisma.service';
-import { CreateTicketDto } from './dto/create-ticket.dto';
-import { UpdateTicketDto } from './dto/update-ticket.dto';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Ticket, TicketStatus } from '@prisma/client';
 import * as crypto from 'crypto';
-import { ResponseDto } from 'src/dto/response.dto';
 import { IncomingHttpHeaders } from 'http2';
-import { FindAllTicketsDto } from './dto/find-all-tickets.dto';
+import { ResponseDto } from 'src/dto/response.dto';
+import { PrismaService } from '../../database/prisma/prisma.service';
 import { AuthService } from '../auth/auth.service';
+import { CancelTicketDto } from './dto/cancel-ticket.dto';
 import { ConfirmEntryDto } from './dto/confirm-entry.dto';
+import { CreateTicketDto } from './dto/create-ticket.dto';
+import { FindAllTicketsDto } from './dto/find-all-tickets.dto';
+import { UpdateTicketDto } from './dto/update-ticket.dto';
 
 @Injectable()
 export class TicketsService {
@@ -298,10 +299,11 @@ export class TicketsService {
     const now = new Date();
 
     const decodedToken = this.authService.decodeToken(headers);
-    const { eventId, ticketId } = confirmEntryDto;
+    const { eventId, ticketId, qrCode } = confirmEntryDto;
 
     const eventTicket = await this.prisma.eventTicket.findFirst({
       where: {
+        qrCode,
         eventId,
         ticketId,
       },
@@ -372,7 +374,7 @@ export class TicketsService {
   }
 
   async cancelTicket(
-    cancelTicketDto: ConfirmEntryDto,
+    cancelTicketDto: CancelTicketDto,
     headers: IncomingHttpHeaders,
   ): Promise<ResponseDto> {
     const today = new Date();
