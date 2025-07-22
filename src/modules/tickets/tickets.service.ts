@@ -5,6 +5,7 @@ import { IncomingHttpHeaders } from 'http2';
 import { ResponseDto } from 'src/dto/response.dto';
 import { PrismaService } from '../../database/prisma/prisma.service';
 import { AuthService } from '../auth/auth.service';
+import { EmailService } from '../pdf/email.service';
 import { CancelTicketDto } from './dto/cancel-ticket.dto';
 import { ConfirmEntryDto } from './dto/confirm-entry.dto';
 import { CreateTicketDto } from './dto/create-ticket.dto';
@@ -16,6 +17,7 @@ export class TicketsService {
   constructor(
     private prisma: PrismaService,
     private authService: AuthService,
+    private emailService: EmailService,
   ) {}
 
   private generateQRCode(cpf: string): string {
@@ -242,6 +244,10 @@ export class TicketsService {
       );
     }
 
+    await this.emailService.sendTicketEmailWithPDF({
+      ticketId: ticket.id,
+    });
+
     return new ResponseDto('Ingresso criado com sucesso', null);
   }
 
@@ -302,6 +308,10 @@ export class TicketsService {
         HttpStatus.BAD_REQUEST,
       );
     }
+
+    await this.emailService.sendTicketEmailWithPDF({
+      ticketId: id,
+    });
 
     return new ResponseDto('Ingresso atualizado com sucesso', updatedTicket);
   }
