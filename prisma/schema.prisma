@@ -76,6 +76,7 @@ model Event {
   location       String
   price          Float
   totalTickets   Int
+  logoUrl        String?
   createdById    String
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt

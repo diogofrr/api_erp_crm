@@ -1,13 +1,5 @@
 import { Type } from 'class-transformer';
-import {
-  IsString,
-  IsEmail,
-  IsOptional,
-  IsDate,
-  Length,
-  IsUUID,
-  IsNotEmpty,
-} from 'class-validator';
+import { IsDate, IsEmail, IsOptional, IsString, Length } from 'class-validator';
 
 export class UpdateTicketDto {
   @IsOptional()
@@ -37,10 +29,4 @@ export class UpdateTicketDto {
     message: 'cpf deve ter entre 11 e 14 caracteres',
   })
   cpf?: string;
-
-  @IsNotEmpty()
-  @IsUUID(undefined, {
-    message: 'eventId deve ser um UUID válido',
-  })
-  eventId: string;
 }

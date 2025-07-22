@@ -5,10 +5,11 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
 
 ## 📋 Descrição
 
-API REST robusta e escalável para gerenciamento de eventos e ingressos, desenvolvida com NestJS, TypeScript e PostgreSQL. Sistema completo de CRM para controle de usuários, eventos, ingressos e autenticação JWT.
+API REST robusta e escalável para gerenciamento de eventos e ingressos, desenvolvida com NestJS, TypeScript e PostgreSQL. Sistema completo de CRM para controle de usuários, eventos, ingressos, autenticação JWT e **geração de PDFs com armazenamento em Cloudflare R2**.
 
 **Desenvolvido por:** Diogo Henrique Ferreira
 
@@ -18,7 +19,7 @@ API REST robusta e escalável para gerenciamento de eventos e ingressos, desenvo
 
 - Registro e login de usuários
 - Autenticação JWT com tokens seguros
-- Sistema de roles e permissões
+- Sistema de roles e permissões (ADMIN, EVENT_MANAGER, TICKET_MANAGER, USER)
 - Logout e refresh de tokens
 - Hash seguro de senhas com bcrypt
 
@@ -39,6 +40,15 @@ API REST robusta e escalável para gerenciamento de eventos e ingressos, desenvo
 - Confirmação de entrada em eventos
 - Validação de dados pessoais
 
+### 📄 **Geração de PDFs (NOVO!)**
+
+- **Geração automática** de PDFs de ingressos
+- **Armazenamento gratuito** no Cloudflare R2
+- **QR Codes integrados** nos PDFs
+- **Design profissional** e responsivo
+- **Envio por email** com template HTML
+- **URLs públicas** para download
+
 ### 👤 Gestão de Usuários
 
 - Perfis de usuário com avatar, telefone e endereço
@@ -57,6 +67,9 @@ API REST robusta e escalável para gerenciamento de eventos e ingressos, desenvo
 - **Containerização:** Docker & Docker Compose
 - **Testes:** Jest (Unit & E2E)
 - **Linting:** ESLint + Prettier
+- **PDF:** Puppeteer + QRCode
+- **Storage:** Cloudflare R2 (gratuito)
+- **Email:** Nodemailer
 
 ## 📦 Instalação e Configuração
 
@@ -66,6 +79,7 @@ API REST robusta e escalável para gerenciamento de eventos e ingressos, desenvo
 - npm ou yarn
 - Docker & Docker Compose
 - PowerShell (para scripts de automação)
+- Conta Cloudflare (gratuita)
 
 ### 1. Clone o repositório
 
@@ -94,16 +108,43 @@ JWT_SECRET="your-super-secret-jwt-key-here"
 # Application
 NODE_ENV="development"
 PORT=3000
+
+# Cloudflare R2 Storage (GRATUITO!)
+R2_ENDPOINT="https://your-account-id.r2.cloudflarestorage.com"
+R2_ACCESS_KEY_ID="your-r2-access-key"
+R2_SECRET_ACCESS_KEY="your-r2-secret-key"
+R2_BUCKET_NAME="crm-tickets"
+R2_PUBLIC_URL="https://your-bucket.your-domain.com"
+
+# Email Configuration
+SMTP_HOST="smtp.gmail.com"
+SMTP_PORT="587"
+SMTP_USER="your-email@gmail.com"
+SMTP_PASS="your-app-password"
 ```
 
-### 4. Inicialize o banco de dados
+### 4. Configure o Cloudflare R2 (GRATUITO!)
+
+Siga o guia completo em: [docs/R2_SETUP.md](docs/R2_SETUP.md)
+
+**Resumo rápido:**
+
+1. Crie conta no Cloudflare (gratuito)
+2. Crie bucket R2: `crm-tickets`
+3. Gere API tokens
+4. Configure as variáveis no `.env`
+
+### 5. Inicialize o banco de dados
 
 ```bash
 # Inicia o PostgreSQL via Docker e aplica as migrações
 npm run db:init
+
+# Inicializa as roles padrão
+npm run roles:init
 ```
 
-### 5. Execute a aplicação
+### 6. Execute a aplicação
 
 ```bash
 # Modo desenvolvimento (com reload automático)
@@ -122,7 +163,7 @@ A API estará disponível em `http://localhost:3000`
 - **User**: Usuários do sistema
 - **Profile**: Perfis dos usuários
 - **AuthToken**: Tokens de autenticação
-- **Role**: Funções/roles dos usuários
+- **Role**: Funções/roles dos usuários (ADMIN, EVENT_MANAGER, TICKET_MANAGER, USER)
 - **Permission**: Permissões do sistema
 - **Event**: Eventos criados
 - **Ticket**: Ingressos dos participantes
@@ -142,6 +183,7 @@ npm run start:prod         # Executa em modo produção
 # Banco de Dados
 npm run db:init            # Inicializa BD com Docker + Prisma
 npm run db:reset           # Reseta completamente o banco
+npm run roles:init         # Inicializa roles padrão
 
 # Testes
 npm run test               # Testes unitários
@@ -157,39 +199,44 @@ npm run format             # Formata código com Prettier
 
 ### 🔐 Autenticação (`/auth`)
 
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| POST | `/auth/register` | Registro de usuário |
-| POST | `/auth/login` | Login do usuário |
-| POST | `/auth/logout` | Logout (requer token) |
-| GET | `/auth/refresh` | Renovação de token |
+| Método | Endpoint         | Descrição             |
+| ------ | ---------------- | --------------------- |
+| POST   | `/auth/register` | Registro de usuário   |
+| POST   | `/auth/login`    | Login do usuário      |
+| POST   | `/auth/logout`   | Logout (requer token) |
+| GET    | `/auth/refresh`  | Renovação de token    |
 
 ### 🎉 Eventos (`/events`)
 
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| GET | `/events` | Lista todos os eventos |
-| GET | `/events/:id` | Busca evento por ID |
-| POST | `/events` | Cria novo evento |
-| PATCH | `/events/:id` | Atualiza evento |
-| DELETE | `/events/:id` | Remove evento |
+| Método | Endpoint      | Descrição              | Roles                      |
+| ------ | ------------- | ---------------------- | -------------------------- |
+| GET    | `/events`     | Lista todos os eventos | ADMIN, EVENT_MANAGER, USER |
+| GET    | `/events/:id` | Busca evento por ID    | ADMIN, EVENT_MANAGER, USER |
+| POST   | `/events`     | Cria novo evento       | ADMIN, EVENT_MANAGER       |
+| PATCH  | `/events/:id` | Atualiza evento        | ADMIN, EVENT_MANAGER       |
+| DELETE | `/events/:id` | Remove evento          | ADMIN                      |
 
 ### 🎫 Ingressos (`/tickets`)
 
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| GET | `/tickets` | Lista ingressos (paginado) |
-| GET | `/tickets/:id` | Busca ingresso por ID |
-| GET | `/tickets/search?query=` | Busca por CPF/nome |
-| GET | `/tickets/event?eventId=` | Ingressos por evento |
-| POST | `/tickets` | Cria novo ingresso |
-| PATCH | `/tickets/:id` | Atualiza ingresso |
-| PATCH | `/tickets/:eventId/:ticketId/confirm` | Confirma entrada |
-| DELETE | `/tickets/:id` | Remove ingresso |
+| Método | Endpoint           | Descrição                  | Roles                       |
+| ------ | ------------------ | -------------------------- | --------------------------- |
+| GET    | `/tickets`         | Lista ingressos (paginado) | ADMIN, TICKET_MANAGER, USER |
+| GET    | `/tickets/:id`     | Busca ingresso por ID      | ADMIN, TICKET_MANAGER, USER |
+| POST   | `/tickets`         | Cria novo ingresso         | ADMIN, TICKET_MANAGER       |
+| PATCH  | `/tickets/:id`     | Atualiza ingresso          | ADMIN, TICKET_MANAGER       |
+| PATCH  | `/tickets/confirm` | Confirma entrada           | ADMIN, TICKET_MANAGER       |
+| DELETE | `/tickets/:id`     | Remove ingresso            | ADMIN                       |
 
-### 📋 Exemplos de Requisições
+### 📄 **PDFs (`/pdf`) - NOVO!**
 
-#### Registro de Usuário
+| Método | Endpoint                 | Descrição            | Roles                 |
+| ------ | ------------------------ | -------------------- | --------------------- |
+| POST   | `/pdf/generate-ticket`   | Gera PDF do ingresso | ADMIN, TICKET_MANAGER |
+| POST   | `/pdf/send-ticket-email` | Envia PDF por email  | ADMIN, TICKET_MANAGER |
+
+## 📋 Exemplos de Requisições
+
+### Registro de Usuário
 
 ```json
 POST /auth/register
@@ -200,7 +247,7 @@ POST /auth/register
 }
 ```
 
-#### Criação de Evento
+### Criação de Evento
 
 ```json
 POST /events
@@ -214,7 +261,7 @@ POST /events
 }
 ```
 
-#### Criação de Ingresso
+### Criação de Ingresso
 
 ```json
 POST /tickets
@@ -225,6 +272,27 @@ POST /tickets
   "birthDate": "1990-05-15T00:00:00Z",
   "cpf": "12345678900",
   "eventId": "uuid-do-evento"
+}
+```
+
+### **Geração de PDF (NOVO!)**
+
+```json
+POST /pdf/generate-ticket
+{
+  "ticketId": "uuid-do-ingresso"
+}
+```
+
+### **Envio de PDF por Email (NOVO!)**
+
+```json
+POST /pdf/send-ticket-email
+{
+  "ticketId": "uuid-do-ingresso",
+  "email": "cliente@email.com",
+  "ticketName": "Maria Santos",
+  "eventName": "Show de Rock"
 }
 ```
 
@@ -249,62 +317,41 @@ npm run test:e2e
 - **E2E Tests**: Testes de integração completos
 - **Coverage**: Relatórios de cobertura detalhados
 
-## 🔒 Segurança
+## 💰 **Custos - 100% Gratuito!**
 
-- Senhas criptografadas com bcrypt
-- Tokens JWT com expiração configurável
-- Validação rigorosa de entrada de dados
-- Proteção contra ataques de injeção SQL
-- Headers de segurança configurados
+### Cloudflare R2 (Storage):
 
-## 🐳 Docker
+- **1GB** de armazenamento gratuito
+- **10GB** de transferência gratuita
+- **Sem cobrança** por requisições
+- **CDN global** incluído
 
-O projeto inclui configuração completa do Docker:
+### Email:
 
-```bash
-# Subir apenas o banco de dados
-docker-compose up -d
+- **Gmail**: Gratuito (15GB)
+- **Outlook**: Gratuito (15GB)
+- **Provedores próprios**: Conforme plano
 
-# Parar e remover volumes
-docker-compose down -v
-```
+### Aplicação:
 
-## 📈 Monitoramento e Logs
+- **Hosting**: Vercel, Railway, Heroku (free tiers)
+- **Banco**: PostgreSQL gratuito em vários provedores
+- **Domínio**: Conforme escolha
 
-- Logs estruturados com Winston
-- Métricas de performance
-- Health checks configurados
-- Monitoramento de queries do Prisma
+## 🚀 **Próximos Passos**
 
-## 🤝 Contribuição
+1. **Configure o R2** seguindo [docs/R2_SETUP.md](docs/R2_SETUP.md)
+2. **Configure o email** no `.env`
+3. **Teste a geração de PDFs**
+4. **Implemente WhatsApp** (opcional)
+5. **Deploy em produção**
 
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+## 📞 **Suporte**
 
-## 📄 Licença
-
-Este projeto está sob a licença UNLICENSED. Consulte o arquivo `LICENSE` para mais detalhes.
-
-## 👨‍💻 Autor
-
-### Diogo Henrique Ferreira
-
-- GitHub: [@ddiog](https://github.com/ddiog)
-- Email: <contato@diogoferreira.dev>
-
-## 🎯 Roadmap
-
-- [ ] Implementação de WebSockets para notificações em tempo real
-- [ ] Sistema de relatórios e analytics
-- [ ] Integração com gateways de pagamento
-- [ ] API de envio de emails
-- [ ] Sistema de cupons e promoções
-- [ ] App mobile com React Native
-- [ ] Dashboard administrativo com React
+- **Documentação R2**: [docs/R2_SETUP.md](docs/R2_SETUP.md)
+- **Issues**: Abra uma issue no GitHub
+- **Email**: Entre em contato para suporte
 
 ---
 
-⭐ **Se este projeto foi útil para você, considere dar uma estrela!** ⭐
+**🎉 Sistema completo e 100% gratuito para gerenciamento de eventos e ingressos!**

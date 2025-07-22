@@ -8,8 +8,11 @@ import {
   Post,
   Query,
   Req,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 import { UserRole } from '@prisma/client';
 import { Request } from 'express';
@@ -62,6 +65,47 @@ export class EventsController {
     @Body() updateEventStatusDto: UpdateEventStatusDto,
   ) {
     return await this.eventsService.updateEventStatus(id, updateEventStatusDto);
+  }
+
+  @Post(':id/logo')
+  @Roles(UserRole.ADMIN, UserRole.EVENT_MANAGER)
+  @UseInterceptors(FileInterceptor('logo'))
+  async uploadLogo(
+    @Param('id') id: string,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    if (!file) {
+      throw new Error('Arquivo não fornecido');
+    }
+
+    const allowedMimeTypes = [
+      'image/jpeg',
+      'image/jpg',
+      'image/png',
+      'image/svg+xml',
+    ];
+    if (!allowedMimeTypes.includes(file.mimetype)) {
+      throw new Error(
+        'Tipo de arquivo não suportado. Use apenas imagens (JPEG, PNG, GIF)',
+      );
+    }
+
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (file.size > maxSize) {
+      throw new Error('Arquivo muito grande. Tamanho máximo permitido: 5MB');
+    }
+
+    return await this.eventsService.uploadEventLogo(
+      id,
+      file.buffer,
+      file.mimetype,
+    );
+  }
+
+  @Delete(':id/logo')
+  @Roles(UserRole.ADMIN, UserRole.EVENT_MANAGER)
+  async deleteLogo(@Param('id') id: string) {
+    return await this.eventsService.deleteEventLogo(id);
   }
 
   @Delete(':id')

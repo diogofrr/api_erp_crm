@@ -4,6 +4,7 @@ import { IncomingHttpHeaders } from 'http2';
 import { ResponseDto } from 'src/dto/response.dto';
 import { PrismaService } from '../../database/prisma/prisma.service';
 import { AuthService } from '../auth/auth.service';
+import { R2Service } from '../pdf/r2.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { FindAllEventsDto } from './dto/find-all-events.dto';
 import { UpdateEventStatusDto } from './dto/update-event-status.dto';
@@ -14,6 +15,7 @@ export class EventsService {
   constructor(
     private prisma: PrismaService,
     private authService: AuthService,
+    private r2Service: R2Service,
   ) {}
 
   private async verifyIsValidEventById(id: string): Promise<Event> {
@@ -424,5 +426,58 @@ export class EventsService {
     }
 
     return new ResponseDto('Evento deletado com sucesso', null);
+  }
+
+  async uploadEventLogo(
+    eventId: string,
+    fileBuffer: Buffer,
+    contentType: string,
+  ): Promise<ResponseDto> {
+    const event = await this.verifyIsValidEventById(eventId);
+
+    // Se já existe um logotipo, deletar o anterior
+    if (event.logoUrl) {
+      await this.r2Service.deleteLogo(event.logoUrl);
+    }
+
+    // Upload do novo logotipo
+    const logoUrl = await this.r2Service.uploadLogo(
+      fileBuffer,
+      eventId,
+      contentType,
+    );
+
+    // Atualizar o evento com a nova URL do logotipo
+    const updatedEvent = await this.prisma.event.update({
+      where: { id: eventId },
+      data: { logoUrl },
+    });
+
+    return new ResponseDto('Logotipo do evento atualizado com sucesso', {
+      eventId,
+      logoUrl,
+    });
+  }
+
+  async deleteEventLogo(eventId: string): Promise<ResponseDto> {
+    const event = await this.verifyIsValidEventById(eventId);
+
+    if (!event.logoUrl) {
+      throw new HttpException(
+        'Este evento não possui logotipo',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    // Deletar o arquivo do R2
+    await this.r2Service.deleteLogo(event.logoUrl);
+
+    // Remover a URL do logotipo do banco
+    const updatedEvent = await this.prisma.event.update({
+      where: { id: eventId },
+      data: { logoUrl: null },
+    });
+
+    return new ResponseDto('Logotipo do evento removido com sucesso', null);
   }
 }

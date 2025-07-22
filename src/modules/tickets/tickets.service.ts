@@ -249,23 +249,48 @@ export class TicketsService {
     id: string,
     updateTicketDto: UpdateTicketDto,
   ): Promise<ResponseDto> {
-    await this.verifyIfTicketExists(id);
+    const existingTicket = await this.verifyIfTicketExists(id);
 
-    if (updateTicketDto.cpf) {
-      await this.verifyIfCpfAlreadyExistsInEvent(
-        updateTicketDto.eventId,
-        updateTicketDto.cpf,
-        id, // Excluir o ticket atual da verificação
+    const eventTicket = await this.prisma.eventTicket.findFirst({
+      where: { ticketId: id },
+      select: { eventId: true },
+    });
+
+    if (!eventTicket) {
+      throw new HttpException(
+        'Ingresso não está associado a nenhum evento',
+        HttpStatus.BAD_REQUEST,
       );
     }
 
+    if (updateTicketDto.cpf && updateTicketDto.cpf !== existingTicket.cpf) {
+      await this.verifyIfCpfAlreadyExistsInEvent(
+        eventTicket.eventId,
+        updateTicketDto.cpf,
+        id,
+      );
+    }
+
+    const ticketData = Object.fromEntries(
+      Object.entries(updateTicketDto).filter(
+        ([_, value]) => value !== undefined,
+      ),
+    );
+
     const updatedTicket = await this.prisma.ticket.update({
       where: { id },
-      data: updateTicketDto,
+      data: ticketData,
       include: {
         EventTicket: {
           select: {
             status: true,
+            event: {
+              select: {
+                id: true,
+                name: true,
+                date: true,
+              },
+            },
           },
         },
       },
@@ -278,7 +303,7 @@ export class TicketsService {
       );
     }
 
-    return new ResponseDto('Ingresso atualizado com sucesso', null);
+    return new ResponseDto('Ingresso atualizado com sucesso', updatedTicket);
   }
 
   async remove(id: string): Promise<ResponseDto> {

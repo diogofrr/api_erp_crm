@@ -42,4 +42,8 @@ export class CreateEventDto {
   @IsNotEmpty({ message: 'price não pode ser vazio' })
   @IsNumber({ maxDecimalPlaces: 2 }, { message: 'price deve ser um número' })
   price: number;
+
+  @IsOptional({ message: 'logoUrl é opcional' })
+  @IsString({ message: 'logoUrl deve ser uma string' })
+  logoUrl?: string;
 }

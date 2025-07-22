@@ -1,3 +1,4 @@
+import { EventStatus } from '@prisma/client';
 import { Type } from 'class-transformer';
 import {
   IsDate,
@@ -6,7 +7,6 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { EventStatus } from '@prisma/client';
 
 export class UpdateEventDto {
   @IsOptional()
@@ -56,4 +56,8 @@ export class UpdateEventDto {
     { message: 'price deve ser um número com até duas casas decimais' },
   )
   price: number;
+
+  @IsOptional()
+  @IsString({ message: 'logoUrl deve ser uma string' })
+  logoUrl?: string;
 }
