@@ -21,7 +21,7 @@
     "db:init": "pwsh ./src/scripts/init-db.ps1",
     "db:reset": "pwsh ./src/scripts/reset-db.ps1",
     "roles:init": "pwsh ./src/scripts/init-roles.ps1",
-    "db:migrate": "pwsh ./src/scripts/run-migrations.ps1",
+    "db:migrate": "chmod +x src/scripts/run-migrations.sh",
     "db:check": "pwsh ./src/scripts/check-db.ps1",
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate deploy",
