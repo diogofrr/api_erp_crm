@@ -22,22 +22,34 @@ ALLOWED_ORIGINS="http://localhost:3000,http://localhost:3001,https://yourdomain.
 
 Implementado rate limiting em dois níveis:
 
-1. **Limite por minuto**: 100 requisições por minuto
-2. **Limite por hora**: 1000 requisições por hora
+1. **Limite por minuto**: 100 requisições por minuto (configurável)
+2. **Limite por hora**: 1000 requisições por hora (configurável)
 
 ### Configuração
 
 ```typescript
 ThrottlerModule.forRoot([
   {
-    ttl: 60000, // 1 minuto
-    limit: 100, // 100 requisições por minuto
+    ttl: Number(process.env.MINUTE_THROTTLE_TTL) || 60000, // 1 minuto
+    limit: Number(process.env.MINUTE_THROTTLE_LIMIT) || 100, // 100 requisições por minuto
   },
   {
-    ttl: 3600000, // 1 hora
-    limit: 1000, // 1000 requisições por hora
+    ttl: Number(process.env.HOUR_THROTTLE_TTL) || 3600000, // 1 hora
+    limit: Number(process.env.HOUR_THROTTLE_LIMIT) || 1000, // 1000 requisições por hora
   },
 ]);
+```
+
+### Variáveis de Ambiente para Rate Limiting
+
+```env
+# Rate Limiting - Limite por minuto
+MINUTE_THROTTLE_TTL=60000
+MINUTE_THROTTLE_LIMIT=100
+
+# Rate Limiting - Limite por hora
+HOUR_THROTTLE_TTL=3600000
+HOUR_THROTTLE_LIMIT=1000
 ```
 
 ## Headers de Segurança (Helmet)
@@ -64,6 +76,12 @@ O ValidationPipe está configurado com:
 # Configurações de Segurança
 ALLOWED_ORIGINS="http://localhost:3000,http://localhost:3001,https://yourdomain.com"
 PORT=8080
+
+# Rate Limiting
+MINUTE_THROTTLE_TTL=60000
+MINUTE_THROTTLE_LIMIT=100
+HOUR_THROTTLE_TTL=3600000
+HOUR_THROTTLE_LIMIT=1000
 
 # Configurações JWT
 JWT_SECRET="your-super-secret-jwt-key-here"

@@ -1,6 +1,5 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { ThrottlerGuard } from '@nestjs/throttler';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 
@@ -16,9 +15,6 @@ async function bootstrap() {
     credentials: true,
     maxAge: 86400,
   });
-
-  const throttlerGuard = app.get(ThrottlerGuard);
-  app.useGlobalGuards(throttlerGuard);
 
   app.useGlobalPipes(
     new ValidationPipe({
