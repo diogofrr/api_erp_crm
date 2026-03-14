@@ -152,6 +152,7 @@ model Batch {
   name      String
   type      BatchType @default(REGULAR)
   price     Float?
+  maxTickets Int
   startDate DateTime?
   endDate   DateTime?
   createdAt DateTime  @default(now())

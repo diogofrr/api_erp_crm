@@ -3,6 +3,7 @@ import { Type } from 'class-transformer';
 import {
   IsDate,
   IsEnum,
+  IsInt,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -23,6 +24,10 @@ export class CreateBatchDto {
   @IsOptional()
   @IsNumber({ maxDecimalPlaces: 2 }, { message: 'price deve ser um número' })
   price?: number;
+
+   @IsNotEmpty({ message: 'maxTickets não pode ser vazio' })
+  @IsInt({ message: 'maxTickets deve ser um número inteiro' })
+  maxTickets: number;
 
   @IsOptional()
   @Type(() => Date)
