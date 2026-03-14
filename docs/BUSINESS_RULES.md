@@ -8,6 +8,7 @@ Este documento descreve todas as regras de negócio implementadas no sistema CRM
 
 - [Módulo de Eventos](#-módulo-de-eventos)
 - [Módulo de Ingressos](#-módulo-de-ingressos)
+- [Módulo de Lotes](#-módulo-de-lotes)
 - [Regras de Segurança](#-regras-de-segurança)
 - [Validações e Controles](#-validações-e-controles)
 - [Estados e Transições](#-estados-e-transições)
@@ -166,6 +167,94 @@ if (!isEventDay || !isWithinEventTime) {
 
 ---
 
+## 🧱 Módulo de Lotes
+
+### 1. Modelo e Tipos
+
+- Cada evento pode ter múltiplos lotes.
+- `Batch`:
+  - `name` (único por evento)
+  - `type`: `REGULAR` ou `PROMOTIONAL`
+  - `price`: número (apenas para `REGULAR`)
+  - `startDate` e `endDate`: datas de vigência (apenas para `REGULAR`)
+  - Índices:
+    - `@@unique([eventId, name])`
+    - `@@index([eventId])`
+
+### 2. Regras de Cadastro
+
+- **REGULAR**
+  - `price` obrigatório e ≥ 0
+  - `startDate` e `endDate` obrigatórios
+  - `startDate < endDate`
+  - `endDate` não pode estar totalmente no passado
+  - Não pode sobrepor período com outros lotes `REGULAR` do mesmo evento
+- **PROMOTIONAL**
+  - Somente 1 por evento (nome fixo “Lote Promocional”)
+  - Ignora `price`, `startDate`, `endDate` (armazenados nulos)
+  - Nome sempre definido para “Lote Promocional”
+
+### 3. Disponibilidade (Front-end)
+
+- A API retorna apenas lotes válidos para “agora”:
+  - Inclui todos os `REGULAR` cujo `startDate ≤ agora ≤ endDate`
+  - Sempre inclui “Lote Promocional”
+    - Se existir no banco, retorna o cadastrado
+    - Se não existir, retorna virtual (nome “Lote Promocional”, sem preço/datas, `isVirtual: true`)
+  - Em caso de dados inconsistentes (mais de um PROMOTIONAL cadastrado), a API retorna erro de conflito
+
+#### Exemplos temporais
+- Hoje = 10/02/2026 → disponíveis: “1º Lote” + “Lote Promocional”
+- Hoje = 20/02/2026 → disponíveis: “2º Lote” + “Lote Promocional”
+- Hoje = 05/03/2026 → disponíveis: “3º Lote” + “Lote Promocional”
+
+### 4. Endpoints
+
+| Método | Endpoint | Descrição | Validações |
+|--------|----------|-----------|------------|
+| `POST` | `/events/:eventId/batches` | Cria múltiplos lotes para o evento | Regras por tipo, sobreposição e nomes únicos |
+| `GET` | `/events/:eventId/batches/available` | Lista lotes vigentes + “Lote Promocional” | Filtro temporal automático |
+
+### 5. Exemplos de Payload
+
+Criação de lotes:
+
+```json
+{
+  "batches": [
+    {
+      "name": "1º Lote",
+      "type": "REGULAR",
+      "price": 15.0,
+      "startDate": "2026-01-24T00:00:00.000Z",
+      "endDate": "2026-02-15T23:59:59.000Z"
+    },
+    {
+      "name": "2º Lote",
+      "type": "REGULAR",
+      "price": 20.0,
+      "startDate": "2026-02-16T00:00:00.000Z",
+      "endDate": "2026-02-25T23:59:59.000Z"
+    }
+    // Opcional:
+    // { "name": "Lote Promocional", "type": "PROMOTIONAL" }
+  ]
+}
+```
+
+Consulta de disponíveis:
+- `GET /events/:eventId/batches/available`
+- Resposta inclui lotes REGULAR vigentes e o “Lote Promocional” (cadastrado ou virtual) e a flag `isVirtual` para o promocional virtual.
+
+### 6. Validações de Sobreposição
+
+- Não é permitido qualquer cruzamento entre janelas de `REGULAR`:
+  - Novos lotes entre si
+  - Novos lotes vs. existentes do mesmo evento
+- Exemplo de erro: “Sobreposição detectada entre lotes enviados: "1º Lote" e "2º Lote"”
+
+---
+
 ## 🔐 Regras de Segurança
 
 ### 1. Autenticação e Autorização
@@ -252,6 +341,12 @@ CONFIRMED/CANCELED → [IMUTÁVEL]
 | `DELETE` | `/events/:id` | Deletar evento | Apenas dev mode |
 
 ### Ingressos
+### Lotes
+
+| Método | Endpoint | Descrição | Validações |
+|--------|----------|-----------|------------|
+| `POST` | `/events/:eventId/batches` | Criar múltiplos lotes | Tipos, sobreposição, unicidade de nome |
+| `GET` | `/events/:eventId/batches/available` | Listar disponíveis | Inclui “Lote Promocional” |
 
 | Método | Endpoint | Descrição | Validações |
 |--------|----------|-----------|------------|
@@ -335,6 +430,6 @@ CONFIRMED/CANCELED → [IMUTÁVEL]
 
 ---
 
-**Documento atualizado em:** Junho 2025
+**Documento atualizado em:** Janeiro 2026
 **Versão da API:** 1.0.0
 **Última revisão:** Implementação completa das regras de negócio

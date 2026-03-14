@@ -5,6 +5,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { PrismaModule } from './database/prisma/prisma.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { EventsModule } from './modules/events/events.module';
+import { BatchesModule } from './modules/batches/batches.module';
 import { PdfModule } from './modules/pdf/pdf.module';
 import { TicketsModule } from './modules/tickets/tickets.module';
 
@@ -27,6 +28,7 @@ import { TicketsModule } from './modules/tickets/tickets.module';
     AuthModule,
     TicketsModule,
     EventsModule,
+    BatchesModule,
     PdfModule,
   ],
   controllers: [],
