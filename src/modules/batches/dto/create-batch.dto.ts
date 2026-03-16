@@ -8,6 +8,7 @@ import {
   IsNumber,
   IsOptional,
   IsString,
+  Min,
 } from 'class-validator';
 
 export class CreateBatchDto {
@@ -25,9 +26,10 @@ export class CreateBatchDto {
   @IsNumber({ maxDecimalPlaces: 2 }, { message: 'price deve ser um número' })
   price?: number;
 
-   @IsNotEmpty({ message: 'maxTickets não pode ser vazio' })
+  @IsOptional()
   @IsInt({ message: 'maxTickets deve ser um número inteiro' })
-  maxTickets: number;
+  @Min(1, { message: 'maxTickets deve ser maior que zero' })
+  maxTickets?: number;
 
   @IsOptional()
   @Type(() => Date)

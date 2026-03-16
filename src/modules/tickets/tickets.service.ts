@@ -5,6 +5,7 @@ import { IncomingHttpHeaders } from 'http2';
 import { ResponseDto } from 'src/dto/response.dto';
 import { PrismaService } from '../../database/prisma/prisma.service';
 import { AuthService } from '../auth/auth.service';
+import { BatchesService } from '../batches/batches.service';
 import { EmailService } from '../pdf/email.service';
 import { CancelTicketDto } from './dto/cancel-ticket.dto';
 import { ConfirmEntryDto } from './dto/confirm-entry.dto';
@@ -18,6 +19,7 @@ export class TicketsService {
     private prisma: PrismaService,
     private authService: AuthService,
     private emailService: EmailService,
+    private batchesService: BatchesService,
   ) {}
 
   private generateQRCode(cpf: string): string {
@@ -214,6 +216,29 @@ export class TicketsService {
         'Não há mais ingressos disponíveis para este evento',
         HttpStatus.BAD_REQUEST,
       );
+    }
+
+    const hasRegularBatches =
+      (await this.prisma.batch.count({
+        where: {
+          eventId: createTicketDto.eventId,
+          type: 'REGULAR',
+        },
+      })) > 0;
+
+    if (hasRegularBatches) {
+      const activeRegularBatch =
+        await this.batchesService.resolveActiveRegularBatchForSale(
+          createTicketDto.eventId,
+          ticketsVendidos,
+        );
+
+      if (!activeRegularBatch || activeRegularBatch.remainingTickets <= 0) {
+        throw new HttpException(
+          'Não há lote REGULAR disponível para venda neste momento',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
     }
 
     await this.verifyIfCpfAlreadyExistsInEvent(

@@ -19,6 +19,32 @@ describe('Batches (e2e)', () => {
   let mockJwtGuard: MockJwtAuthGuard;
   let eventId: string;
 
+  const createSoldTickets = async (count: number) => {
+    const user = await prisma.user.findFirstOrThrow();
+
+    for (let i = 0; i < count; i++) {
+      const ticket = await prisma.ticket.create({
+        data: {
+          fullName: `Pessoa ${i + 1}`,
+          email: `pessoa${i + 1}@email.com`,
+          phone: `1199999000${i}`,
+          birthDate: new Date('1990-01-01'),
+          cpf: `1234567890${i}`,
+        },
+      });
+
+      await prisma.eventTicket.create({
+        data: {
+          eventId,
+          ticketId: ticket.id,
+          userId: user.id,
+          qrCode: `qr-${i}-${Date.now()}`,
+          status: 'PENDING',
+        },
+      });
+    }
+  };
+
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
@@ -118,6 +144,7 @@ describe('Batches (e2e)', () => {
             name: '1º Lote',
             type: 'REGULAR',
             price: 15.0,
+            maxTickets: 40,
             startDate: startDate.toISOString(),
             endDate: endDate.toISOString(),
           },
@@ -125,6 +152,7 @@ describe('Batches (e2e)', () => {
             name: '2º Lote',
             type: 'REGULAR',
             price: 20.0,
+            maxTickets: 60,
             startDate: secondStartDate.toISOString(),
             endDate: secondEndDate.toISOString(),
           },
@@ -174,6 +202,7 @@ describe('Batches (e2e)', () => {
             name: '1º Lote',
             type: 'REGULAR',
             price: 15.0,
+            maxTickets: 50,
             startDate: new Date().toISOString(),
             endDate: new Date().toISOString(),
           },
@@ -218,6 +247,7 @@ describe('Batches (e2e)', () => {
             name: '1º Lote',
             type: 'REGULAR',
             price: -10.0,
+            maxTickets: 50,
             startDate: startDate.toISOString(),
             endDate: endDate.toISOString(),
           },
@@ -244,6 +274,7 @@ describe('Batches (e2e)', () => {
             name: '1º Lote',
             type: 'REGULAR',
             price: 15.0,
+            maxTickets: 50,
             startDate: startDate.toISOString(),
             endDate: endDate.toISOString(),
           },
@@ -273,6 +304,7 @@ describe('Batches (e2e)', () => {
           name: 'Lote Existente',
           type: 'REGULAR',
           price: 10.0,
+          maxTickets: 30,
           startDate,
           endDate,
         },
@@ -289,6 +321,7 @@ describe('Batches (e2e)', () => {
             name: '1º Lote',
             type: 'REGULAR',
             price: 15.0,
+            maxTickets: 30,
             startDate: overlappingStartDate.toISOString(),
             endDate: overlappingEndDate.toISOString(),
           },
@@ -316,6 +349,7 @@ describe('Batches (e2e)', () => {
             name: '1º Lote',
             type: 'REGULAR',
             price: 15.0,
+            maxTickets: 40,
             startDate: startDate.toISOString(),
             endDate: endDate.toISOString(),
           },
@@ -323,6 +357,7 @@ describe('Batches (e2e)', () => {
             name: '1º Lote',
             type: 'REGULAR',
             price: 20.0,
+            maxTickets: 40,
             startDate: new Date(endDate.getTime() + 86400000).toISOString(),
             endDate: new Date(endDate.getTime() + 86400000 * 10).toISOString(),
           },
@@ -369,6 +404,7 @@ describe('Batches (e2e)', () => {
           eventId,
           name: 'Lote Promocional',
           type: 'PROMOTIONAL',
+          maxTickets: 0,
         },
       });
 
@@ -404,6 +440,7 @@ describe('Batches (e2e)', () => {
             name: '1º Lote',
             type: 'REGULAR',
             price: 15.0,
+            maxTickets: 50,
             startDate: startDate.toISOString(),
             endDate: endDate.toISOString(),
           },
@@ -428,6 +465,7 @@ describe('Batches (e2e)', () => {
             name: '1º Lote',
             type: 'REGULAR',
             price: 15.0,
+            maxTickets: 50,
             startDate: new Date().toISOString(),
             endDate: new Date().toISOString(),
           },
@@ -438,6 +476,114 @@ describe('Batches (e2e)', () => {
         .post(`/events/${eventId}/batches`)
         .send(createBatchesDto)
         .expect(403);
+    });
+
+    it('should fail when regular maxTickets sum exceeds event totalTickets', () => {
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() + 1);
+      const endDate = new Date(startDate);
+      endDate.setDate(endDate.getDate() + 2);
+
+      const secondStart = new Date(endDate);
+      secondStart.setDate(secondStart.getDate() + 1);
+      const secondEnd = new Date(secondStart);
+      secondEnd.setDate(secondEnd.getDate() + 2);
+
+      return request(app.getHttpServer())
+        .post(`/events/${eventId}/batches`)
+        .send({
+          batches: [
+            {
+              name: 'Lote 1',
+              type: 'REGULAR',
+              price: 10,
+              maxTickets: 60,
+              startDate: startDate.toISOString(),
+              endDate: endDate.toISOString(),
+            },
+            {
+              name: 'Lote 2',
+              type: 'REGULAR',
+              price: 15,
+              maxTickets: 60,
+              startDate: secondStart.toISOString(),
+              endDate: secondEnd.toISOString(),
+            },
+          ],
+        })
+        .expect(400)
+        .expect(res => {
+          expect(res.body.message).toContain(
+            'A soma de maxTickets dos lotes REGULAR',
+          );
+        });
+    });
+  });
+
+  describe('PATCH /events/:eventId/batches/:batchId', () => {
+    it('should update full data for future batch', async () => {
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() + 5);
+      const endDate = new Date(startDate);
+      endDate.setDate(endDate.getDate() + 3);
+
+      const batch = await prisma.batch.create({
+        data: {
+          eventId,
+          name: 'Lote Futuro',
+          type: 'REGULAR',
+          price: 20,
+          maxTickets: 30,
+          startDate,
+          endDate,
+        },
+      });
+
+      const newEndDate = new Date(endDate);
+      newEndDate.setDate(newEndDate.getDate() + 1);
+
+      await request(app.getHttpServer())
+        .patch(`/events/${eventId}/batches/${batch.id}`)
+        .send({
+          name: 'Lote Futuro Atualizado',
+          price: 25,
+          maxTickets: 40,
+          endDate: newEndDate.toISOString(),
+        })
+        .expect(200)
+        .expect(res => {
+          expect(res.body.result.name).toBe('Lote Futuro Atualizado');
+          expect(res.body.result.maxTickets).toBe(40);
+        });
+    });
+
+    it('should allow only reducing endDate on current batch', async () => {
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - 1);
+      const endDate = new Date();
+      endDate.setDate(endDate.getDate() + 3);
+
+      const batch = await prisma.batch.create({
+        data: {
+          eventId,
+          name: 'Lote Atual',
+          type: 'REGULAR',
+          price: 20,
+          maxTickets: 30,
+          startDate,
+          endDate,
+        },
+      });
+
+      await request(app.getHttpServer())
+        .patch(`/events/${eventId}/batches/${batch.id}`)
+        .send({ price: 22 })
+        .expect(400)
+        .expect(res => {
+          expect(res.body.message).toContain(
+            'Para lote vigente, apenas endDate pode ser alterado',
+          );
+        });
     });
   });
 
@@ -455,6 +601,7 @@ describe('Batches (e2e)', () => {
           name: '1º Lote',
           type: 'REGULAR',
           price: 15.0,
+          maxTickets: 50,
           startDate,
           endDate,
         },
@@ -479,6 +626,7 @@ describe('Batches (e2e)', () => {
           eventId,
           name: 'Lote Promocional',
           type: 'PROMOTIONAL',
+          maxTickets: 0,
         },
       });
 
@@ -516,6 +664,7 @@ describe('Batches (e2e)', () => {
           name: 'Lote Expirado',
           type: 'REGULAR',
           price: 10.0,
+          maxTickets: 20,
           startDate: pastStart,
           endDate: pastEnd,
         },
@@ -533,6 +682,7 @@ describe('Batches (e2e)', () => {
           name: 'Lote Ativo',
           type: 'REGULAR',
           price: 15.0,
+          maxTickets: 40,
           startDate,
           endDate,
         },
@@ -560,6 +710,7 @@ describe('Batches (e2e)', () => {
           name: 'Lote Futuro',
           type: 'REGULAR',
           price: 20.0,
+          maxTickets: 50,
           startDate: futureStart,
           endDate: futureEnd,
         },
@@ -590,6 +741,96 @@ describe('Batches (e2e)', () => {
       return request(app.getHttpServer())
         .get(`/events/${eventId}/batches/available`)
         .expect(200);
+    });
+
+    it('should move automatically to next batch when current sells out', async () => {
+      const now = new Date();
+      const firstStart = new Date(now);
+      firstStart.setDate(firstStart.getDate() - 2);
+      const firstEnd = new Date(now);
+      firstEnd.setDate(firstEnd.getDate() + 5);
+
+      const secondStart = new Date(now);
+      secondStart.setDate(secondStart.getDate() + 5);
+      const secondEnd = new Date(secondStart);
+      secondEnd.setDate(secondEnd.getDate() + 5);
+
+      await prisma.batch.createMany({
+        data: [
+          {
+            eventId,
+            name: '1º Lote',
+            type: 'REGULAR',
+            price: 10,
+            maxTickets: 2,
+            startDate: firstStart,
+            endDate: firstEnd,
+          },
+          {
+            eventId,
+            name: '2º Lote',
+            type: 'REGULAR',
+            price: 15,
+            maxTickets: 10,
+            startDate: secondStart,
+            endDate: secondEnd,
+          },
+        ],
+      });
+
+      await createSoldTickets(2);
+
+      await request(app.getHttpServer())
+        .get(`/events/${eventId}/batches/available`)
+        .expect(200)
+        .expect(res => {
+          expect(res.body.result[0].name).toBe('2º Lote');
+        });
+    });
+
+    it('should carry remaining tickets to next batch when previous expires', async () => {
+      const now = new Date();
+      const firstStart = new Date(now);
+      firstStart.setDate(firstStart.getDate() - 10);
+      const firstEnd = new Date(now);
+      firstEnd.setDate(firstEnd.getDate() - 1);
+
+      const secondStart = new Date(now);
+      secondStart.setDate(secondStart.getDate() + 5);
+      const secondEnd = new Date(secondStart);
+      secondEnd.setDate(secondEnd.getDate() + 5);
+
+      await prisma.batch.createMany({
+        data: [
+          {
+            eventId,
+            name: '1º Lote',
+            type: 'REGULAR',
+            price: 10,
+            maxTickets: 5,
+            startDate: firstStart,
+            endDate: firstEnd,
+          },
+          {
+            eventId,
+            name: '2º Lote',
+            type: 'REGULAR',
+            price: 15,
+            maxTickets: 5,
+            startDate: secondStart,
+            endDate: secondEnd,
+          },
+        ],
+      });
+
+      await createSoldTickets(1);
+
+      await request(app.getHttpServer())
+        .get(`/events/${eventId}/batches/available`)
+        .expect(200)
+        .expect(res => {
+          expect(res.body.result[0].name).toBe('2º Lote');
+        });
     });
   });
 });
