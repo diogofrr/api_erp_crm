@@ -7,7 +7,7 @@ import * as crypto from 'crypto';
 import { LoginDto } from './dto/login.dto';
 import { IncomingHttpHeaders } from 'http2';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
-import { Permission, Role, User } from '@prisma/client';
+import { Permission, Role, User } from '@generated/prisma';
 
 @Injectable()
 export class AuthService {

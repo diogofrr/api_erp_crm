@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Ticket, TicketStatus } from '@prisma/client';
+import { Ticket, TicketStatus } from '@generated/prisma';
 import * as crypto from 'crypto';
 import { IncomingHttpHeaders } from 'http2';
 import { ResponseDto } from 'src/dto/response.dto';

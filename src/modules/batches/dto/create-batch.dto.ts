@@ -1,4 +1,4 @@
-import { BatchType } from '@prisma/client';
+import { BatchType } from '@generated/prisma';
 import { Type } from 'class-transformer';
 import {
   IsDate,

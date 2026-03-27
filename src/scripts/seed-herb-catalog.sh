@@ -19,9 +19,12 @@ npx prisma generate
 
 echo "Executando seed do catalogo de ervas..."
 
-node <<'EOF'
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+npx tsx <<'EOF'
+require('dotenv/config');
+const { PrismaClient } = require('./generated/prisma/client');
+const { PrismaPg } = require('@prisma/adapter-pg');
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
+const prisma = new PrismaClient({ adapter });
 
 const catalog = [
   { key: 'alecrim', label: 'Alecrim', classification: 'erva', energyTemperature: 'morna', allergyRisk: 'medio', warningNote: 'Atenção: evitar uso interno para hipertensos.', saintTags: ['Oxalá','Oxóssi','Ibeji','Preto-Velho','Caboclo','Erê'], properties: ['Abertura de Caminhos','Expansão','Limpeza','Equilíbrio Emocional'] },

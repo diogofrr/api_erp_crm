@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Event, EventStatus } from '@prisma/client';
+import { Event, EventStatus } from '@generated/prisma';
 import { IncomingHttpHeaders } from 'http2';
 import { ResponseDto } from 'src/dto/response.dto';
 import { PrismaService } from '../../database/prisma/prisma.service';

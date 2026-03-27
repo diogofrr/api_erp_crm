@@ -7,7 +7,7 @@ import {
   IsDate,
   IsString,
 } from 'class-validator';
-import { EventStatus } from '@prisma/client';
+import { EventStatus } from '@generated/prisma';
 
 export class FindAllEventsDto {
   @IsOptional()

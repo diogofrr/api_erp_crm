@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Batch, BatchType, Event } from '@prisma/client';
+import { Batch, BatchType, Event } from '@generated/prisma';
 import { isAfter, isBefore, isEqual } from 'date-fns';
 import { ResponseDto } from 'src/dto/response.dto';
 import { PrismaService } from '../../database/prisma/prisma.service';

@@ -1,4 +1,4 @@
-import { EventStatus } from '@prisma/client';
+import { EventStatus } from '@generated/prisma';
 import { Type } from 'class-transformer';
 import {
   IsDate,

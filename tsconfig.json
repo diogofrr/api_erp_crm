@@ -13,6 +13,9 @@
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
+    "paths": {
+      "@generated/prisma": ["./generated/prisma/client"]
+    },
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,

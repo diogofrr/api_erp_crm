@@ -18,10 +18,13 @@ try {
     Write-Host "🔍 Verificando conexão com o banco..." -ForegroundColor Yellow
 
     # Criar script de verificação
-    $checkScript = @"
-const { PrismaClient } = require('@prisma/client');
+    $checkScript = @'
+require('dotenv/config');
+const { PrismaClient } = require('./generated/prisma/client');
+const { PrismaPg } = require('@prisma/adapter-pg');
 
-const prisma = new PrismaClient();
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
+const prisma = new PrismaClient({ adapter });
 
 async function checkDatabase() {
   try {
@@ -82,16 +85,16 @@ async function checkDatabase() {
 }
 
 checkDatabase();
-"@
+'@
 
     # Salvar script temporário
-    $checkScript | Out-File -FilePath "temp-check-db.js" -Encoding UTF8
+    $checkScript | Out-File -FilePath "temp-check-db.ts" -Encoding UTF8
 
     # Executar script
-    node temp-check-db.js
+    npx tsx temp-check-db.ts
 
     # Limpar arquivo temporário
-    Remove-Item "temp-check-db.js" -ErrorAction SilentlyContinue
+    Remove-Item "temp-check-db.ts" -ErrorAction SilentlyContinue
 
 } catch {
     Write-Host "❌ Erro ao verificar banco: $($_.Exception.Message)" -ForegroundColor Red

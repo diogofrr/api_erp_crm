@@ -16,9 +16,12 @@ try {
 
     # Criar arquivo temporário com o script de inicialização
     $initScript = @'
-const { PrismaClient } = require('@prisma/client');
+require('dotenv/config');
+const { PrismaClient } = require('./generated/prisma/client');
+const { PrismaPg } = require('@prisma/adapter-pg');
 
-const prisma = new PrismaClient();
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
+const prisma = new PrismaClient({ adapter });
 
 async function initRoles() {
   try {
@@ -74,13 +77,13 @@ initRoles();
 '@
 
     # Salvar script temporário
-    $initScript | Out-File -FilePath "temp-init-roles.js" -Encoding UTF8
+    $initScript | Out-File -FilePath "temp-init-roles.ts" -Encoding UTF8
 
     # Executar script
-    node temp-init-roles.js
+    npx tsx temp-init-roles.ts
 
     # Limpar arquivo temporário
-    Remove-Item "temp-init-roles.js" -ErrorAction SilentlyContinue
+    Remove-Item "temp-init-roles.ts" -ErrorAction SilentlyContinue
 
     Write-Host "✅ Roles inicializadas com sucesso!" -ForegroundColor Green
     Write-Host ""

@@ -1,5 +1,5 @@
 import { IsEnum, IsNotEmpty } from 'class-validator';
-import { EventStatus } from '@prisma/client';
+import { EventStatus } from '@generated/prisma';
 
 export class UpdateEventStatusDto {
   @IsNotEmpty({ message: 'status não pode ser vazio' })

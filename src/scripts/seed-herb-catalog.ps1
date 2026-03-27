@@ -13,8 +13,11 @@ try {
     Write-Host "Executando seed do catalogo de ervas..." -ForegroundColor Yellow
 
     $seedScript = @'
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+require('dotenv/config');
+const { PrismaClient } = require('./generated/prisma/client');
+const { PrismaPg } = require('@prisma/adapter-pg');
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
+const prisma = new PrismaClient({ adapter });
 
 const catalog = [
   { key: 'alecrim', label: 'Alecrim', classification: 'erva', energyTemperature: 'morna', allergyRisk: 'medio', warningNote: 'Aten\u00e7\u00e3o: evitar uso interno para hipertensos.', saintTags: ['Oxal\u00e1','Ox\u00f3ssi','Ibeji','Preto-Velho','Caboclo','Er\u00ea'], properties: ['Abertura de Caminhos','Expans\u00e3o','Limpeza','Equil\u00edbrio Emocional'] },
@@ -107,9 +110,9 @@ async function seed() {
 seed();
 '@
 
-    $seedScript | Out-File -FilePath "temp-seed-herbs.js" -Encoding UTF8
-    node temp-seed-herbs.js
-    Remove-Item "temp-seed-herbs.js" -ErrorAction SilentlyContinue
+    $seedScript | Out-File -FilePath "temp-seed-herbs.ts" -Encoding UTF8
+    npx tsx temp-seed-herbs.ts
+    Remove-Item "temp-seed-herbs.ts" -ErrorAction SilentlyContinue
 
     Write-Host "Seed do catalogo de ervas concluido!" -ForegroundColor Green
 
