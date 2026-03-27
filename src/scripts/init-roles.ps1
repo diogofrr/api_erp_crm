@@ -41,6 +41,10 @@ async function initRoles() {
       {
         name: 'USER',
         description: 'Usuário comum - pode visualizar eventos e ingressos'
+      },
+      {
+        name: 'HERBMASTER',
+        description: 'Mestre do herbarium - pode criar, editar e remover marcadores do mapa'
       }
     ];
 
@@ -86,6 +90,7 @@ initRoles();
     Write-Host "  • EVENT_MANAGER - Gerente de eventos" -ForegroundColor White
     Write-Host "  • TICKET_MANAGER - Gerente de ingressos" -ForegroundColor White
     Write-Host "  • USER - Usuário comum" -ForegroundColor White
+    Write-Host "  • HERBMASTER - Mestre do herbarium" -ForegroundColor White
     Write-Host ""
     Write-Host "💡 Para atribuir roles aos usuários, use o endpoint de gerenciamento de usuários." -ForegroundColor Yellow
 

@@ -25,7 +25,8 @@
     "db:check": "node -e \"const { execSync } = require('node:child_process'); const isWin = process.platform === 'win32'; execSync(isWin ? 'pwsh ./src/scripts/check-db.ps1' : 'bash ./src/scripts/check-db.sh', { stdio: 'inherit' });\"",
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate deploy",
-    "prisma:status": "npx prisma migrate status"
+    "prisma:status": "npx prisma migrate status",
+    "herbs:seed": "node -e \"const { execSync } = require('node:child_process'); const isWin = process.platform === 'win32'; execSync(isWin ? 'pwsh ./src/scripts/seed-herb-catalog.ps1' : 'bash ./src/scripts/seed-herb-catalog.sh', { stdio: 'inherit' });\""
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.844.0",

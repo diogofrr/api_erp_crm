@@ -6,6 +6,7 @@ import { PrismaModule } from './database/prisma/prisma.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { EventsModule } from './modules/events/events.module';
 import { BatchesModule } from './modules/batches/batches.module';
+import { HerbariumModule } from './modules/herbarium/herbarium.module';
 import { PdfModule } from './modules/pdf/pdf.module';
 import { TicketsModule } from './modules/tickets/tickets.module';
 
@@ -30,6 +31,7 @@ import { TicketsModule } from './modules/tickets/tickets.module';
     EventsModule,
     BatchesModule,
     PdfModule,
+    HerbariumModule,
   ],
   controllers: [],
   providers: [

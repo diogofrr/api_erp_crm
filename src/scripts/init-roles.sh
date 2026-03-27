@@ -49,6 +49,10 @@ async function initRoles() {
       {
         name: 'USER',
         description: 'Usuario comum - pode visualizar eventos e ingressos'
+      },
+      {
+        name: 'HERBMASTER',
+        description: 'Mestre do herbarium - pode criar, editar e remover marcadores do mapa'
       }
     ];
 
@@ -86,5 +90,6 @@ echo "  - ADMIN"
 echo "  - EVENT_MANAGER"
 echo "  - TICKET_MANAGER"
 echo "  - USER"
+echo "  - HERBMASTER"
 echo ""
 echo "Para atribuir roles aos usuarios, use o endpoint de gerenciamento de usuarios."

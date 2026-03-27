@@ -126,6 +126,43 @@ enum UserRole {
   EVENT_MANAGER
   TICKET_MANAGER
   USER
+  HERBMASTER
+}
+
+model HerbCatalog {
+  key               String   @id
+  label             String
+  classification    String
+  energyTemperature String
+  allergyRisk       String
+  warningNote       String   @default("")
+  saintTags         String[]
+  properties        String[]
+  markers           HerbMarker[]
+}
+
+model HerbMarker {
+  id                String      @id @default(uuid())
+  herbKey           String
+  herbName          String
+  classification    String
+  energyTemperature String
+  allergyRisk       String
+  warningNote       String      @default("")
+  saintTags         String[]
+  properties        String[]
+  notes             String      @default("")
+  status            String
+  addressLabel      String      @default("")
+  lat               Float
+  lng               Float
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  catalog           HerbCatalog @relation(fields: [herbKey], references: [key])
+
+  @@index([status])
+  @@index([updatedAt])
+  @@index([herbKey])
 }
 
 enum EventStatus {
