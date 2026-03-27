@@ -1,8 +1,8 @@
 {
 	"info": {
 		"_postman_id": "crm-api-collection-2024",
-		"name": "CRM API - Sistema de Eventos e Ingressos",
-		"description": "Coleção completa da API do CRM para gerenciamento de eventos e ingressos.\n\n**Desenvolvido por:** Diogo Henrique Ferreira\n\n**Funcionalidades:**\n- Autenticação JWT\n- Gerenciamento de Eventos\n- Sistema de Ingressos com QR Code\n- Validação de CPF único por evento\n- Controle de entrada em eventos\n\n**Base URL:** http://localhost:3000\n\n**Autenticação:** Bearer Token (JWT)",
+		"name": "CRM API - Sistema de Eventos, Ingressos e Herbarium",
+		"description": "Colecao completa da API do CRM para gerenciamento de eventos, ingressos e herbarium.\n\n**Desenvolvido por:** Diogo Henrique Ferreira\n\n**Funcionalidades:**\n- Autenticacao JWT\n- Gerenciamento de Eventos\n- Sistema de Ingressos com QR Code\n- Validacao de CPF unico por evento\n- Controle de entrada em eventos\n- Herbarium: Mapa de ervas com catalogo de 68 ervas\n\n**Base URL:** http://localhost:3000\n\n**Autenticacao:** Bearer Token (JWT)\n\n**Setup:** npm run db:init (Docker + migracoes + roles + catalogo de ervas)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "crm-api"
 	},
@@ -817,7 +817,182 @@
 					}
 				}
 			],
-			"description": "Endpoints para gerenciamento de permissões (em desenvolvimento)."
+			"description": "Endpoints para gerenciamento de permissoes (em desenvolvimento)."
+		},
+		{
+			"name": "🌿 Herbarium",
+			"item": [
+				{
+					"name": "Listar Marcadores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/herbarium?q=&status=&classification=",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"herbarium"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "",
+									"description": "Busca por texto (nome da erva, notas, endereco)"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "Filtrar por status: pouca ou muita"
+								},
+								{
+									"key": "classification",
+									"value": "",
+									"description": "Filtrar por classificacao: flor, erva ou arvore"
+								}
+							]
+						},
+						"description": "Lista todos os marcadores de ervas no mapa com filtros opcionais.\n\n**Endpoint publico** - nao requer autenticacao.\n\n**Parametros opcionais:**\n- q: Busca textual\n- status: pouca ou muita\n- classification: flor, erva ou arvore"
+					}
+				},
+				{
+					"name": "Buscar Marcador por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/herbarium/{{herb_marker_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"herbarium",
+								"{{herb_marker_id}}"
+							]
+						},
+						"description": "Busca um marcador de erva especifico pelo ID.\n\n**Endpoint publico** - nao requer autenticacao."
+					}
+				},
+				{
+					"name": "Criar Marcador",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    const responseJson = pm.response.json();",
+									"    if (responseJson.result && responseJson.result.id) {",
+									"        pm.environment.set('herb_marker_id', responseJson.result.id);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"herbKey\": \"alecrim\",\n  \"status\": \"muita\",\n  \"lat\": -23.5505,\n  \"lng\": -46.6333,\n  \"notes\": \"Encontrado proximo ao parque\",\n  \"addressLabel\": \"Parque Ibirapuera, Sao Paulo - SP\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/herbarium",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"herbarium"
+							]
+						},
+						"description": "Cria um novo marcador de erva no mapa.\n\n**Autenticacao:** Bearer Token obrigatorio\n**Roles:** ADMIN, HERBMASTER\n\n**Campos obrigatorios:**\n- herbKey: Chave da erva no catalogo (ex: alecrim, arruda, guine)\n- status: pouca ou muita\n- lat: Latitude (numero)\n- lng: Longitude (numero)\n\n**Campos opcionais:**\n- notes: Observacoes (max 280 caracteres)\n- addressLabel: Endereco/referencia (max 140 caracteres)"
+					}
+				},
+				{
+					"name": "Atualizar Marcador",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"pouca\",\n  \"notes\": \"Quantidade reduzida apos coleta\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/herbarium/{{herb_marker_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"herbarium",
+								"{{herb_marker_id}}"
+							]
+						},
+						"description": "Atualiza um marcador de erva existente.\n\n**Autenticacao:** Bearer Token obrigatorio\n**Roles:** ADMIN, HERBMASTER\n\n**Campos atualizaveis:**\n- herbKey: Chave da erva\n- status: pouca ou muita\n- notes: Observacoes (max 280 caracteres)\n- addressLabel: Endereco/referencia (max 140 caracteres)"
+					}
+				},
+				{
+					"name": "Deletar Marcador",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/herbarium/{{herb_marker_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"herbarium",
+								"{{herb_marker_id}}"
+							]
+						},
+						"description": "Remove um marcador de erva do mapa.\n\n**Autenticacao:** Bearer Token obrigatorio\n**Roles:** ADMIN, HERBMASTER"
+					}
+				}
+			],
+			"description": "Endpoints para gerenciamento de marcadores de ervas no mapa. GET endpoints sao publicos, POST/PATCH/DELETE requerem role ADMIN ou HERBMASTER."
 		}
 	],
 	"event": [
@@ -863,6 +1038,11 @@
 		},
 		{
 			"key": "ticket_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "herb_marker_id",
 			"value": "",
 			"type": "string"
 		}

@@ -19,7 +19,7 @@ API REST robusta e escalável para gerenciamento de eventos e ingressos, desenvo
 
 - Registro e login de usuários
 - Autenticação JWT com tokens seguros
-- Sistema de roles e permissões (ADMIN, EVENT_MANAGER, TICKET_MANAGER, USER)
+- Sistema de roles e permissões (ADMIN, EVENT_MANAGER, TICKET_MANAGER, USER, HERBMASTER)
 - Logout e refresh de tokens
 - Hash seguro de senhas com bcrypt
 
@@ -48,6 +48,14 @@ API REST robusta e escalável para gerenciamento de eventos e ingressos, desenvo
 - **Design profissional** e responsivo
 - **Envio por email** com template HTML
 - **URLs públicas** para download
+
+### 🌿 Herbarium - Mapa de Ervas
+
+- Mapa interativo de marcadores de ervas
+- Catálogo com 68 ervas (classificação, temperatura energética, risco alérgico, saintTags, propriedades)
+- Filtros por busca, status (pouca/muita) e classificação (flor/erva/arvore)
+- CRUD de marcadores com geolocalização (lat/lng)
+- Controle de acesso por role (ADMIN, HERBMASTER)
 
 ### 👤 Gestão de Usuários
 
@@ -137,12 +145,15 @@ Siga o guia completo em: [docs/R2_SETUP.md](docs/R2_SETUP.md)
 ### 5. Inicialize o banco de dados
 
 ```bash
-# Inicia o PostgreSQL via Docker e aplica as migrações
+# Inicia o PostgreSQL via Docker, aplica migracoes, cria roles e popula catalogo de ervas
 npm run db:init
-
-# Inicializa as roles padrão
-npm run roles:init
 ```
+
+O `db:init` executa automaticamente:
+1. Sobe o PostgreSQL via Docker
+2. Aplica migracoes do Prisma
+3. Cria roles padrao (ADMIN, EVENT_MANAGER, TICKET_MANAGER, USER, HERBMASTER)
+4. Popula catalogo de ervas (68 ervas)
 
 ### 6. Execute a aplicação
 
@@ -163,7 +174,9 @@ A API estará disponível em `http://localhost:3000`
 - **User**: Usuários do sistema
 - **Profile**: Perfis dos usuários
 - **AuthToken**: Tokens de autenticação
-- **Role**: Funções/roles dos usuários (ADMIN, EVENT_MANAGER, TICKET_MANAGER, USER)
+- **Role**: Funções/roles dos usuários (ADMIN, EVENT_MANAGER, TICKET_MANAGER, USER, HERBMASTER)
+- **HerbCatalog**: Catálogo de ervas (key, label, classificação, temperatura, risco, saintTags, propriedades)
+- **HerbMarker**: Marcadores de ervas no mapa (herbKey, status, lat, lng, notas)
 - **Permission**: Permissões do sistema
 - **Event**: Eventos criados
 - **Ticket**: Ingressos dos participantes
@@ -181,9 +194,12 @@ npm run build              # Compila o projeto
 npm run start:prod         # Executa em modo produção
 
 # Banco de Dados
-npm run db:init            # Inicializa BD com Docker + Prisma
+npm run db:init            # Setup completo: Docker + migracoes + roles + ervas
 npm run db:reset           # Reseta completamente o banco
-npm run roles:init         # Inicializa roles padrão
+npm run db:migrate         # Aplica migracoes pendentes
+npm run db:check           # Verifica status do banco
+npm run roles:init         # Inicializa roles padrao (separado)
+npm run herbs:seed         # Popula catalogo de ervas (separado)
 
 # Testes
 npm run test               # Testes unitários
@@ -226,6 +242,16 @@ npm run format             # Formata código com Prettier
 | PATCH  | `/tickets/:id`     | Atualiza ingresso          | ADMIN, TICKET_MANAGER       |
 | PATCH  | `/tickets/confirm` | Confirma entrada           | ADMIN, TICKET_MANAGER       |
 | DELETE | `/tickets/:id`     | Remove ingresso            | ADMIN                       |
+
+### 🌿 Herbarium (`/herbarium`)
+
+| Método | Endpoint          | Descrição                | Roles              |
+| ------ | ----------------- | ------------------------ | ------------------ |
+| GET    | `/herbarium`      | Lista marcadores (filtros: q, status, classification) | Público            |
+| GET    | `/herbarium/:id`  | Busca marcador por ID    | Público            |
+| POST   | `/herbarium`      | Cria marcador            | ADMIN, HERBMASTER  |
+| PATCH  | `/herbarium/:id`  | Atualiza marcador        | ADMIN, HERBMASTER  |
+| DELETE | `/herbarium/:id`  | Remove marcador          | ADMIN, HERBMASTER  |
 
 ### 📄 **PDFs (`/pdf`) - NOVO!**
 

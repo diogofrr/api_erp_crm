@@ -15,16 +15,15 @@ try {
     Write-Host "🗄️ Executando script de inicialização de roles..." -ForegroundColor Yellow
 
     # Criar arquivo temporário com o script de inicialização
-    $initScript = @"
+    $initScript = @'
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
 async function initRoles() {
   try {
-    console.log('🎭 Inicializando roles padrão...');
+    console.log('Inicializando roles padrao...');
 
-    // Criar roles padrão
     const roles = [
       {
         name: 'ADMIN',
@@ -40,7 +39,7 @@ async function initRoles() {
       },
       {
         name: 'USER',
-        description: 'Usuário comum - pode visualizar eventos e ingressos'
+        description: 'Usuario comum - pode visualizar eventos e ingressos'
       },
       {
         name: 'HERBMASTER',
@@ -57,22 +56,22 @@ async function initRoles() {
         await prisma.role.create({
           data: role
         });
-        console.log('✅ Role ' + role.name + ' criada');
+        console.log('Role ' + role.name + ' criada');
       } else {
-        console.log('ℹ️ Role ' + role.name + ' já existe');
+        console.log('Role ' + role.name + ' ja existe');
       }
     }
 
-    console.log('🎉 Roles inicializadas com sucesso!');
+    console.log('Roles inicializadas com sucesso!');
   } catch (error) {
-    console.error('❌ Erro ao inicializar roles:', error);
+    console.error('Erro ao inicializar roles:', error);
   } finally {
     await prisma.$disconnect();
   }
 }
 
 initRoles();
-"@
+'@
 
     # Salvar script temporário
     $initScript | Out-File -FilePath "temp-init-roles.js" -Encoding UTF8

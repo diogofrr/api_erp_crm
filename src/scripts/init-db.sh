@@ -38,9 +38,22 @@ if [[ "$wait_time" -ge "$max_wait_time" ]]; then
 fi
 
 echo "Aplicando migracoes do Prisma..."
-if npx prisma migrate dev --name init; then
-  echo "Banco de dados inicializado com sucesso!"
-else
+if ! npx prisma migrate dev --name init; then
   echo "Erro ao aplicar migracoes do Prisma"
   exit 1
 fi
+
+echo "Migracoes aplicadas com sucesso!"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+echo ""
+echo "Inicializando roles padrao..."
+bash "$SCRIPT_DIR/init-roles.sh"
+
+echo ""
+echo "Populando catalogo de ervas..."
+bash "$SCRIPT_DIR/seed-herb-catalog.sh"
+
+echo ""
+echo "Banco de dados inicializado com sucesso!"

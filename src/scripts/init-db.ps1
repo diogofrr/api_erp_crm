@@ -34,13 +34,26 @@ if ($waitTime -ge $maxWaitTime) {
 
 Write-Host "PostgreSQL está disponível!" -ForegroundColor Green
 
-# Executa as migrações do Prisma
-Write-Host "Aplicando migrações do Prisma..." -ForegroundColor Cyan
+# Executa as migracoes do Prisma
+Write-Host "Aplicando migracoes do Prisma..." -ForegroundColor Cyan
 npx prisma migrate dev --name init
 
-if ($LASTEXITCODE -eq 0) {
-    Write-Host "Banco de dados inicializado com sucesso!" -ForegroundColor Green
-} else {
-    Write-Host "Erro ao aplicar migrações do Prisma" -ForegroundColor Red
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Erro ao aplicar migracoes do Prisma" -ForegroundColor Red
     exit 1
 }
+
+Write-Host "Migracoes aplicadas com sucesso!" -ForegroundColor Green
+
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+
+Write-Host ""
+Write-Host "Inicializando roles padrao..." -ForegroundColor Cyan
+& pwsh "$ScriptDir\init-roles.ps1"
+
+Write-Host ""
+Write-Host "Populando catalogo de ervas..." -ForegroundColor Cyan
+& pwsh "$ScriptDir\seed-herb-catalog.ps1"
+
+Write-Host ""
+Write-Host "Banco de dados inicializado com sucesso!" -ForegroundColor Green
