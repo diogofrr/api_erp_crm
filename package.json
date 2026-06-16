@@ -5,6 +5,9 @@
   "author": "Diogo Henrique Ferreira",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
