@@ -34,7 +34,7 @@ export class RolesGuard implements CanActivate {
 
     if (!hasRole) {
       throw new ForbiddenException(
-        `Acesso negado. Roles necessárias: ${requiredRoles.join(', ')}`,
+        'Você não tem permissão para fazer essa ação.',
       );
     }
 

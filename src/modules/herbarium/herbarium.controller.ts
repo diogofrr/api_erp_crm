@@ -9,10 +9,7 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { UserRole } from '@generated/prisma';
-import { Roles } from '../auth/decorators/roles.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { RolesGuard } from '../auth/guards/roles.guard';
 import { CreateHerbMarkerDto } from './dto/create-herb-marker.dto';
 import { FindHerbMarkersDto } from './dto/find-herb-markers.dto';
 import { UpdateHerbMarkerDto } from './dto/update-herb-marker.dto';
@@ -21,6 +18,11 @@ import { HerbariumService } from './herbarium.service';
 @Controller('herbarium')
 export class HerbariumController {
   constructor(private readonly herbariumService: HerbariumService) {}
+
+  @Get('catalog')
+  async findCatalog() {
+    return this.herbariumService.findCatalog();
+  }
 
   @Get()
   async findAll(@Query() filter: FindHerbMarkersDto) {
@@ -33,22 +35,19 @@ export class HerbariumController {
   }
 
   @Post()
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.HERBMASTER)
+  @UseGuards(JwtAuthGuard)
   async create(@Body() dto: CreateHerbMarkerDto) {
     return this.herbariumService.create(dto);
   }
 
   @Patch(':id')
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.HERBMASTER)
+  @UseGuards(JwtAuthGuard)
   async update(@Param('id') id: string, @Body() dto: UpdateHerbMarkerDto) {
     return this.herbariumService.update(id, dto);
   }
 
   @Delete(':id')
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN, UserRole.HERBMASTER)
+  @UseGuards(JwtAuthGuard)
   async remove(@Param('id') id: string) {
     return this.herbariumService.remove(id);
   }

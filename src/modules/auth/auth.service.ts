@@ -54,6 +54,7 @@ export class AuthService {
 
     const payload = {
       email: user.email,
+      name: user.name,
       sub: user.id,
       roles: user.roles.map(role => role.name),
       permissions: user.permissions.map(permission => permission.name),
@@ -120,6 +121,7 @@ export class AuthService {
 
     const payload = {
       email: user.email,
+      name: user.name,
       sub: user.id,
       roles: user.roles.map(role => role.name),
       permissions: user.permissions.map(permission => permission.name),
@@ -167,7 +169,11 @@ export class AuthService {
     const tokenHash = this.generateTokenHash(oldToken);
     const tokenData = await this.prisma.authToken.findUnique({
       where: { tokenHash },
-      include: { user: true },
+      include: {
+        user: {
+          include: { roles: true, permissions: true },
+        },
+      },
     });
 
     if (!tokenData) {
@@ -177,7 +183,10 @@ export class AuthService {
     const user = tokenData.user;
     const newToken = this.jwtService.sign({
       email: user.email,
+      name: user.name,
       sub: user.id,
+      roles: user.roles.map(role => role.name),
+      permissions: user.permissions.map(permission => permission.name),
     });
 
     const newTokenHash = this.generateTokenHash(newToken);

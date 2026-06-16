@@ -1,0 +1,6877 @@
+{
+  "titulo": "Catálogo de Ervas — Umbanda & Cultos de Matriz Africana",
+  "lema": "Kosi Ewe, Kosi Orixá — sem folha, não há Orixá",
+  "fontes": [
+    "Casa de Umbanda Rosa Maria — Apostila de Ervas",
+    "Apostila de Ervas — \"Kosi Ewe Kosi Orixá\"",
+    "Sociedade Espiritualista Mata Virgem — Curso de Umbanda: Ervas"
+  ],
+  "observacao_geral": "Compilação consolidada das três apostilas. A Umbanda é religião oral; atribuições de Orixá e classificações variam de casa para casa. Quando as fontes divergem (ex.: temperatura de uma erva), os arrays trazem mais de um valor. Campos sem dado nas fontes são null (ou listas vazias).",
+  "schema": {
+    "nome": "string — nome principal da erva.",
+    "nomes_alternativos": "array<string> — variantes/grafias agrupadas.",
+    "tipo": "string|null — parte/forma do vegetal.",
+    "classificacao": {
+      "temperatura": "array<string> — Quente | Morna | Fria (pode ter mais de um por divergência entre fontes).",
+      "sexo": "array<string> — Masculina | Feminina | Híbrida.",
+      "elemento": "array<string> — Ar | Água | Fogo | Terra.",
+      "sistema_fitoterapico": "array<string> — sistema(s) do corpo (fonte V_F).",
+      "outros": "array<string> — marcadores adicionais (Solar, Amor, Calmante, Resina, etc.).",
+      "descricao": "string|null — texto-fonte original da classificação."
+    },
+    "risco": {
+      "tem_risco": "bool — há alerta de uso?",
+      "tags": "array<string> — tipos de risco/restrição.",
+      "descricao": "string|null — texto-fonte do alerta."
+    },
+    "orixas": "array<string> — Orixás (formas canônicas).",
+    "orixas_texto": "string|null — texto-fonte (preserva qualificadores como '(roxa)', '(folha)').",
+    "falanges": "array<string> — linhas/povos (formas canônicas).",
+    "falanges_texto": "string|null — texto-fonte.",
+    "propriedades_usos": "string|null — verbo atuante e aplicações.",
+    "observacoes": "string|null — notas e divergências."
+  },
+  "total_ervas": 208,
+  "ervas": [
+    {
+      "nome": "Abacateiro / Folha de Abacate",
+      "nomes_alternativos": [
+        "Abacateiro",
+        "Folha de Abacate"
+      ],
+      "tipo": "Folha",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Geniturinário"
+        ],
+        "outros": [],
+        "descricao": "Morna; Água (folha de abacateiro); Sist. Geniturinário"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxumarê",
+        "Oxum"
+      ],
+      "orixas_texto": "Oxumarê, Oxum (folha)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Equilibrador e limpeza de áurea. Folha de abacateiro listada entre ervas mornas (equilibrar/restaurar).",
+      "observacoes": "Uso fitoterápico ligado ao sistema geniturinário."
+    },
+    {
+      "nome": "Abre-Caminho",
+      "nomes_alternativos": [
+        "Abre-Caminho"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna; Terra"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ogum",
+        "Exu"
+      ],
+      "orixas_texto": "Ogum, Exu (apostila V_F)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Mudança de hábitos e caminhos. Atrai bons fluidos, força e liderança (defumação lustral). Usado para abrir caminhos, comércio e atrair sorte.",
+      "observacoes": "Folha de Abre-Caminho aparece entre ervas de Terra."
+    },
+    {
+      "nome": "Açafrão / Raiz de Açafrão",
+      "nomes_alternativos": [
+        "Açafrão",
+        "Raiz de Açafrão"
+      ],
+      "tipo": "Raiz/Tempero",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Masculina"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ogum",
+        "Oxumarê",
+        "Oxóssi",
+        "Xangô"
+      ],
+      "orixas_texto": "Ogum, Oxumarê, Oxóssi, Xangô (raiz)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Antioxidante, anti-inflamatório; previne câncer e doenças do coração.",
+      "observacoes": null
+    },
+    {
+      "nome": "Açoita-Cavalo",
+      "nomes_alternativos": [
+        "Açoita-Cavalo"
+      ],
+      "tipo": "Folha/Casca",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva (banhos do pescoço p/ baixo)"
+      },
+      "orixas": [
+        "Ogum"
+      ],
+      "orixas_texto": "Ogum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Verbos quentes: limpar, consumir, purificar, dissolver, descarregar. Empregada em banhos fortes do pescoço para baixo, em hora aberta.",
+      "observacoes": "Grafada também 'Arrebenta Cavalo' (Mata Virgem)."
+    },
+    {
+      "nome": "Agrião",
+      "nomes_alternativos": [
+        "Agrião"
+      ],
+      "tipo": "Folha/Hortaliça",
+      "classificacao": {
+        "temperatura": [
+          "Quente",
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Frias (V_F divergente)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Obá",
+        "Oxum"
+      ],
+      "orixas_texto": "Iemanjá, Obá, Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Proteção, sono e reversão de feitiços. Usado em banhos de abrir caminhos.",
+      "observacoes": "Classificação de temperatura varia entre as apostilas."
+    },
+    {
+      "nome": "Água de Coco",
+      "nomes_alternativos": [
+        "Água de Coco"
+      ],
+      "tipo": "Líquido vegetal",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Potencializador de banho"
+        ],
+        "descricao": "Potencializador de banho; Ar (coco)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Oxóssi"
+      ],
+      "orixas_texto": "Oxalá, Oxóssi",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Purificação e proteção. Abre a consciência e facilita processos mediúnicos — usar antes de giras ou no desenvolvimento.",
+      "observacoes": "Listado como elemento potencializador de banhos."
+    },
+    {
+      "nome": "Alamanda",
+      "nomes_alternativos": [
+        "Alamanda"
+      ],
+      "tipo": "Flor/Folha",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Omolu/Obaluayê"
+      ],
+      "orixas_texto": "Omolu/Obaluayê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva atribuída a Omolu/Obaluayê.",
+      "observacoes": null
+    },
+    {
+      "nome": "Alcachofra",
+      "nomes_alternativos": [
+        "Alcachofra"
+      ],
+      "tipo": "Folha/Hortaliça",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Endócrino"
+        ],
+        "outros": [],
+        "descricao": "Morna; Sist. Endócrino"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Iansã/Oyá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Uso fitoterápico no sistema endócrino.",
+      "observacoes": "Listada em Iansã na apostila V_F."
+    },
+    {
+      "nome": "Alcaparra",
+      "nomes_alternativos": [
+        "Alcaparra"
+      ],
+      "tipo": "Flor/Fruto",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Oxumarê"
+      ],
+      "orixas_texto": "Iemanjá, Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Potencializar, sorte e luxúria.",
+      "observacoes": null
+    },
+    {
+      "nome": "Alecrim",
+      "nomes_alternativos": [
+        "Alecrim"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Digestório"
+        ],
+        "outros": [
+          "Solar/Prosperidade"
+        ],
+        "descricao": "Morna; Híbrida; Ar (folha); Sol/Solar; Sist. Digestório"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "evitar em hipertensos"
+        ],
+        "descricao": "Não indicado para hipertensos"
+      },
+      "orixas": [
+        "Ibeji",
+        "Ogum",
+        "Oxalá",
+        "Oxóssi"
+      ],
+      "orixas_texto": "Ibeji, Ogum, Oxalá, Oxóssi",
+      "falanges": [
+        "Preto-Velho",
+        "Erê",
+        "Boiadeiro"
+      ],
+      "falanges_texto": "Preto-Velho, Erê, Boiadeiro",
+      "propriedades_usos": "Erva do equilíbrio emocional e espiritual. Energia do sol: abertura de caminhos, expansão e limpeza; acelera a circulação de energia e a força vital. Defumação/incenso, comércio, prosperidade.",
+      "observacoes": "'Alecrim de Tabuleiro' afugenta larvas astrais em defumadores (Mata Virgem)."
+    },
+    {
+      "nome": "Alevante / Levante",
+      "nomes_alternativos": [
+        "Alevante",
+        "Levante"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Xangô"
+      ],
+      "orixas_texto": "Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Levantamento das vibrações espirituais e do astral. Defumação lustral: atrai bons fluidos, força e liderança; comércio; purifica e fortalece o mental.",
+      "observacoes": "Grafias: Alevante, Levante, Elevante."
+    },
+    {
+      "nome": "Alface",
+      "nomes_alternativos": [
+        "Alface"
+      ],
+      "tipo": "Folha/Hortaliça",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Calmante"
+        ],
+        "descricao": "Fria/uso calmante"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Castidade, adivinhação, amor, proteção e sono.",
+      "observacoes": null
+    },
+    {
+      "nome": "Alfavaca / Alfavaquinha",
+      "nomes_alternativos": [
+        "Alfavaca",
+        "Alfavaquinha"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna; Terra (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã",
+        "Iemanjá",
+        "Oxóssi",
+        "Oxum",
+        "Oyá/Iansã",
+        "Ossain"
+      ],
+      "orixas_texto": "Nanã (roxa), Iemanjá (roxa), Oxóssi, Oxum (roxa), Oyá/Iansã (roxa), Ossain (alfavaquinha)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Vibração de cura espiritual e ânimo.",
+      "observacoes": "Variedades branca e roxa. Alfavaquinha citada para vários orixás (Iansã, Ogum, Xangô, Yemanjá na Mata Virgem)."
+    },
+    {
+      "nome": "Alfazema / Lavanda",
+      "nomes_alternativos": [
+        "Alfazema",
+        "Lavanda"
+      ],
+      "tipo": "Flor/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Fortalecedora de mediunidade"
+        ],
+        "descricao": "Morna; Feminina; Fortalecedora de mediunidade; Água (lavanda)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Oxalá"
+      ],
+      "orixas_texto": "Iemanjá, Oxalá",
+      "falanges": [
+        "Caboclo",
+        "Cigano"
+      ],
+      "falanges_texto": "Caboclo, Cigano (lavanda)",
+      "propriedades_usos": "Acalma o espírito, tranquilizadora em situações difíceis, traz harmonia. Escudo protetor (lavanda); atrativo feminino; desenvolvimento espiritual; dormir melhor; defumação/incenso.",
+      "observacoes": "Alfazema e Lavanda tratadas de forma próxima/equivalente nas apostilas."
+    },
+    {
+      "nome": "Alho / Casca de Alho",
+      "nomes_alternativos": [
+        "Alho",
+        "Casca de Alho"
+      ],
+      "tipo": "Bulbo",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Digestório/respiratório"
+        ],
+        "outros": [],
+        "descricao": "Quente; Masculina (casca); Sist. Digestório/Respiratório"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva"
+      },
+      "orixas": [
+        "Exu",
+        "Oxalá",
+        "Ossain"
+      ],
+      "orixas_texto": "Exu, Oxalá, Ossain",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Libertação energética em casos de presença constante de obsessores. Defumação de descarrego e descargas fortes; energias sexuais mal intencionadas.",
+      "observacoes": "'Pau de Alho' não serve para banho (só vampirismo). Folha de Alho citada em Iansã (Mata Virgem)."
+    },
+    {
+      "nome": "Almíscar",
+      "nomes_alternativos": [
+        "Almíscar"
+      ],
+      "tipo": "Resina/Aroma",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Xangô"
+      ],
+      "orixas_texto": "Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva/aroma atribuído a Xangô.",
+      "observacoes": null
+    },
+    {
+      "nome": "Amendoeira / Folha de Amendoeira",
+      "nomes_alternativos": [
+        "Amendoeira",
+        "Folha de Amendoeira"
+      ],
+      "tipo": "Folha",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (folha em Obá)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Obá"
+      ],
+      "orixas_texto": "Obá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Galhos usados em locais onde se exercem atividades lucrativas.",
+      "observacoes": null
+    },
+    {
+      "nome": "Amendoim",
+      "nomes_alternativos": [
+        "Amendoim"
+      ],
+      "tipo": "Semente/Fruto",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuído a Exu.",
+      "observacoes": null
+    },
+    {
+      "nome": "Amora / Amoreira / Folha de Amora",
+      "nomes_alternativos": [
+        "Amora",
+        "Amoreira",
+        "Folha de Amora"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria (folha); Feminina"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oyá/Iansã",
+        "Oxum"
+      ],
+      "orixas_texto": "Oyá/Iansã, Oxum (folha)",
+      "falanges": [
+        "Pombo-Gira"
+      ],
+      "falanges_texto": "Pombo-Gira",
+      "propriedades_usos": "Cura, dinheiro e proteção.",
+      "observacoes": null
+    },
+    {
+      "nome": "Amor-Perfeito (folha e flor)",
+      "nomes_alternativos": [
+        "Amor-Perfeito (folha e flor)"
+      ],
+      "tipo": "Flor/Folha",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu",
+      "falanges": [
+        "Pombo-Gira"
+      ],
+      "falanges_texto": "Pombo-Gira",
+      "propriedades_usos": "Folha e flor usadas em trabalhos de Exu/Pombo-Gira.",
+      "observacoes": null
+    },
+    {
+      "nome": "Angélica",
+      "nomes_alternativos": [
+        "Angélica"
+      ],
+      "tipo": "Flor/Raiz",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna; Híbrida"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxalá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Proteção e cura. Raiz: proteção, cura, visões, banimento de maldições. Flor espanta influências malignas e neutraliza ondas negativas.",
+      "observacoes": null
+    },
+    {
+      "nome": "Angico",
+      "nomes_alternativos": [
+        "Angico"
+      ],
+      "tipo": "Casca/Árvore",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva"
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva quente de limpeza; usado em banhos de abrir caminhos.",
+      "observacoes": null
+    },
+    {
+      "nome": "Anil",
+      "nomes_alternativos": [
+        "Anil"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxalá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuído a Oxalá.",
+      "observacoes": null
+    },
+    {
+      "nome": "Anis-Estrelado",
+      "nomes_alternativos": [
+        "Anis-Estrelado"
+      ],
+      "tipo": "Fruto/Semente",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Fortalecedora de mediunidade"
+        ],
+        "descricao": "Morna; Feminina; Fortalecedora de mediunidade; Água"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Oxum"
+      ],
+      "orixas_texto": "Iemanjá, Oxum",
+      "falanges": [
+        "Cigano",
+        "Marinheiro"
+      ],
+      "falanges_texto": "Cigano, Marinheiro",
+      "propriedades_usos": "Equilíbrio da mediunidade, atração de prosperidade; desperta energias sutis para a magia; em amuleto, contra pesadelos. Defumação: chama boa sorte; desenvolvimento espiritual; depressão.",
+      "observacoes": "Grafado também 'Anis'."
+    },
+    {
+      "nome": "Antúrio",
+      "nomes_alternativos": [
+        "Antúrio"
+      ],
+      "tipo": "Flor",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá"
+      ],
+      "orixas_texto": "Iemanjá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuído a Iemanjá.",
+      "observacoes": null
+    },
+    {
+      "nome": "Arnica / Arnica do Mato",
+      "nomes_alternativos": [
+        "Arnica",
+        "Arnica do Mato"
+      ],
+      "tipo": "Folha/Flor",
+      "classificacao": {
+        "temperatura": [
+          "Quente",
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Fria (Oxum, V_F)"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "não ingerir",
+          "não aplicar sobre ferimentos"
+        ],
+        "descricao": "Não aplicar em pele com ferimentos; NÃO ingerir"
+      },
+      "orixas": [
+        "Exu",
+        "Ogum",
+        "Oxum"
+      ],
+      "orixas_texto": "Exu (arnica do mato), Ogum, Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Contusões e entorses; estimula o coração.",
+      "observacoes": "ATENÇÃO: uso externo restrito; não ingerir."
+    },
+    {
+      "nome": "Aroeira",
+      "nomes_alternativos": [
+        "Aroeira"
+      ],
+      "tipo": "Folha/Casca",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [
+          "Fogo",
+          "Terra"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Geniturinário"
+        ],
+        "outros": [],
+        "descricao": "Quente; Masculina; Fogo e Terra; Sist. Geniturinário"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva (limpezas densas)"
+      },
+      "orixas": [
+        "Exu",
+        "Ogum",
+        "Oxóssi"
+      ],
+      "orixas_texto": "Exu, Ogum, Oxóssi",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Poderoso poder de limpeza em banho e defumação; descarrega energias; desobstrução de caminhos e limpezas densas.",
+      "observacoes": "Não usada para banho de cabeça (Mata Virgem)."
+    },
+    {
+      "nome": "Arroz / Pó de Arroz",
+      "nomes_alternativos": [
+        "Arroz",
+        "Pó de Arroz"
+      ],
+      "tipo": "Grão/Pó",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Pó de Arroz (ou arroz com casca) em defumação de atração de dinheiro e boas energias financeiras.",
+      "observacoes": null
+    },
+    {
+      "nome": "Arruda",
+      "nomes_alternativos": [
+        "Arruda"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Híbrida; Fogo"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "tóxica/venenosa",
+          "agressiva"
+        ],
+        "descricao": "Agressiva; tóxica (avaliar caso a caso)"
+      },
+      "orixas": [
+        "Exu",
+        "Ogum",
+        "Oxalá",
+        "Ossain"
+      ],
+      "orixas_texto": "Exu, Ogum, Oxalá (—), Ossain",
+      "falanges": [
+        "Exu",
+        "Boiadeiro",
+        "Baiano"
+      ],
+      "falanges_texto": "Exu, Boiadeiro, Bahiano",
+      "propriedades_usos": "Alto poder de limpeza em banhos, defumação e benzimentos; purificação e consumidora de energia negativa; remove feitiços; abre caminho atraindo bons fluidos.",
+      "observacoes": "Não usada para banho na Mata Virgem. Se ambiente está carregado, a arruda morre."
+    },
+    {
+      "nome": "Artemísia",
+      "nomes_alternativos": [
+        "Artemísia"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria; Feminina"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxumarê"
+      ],
+      "orixas_texto": "Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Quebra correntes de pensamentos negativos e traz proteção. Defumação: estimula energia psíquica.",
+      "observacoes": "Usada no Egito Antigo em defumações (Mata Virgem)."
+    },
+    {
+      "nome": "Assapeixe / Assa-Peixe",
+      "nomes_alternativos": [
+        "Assapeixe",
+        "Assa-Peixe"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã"
+      ],
+      "orixas_texto": "Nanã (algumas casas)",
+      "falanges": [
+        "Boiadeiro"
+      ],
+      "falanges_texto": "Boiadeiro",
+      "propriedades_usos": "Usado em trabalhos de Boiadeiro.",
+      "observacoes": null
+    },
+    {
+      "nome": "Avenca",
+      "nomes_alternativos": [
+        "Avenca"
+      ],
+      "tipo": "Folha/Samambaia",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã"
+      ],
+      "orixas_texto": "Nanã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Nanã.",
+      "observacoes": null
+    },
+    {
+      "nome": "Aveia",
+      "nomes_alternativos": [
+        "Aveia"
+      ],
+      "tipo": "Grão/Cereal",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria (Oxóssi/Oxum)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi",
+        "Oxum"
+      ],
+      "orixas_texto": "Oxóssi, Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxóssi e Oxum.",
+      "observacoes": null
+    },
+    {
+      "nome": "Azedinha / Azedo / Folha de Azedinha",
+      "nomes_alternativos": [
+        "Azedinha",
+        "Azedo",
+        "Folha de Azedinha"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Água (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxum",
+        "Oxumarê",
+        "Xangô"
+      ],
+      "orixas_texto": "Oxum, Oxumarê (azedo), Xangô (azedinha)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxum, Oxumarê e Xangô.",
+      "observacoes": null
+    },
+    {
+      "nome": "Babosa",
+      "nomes_alternativos": [
+        "Babosa"
+      ],
+      "tipo": "Folha/Suculenta",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Tegumentar"
+        ],
+        "outros": [],
+        "descricao": "Quente; Híbrida; Sist. Tegumentar"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Omolu/Obaluayê"
+      ],
+      "orixas_texto": "Exu, Omolu/Obaluayê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Proteção e sorte. Seiva usada em queimaduras, insolação e relaxamento; hidratação capilar.",
+      "observacoes": null
+    },
+    {
+      "nome": "Bambu / Folha de Bambu",
+      "nomes_alternativos": [
+        "Bambu",
+        "Folha de Bambu"
+      ],
+      "tipo": "Folha/Caule",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (folha de fogo); Fogo"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Poderoso defumador contra kiumbas; banho contra perseguidores. Defumação: contra 'vampiros' astrais; descargas fortes.",
+      "observacoes": null
+    },
+    {
+      "nome": "Baobá",
+      "nomes_alternativos": [
+        "Baobá"
+      ],
+      "tipo": "Árvore",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Irokô"
+      ],
+      "orixas_texto": "Irokô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuído a Irokô.",
+      "observacoes": "Listado na apostila V_F."
+    },
+    {
+      "nome": "Barba de Milho / Barba de Velho",
+      "nomes_alternativos": [
+        "Barba de Milho",
+        "Barba de Velho"
+      ],
+      "tipo": "Folha/Fibra",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna (barba de velho)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Omolu/Obaluayê",
+        "Oxóssi"
+      ],
+      "orixas_texto": "Omolu/Obaluayê, Oxóssi (barba do milho)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuídas a Omolu/Obaluayê e Oxóssi.",
+      "observacoes": null
+    },
+    {
+      "nome": "Barbatimão",
+      "nomes_alternativos": [
+        "Barbatimão"
+      ],
+      "tipo": "Casca/Árvore",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Tegumentar"
+        ],
+        "outros": [],
+        "descricao": "Morna; Sist. Tegumentar"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ewá",
+        "Oxum",
+        "Oxumarê"
+      ],
+      "orixas_texto": "Ewá, Oxum, Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Chá com ação cicatrizante, anti-inflamatória, antimicrobiana, antioxidante, analgésica, anti-hipertensiva, diurética, coagulante.",
+      "observacoes": null
+    },
+    {
+      "nome": "Bardana",
+      "nomes_alternativos": [
+        "Bardana"
+      ],
+      "tipo": "Folha/Raiz",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Nanã",
+        "Omolu/Obaluayê",
+        "Oxumarê"
+      ],
+      "orixas_texto": "Exu, Nanã, Omolu/Obaluayê, Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Aplicada em banhos fortes para livrar de ondas negativas e eguns.",
+      "observacoes": null
+    },
+    {
+      "nome": "Baronesa / Golfo de Baronesa",
+      "nomes_alternativos": [
+        "Baronesa",
+        "Golfo de Baronesa"
+      ],
+      "tipo": "Planta aquática",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ewá",
+        "Iemanjá"
+      ],
+      "orixas_texto": "Ewá, Iemanjá (golfo)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Ewá; golfo de baronesa a Iemanjá.",
+      "observacoes": null
+    },
+    {
+      "nome": "Baunilha",
+      "nomes_alternativos": [
+        "Baunilha"
+      ],
+      "tipo": "Flor/Fava",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Amor/Sexualidade"
+        ],
+        "descricao": "Amor/Sexualidade"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxalá (algumas casas)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Flor e fava extremamente afrodisíacas; atrai amor verdadeiro e desperta a sexualidade; associada a luxúria e sedução.",
+      "observacoes": null
+    },
+    {
+      "nome": "Beladona",
+      "nomes_alternativos": [
+        "Beladona"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "tóxica/venenosa",
+          "não usar em banho"
+        ],
+        "descricao": "TÓXICA / venenosa; só sacudimentos"
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Defumação de purificação contra más vibrações e espíritos negativos; sacudimentos domiciliares.",
+      "observacoes": "Uso litúrgico restrito a sacudimentos; não para banho/ingestão."
+    },
+    {
+      "nome": "Benjoim",
+      "nomes_alternativos": [
+        "Benjoim"
+      ],
+      "tipo": "Resina",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Resina (uso em defumação)"
+        ],
+        "descricao": "Morna; resina (só defumação)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Oxum"
+      ],
+      "orixas_texto": "Oxalá, Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Purificação, prosperidade, viagem astral. Resina (cor acinzentada) para defumação; limpa o ambiente e destrói larvas astrais.",
+      "observacoes": "Resina — uso restrito à defumação."
+    },
+    {
+      "nome": "Berinjela / Folha de Berinjela",
+      "nomes_alternativos": [
+        "Berinjela",
+        "Folha de Berinjela"
+      ],
+      "tipo": "Folha/Hortaliça",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã"
+      ],
+      "orixas_texto": "Nanã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a Nanã.",
+      "observacoes": null
+    },
+    {
+      "nome": "Beterraba / Folha de Beterraba",
+      "nomes_alternativos": [
+        "Beterraba",
+        "Folha de Beterraba"
+      ],
+      "tipo": "Folha/Raiz",
+      "classificacao": {
+        "temperatura": [
+          "Morna",
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna (folha); Fria (raiz)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha entre ervas mornas; beterraba entre ervas frias.",
+      "observacoes": null
+    },
+    {
+      "nome": "Boldo",
+      "nomes_alternativos": [
+        "Boldo"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Digestório"
+        ],
+        "outros": [],
+        "descricao": "Morna; Híbrida; Ar (folha); Sist. Digestório"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Xangô"
+      ],
+      "orixas_texto": "Oxalá (Tapete de Oxalá), Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Limpador do chacra coronário; fundamenta a absorção de boas energias; purificação. Chá auxilia digestão de gorduras e ressaca.",
+      "observacoes": "'Tapete de Oxalá' é o boldo (Mata Virgem)."
+    },
+    {
+      "nome": "Brilhantina / Folha de Brilhantina",
+      "nomes_alternativos": [
+        "Brilhantina",
+        "Folha de Brilhantina"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Água (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxum"
+      ],
+      "orixas_texto": "Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxum.",
+      "observacoes": null
+    },
+    {
+      "nome": "Brinco de Princesa / Brinco de Ouro",
+      "nomes_alternativos": [
+        "Brinco de Princesa",
+        "Brinco de Ouro"
+      ],
+      "tipo": "Flor",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu (planta sagrada)",
+      "falanges": [
+        "Pombo-Gira"
+      ],
+      "falanges_texto": "Pombo-Gira (brinco de ouro)",
+      "propriedades_usos": "Planta sagrada de Exu; uso restrito a banhos fortes de proteção.",
+      "observacoes": null
+    },
+    {
+      "nome": "Bucha / Folha de Bucha",
+      "nomes_alternativos": [
+        "Bucha",
+        "Folha de Bucha"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Omolu/Obaluayê"
+      ],
+      "orixas_texto": "Omolu/Obaluayê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a Omolu/Obaluayê.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cabaça / Folha da Cabaça",
+      "nomes_alternativos": [
+        "Cabaça",
+        "Folha da Cabaça"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Omolu/Obaluayê",
+        "Ossain",
+        "Oxum"
+      ],
+      "orixas_texto": "Exu, Omolu/Obaluayê, Ossain, Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a vários orixás.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cacto",
+      "nomes_alternativos": [
+        "Cacto"
+      ],
+      "tipo": "Suculenta",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Ótima planta para deixar próximo à entrada e sugar energias negativas que tentem entrar.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cajá / Cajá-Manga",
+      "nomes_alternativos": [
+        "Cajá",
+        "Cajá-Manga"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria (cajá em Ogum)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ogum",
+        "Oxumarê",
+        "Ossain"
+      ],
+      "orixas_texto": "Ogum, Oxumarê (cajá-manga), Ossain",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuído a Ogum, Oxumarê e Ossain.",
+      "observacoes": null
+    },
+    {
+      "nome": "Calêndula",
+      "nomes_alternativos": [
+        "Calêndula"
+      ],
+      "tipo": "Flor",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Tegumentar"
+        ],
+        "outros": [],
+        "descricao": "Morna; Água (folha); Sist. Tegumentar"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Oxum",
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Iemanjá, Oxum, Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Poderoso energizador de campos astrais; purificador de chacras. Chá anti-inflamatório, calmante e cicatrizante. Banho de amor.",
+      "observacoes": null
+    },
+    {
+      "nome": "Camomila",
+      "nomes_alternativos": [
+        "Camomila"
+      ],
+      "tipo": "Flor",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Nervoso"
+        ],
+        "outros": [
+          "Calmante"
+        ],
+        "descricao": "Morna; Feminina; Calmante; Sist. Nervoso"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Oxum"
+      ],
+      "orixas_texto": "Oxalá, Oxum",
+      "falanges": [
+        "Cigano"
+      ],
+      "falanges_texto": "Cigano",
+      "propriedades_usos": "Acalma mente e ambientes conturbados. Chá para insônia e ansiedade; calmante.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cana de Açúcar / Cana",
+      "nomes_alternativos": [
+        "Cana de Açúcar",
+        "Cana"
+      ],
+      "tipo": "Caule/Folha",
+      "classificacao": {
+        "temperatura": [
+          "Quente",
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (cana); Fria (cana de açúcar em Oxum/Ewá)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ewá",
+        "Exu",
+        "Oxum",
+        "Oxumarê"
+      ],
+      "orixas_texto": "Ewá, Exu, Oxum, Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Limpador do chacra básico; dissolve acúmulo de instinto sexual. Folhas secas e bagaço em defumação para purificar (afasta eguns); comércio; descargas fortes.",
+      "observacoes": null
+    },
+    {
+      "nome": "Candeia",
+      "nomes_alternativos": [
+        "Candeia"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Obá"
+      ],
+      "orixas_texto": "Obá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Obá (nega mina, Mata Virgem).",
+      "observacoes": null
+    },
+    {
+      "nome": "Canela / Folha de Canela / Pó de Canela",
+      "nomes_alternativos": [
+        "Canela",
+        "Folha de Canela",
+        "Pó de Canela"
+      ],
+      "tipo": "Casca/Pó",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Digestório/respiratório"
+        ],
+        "outros": [],
+        "descricao": "Morna; Masculina; Sist. Digestório/Respiratório"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "cautela em gestantes/lactantes"
+        ],
+        "descricao": "Chá não indicado para grávidas"
+      },
+      "orixas": [
+        "Oyá/Iansã",
+        "Oxumarê"
+      ],
+      "orixas_texto": "Oyá/Iansã, Oxumarê",
+      "falanges": [
+        "Pombo-Gira",
+        "Cigano"
+      ],
+      "falanges_texto": "Pombo-Gira (pó), Cigano",
+      "propriedades_usos": "Reenergizar e aumento de força. Defumação: limpa ambiente e destrói larvas astrais; energias sexuais; atração de dinheiro. Assoprar pó de fora p/ dentro para prosperidade.",
+      "observacoes": "Chá: melhora sensibilidade à insulina, antioxidante."
+    },
+    {
+      "nome": "Canela de Velho / Canela de Macaco",
+      "nomes_alternativos": [
+        "Canela de Velho",
+        "Canela de Macaco"
+      ],
+      "tipo": "Folha/Casca",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (canela de velho em Nanã)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã",
+        "Omolu/Obaluayê",
+        "Ossain"
+      ],
+      "orixas_texto": "Nanã, Omolu/Obaluayê, Ossain (canela de macaco)",
+      "falanges": [
+        "Preto-Velho"
+      ],
+      "falanges_texto": "Preto-Velho",
+      "propriedades_usos": "Atribuída a Nanã e Omolu; uso em trabalhos de Preto-Velho.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cânfora",
+      "nomes_alternativos": [
+        "Cânfora"
+      ],
+      "tipo": "Resina/Cristal",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Masculina (canfora)"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva"
+      },
+      "orixas": [
+        "Exu",
+        "Oxum"
+      ],
+      "orixas_texto": "Exu, Oxum",
+      "falanges": [
+        "Baiano"
+      ],
+      "falanges_texto": "Bahiano",
+      "propriedades_usos": "Grande força para limpeza da negatividade dos ambientes (lar); desenvolvimento psíquico, saúde e clarividência.",
+      "observacoes": null
+    },
+    {
+      "nome": "Capim Cidreira / Capim Limão / Capim Santo",
+      "nomes_alternativos": [
+        "Capim Cidreira",
+        "Capim Limão",
+        "Capim Santo"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna",
+          "Fria"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Nervoso"
+        ],
+        "outros": [
+          "Calmante"
+        ],
+        "descricao": "Morna; Fria (capim cidreira frio também); Masculina (capim santo); Calmante; Sist. Nervoso"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ogum",
+        "Oxóssi",
+        "Oxum"
+      ],
+      "orixas_texto": "Ogum (capim cidreira/limão), Oxóssi (capim limão), Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Bom para acalmar e trazer bons fluidos. Capim-limão é erva sagrada de defumação nos terreiros (aproxima espíritos protetores). Chá analgésico (dor de cabeça).",
+      "observacoes": "Aparece nas três faixas de temperatura conforme a apostila."
+    },
+    {
+      "nome": "Cardo Santo",
+      "nomes_alternativos": [
+        "Cardo Santo"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Defumação de descarrego"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Afugenta os males, propicia o aparecimento do perdido. Defumação (com alecrim) espanta inveja e olho-gordo.",
+      "observacoes": null
+    },
+    {
+      "nome": "Carqueja",
+      "nomes_alternativos": [
+        "Carqueja"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Omolu/Obaluayê"
+      ],
+      "orixas_texto": "Omolu/Obaluayê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Omolu/Obaluayê.",
+      "observacoes": null
+    },
+    {
+      "nome": "Castanha",
+      "nomes_alternativos": [
+        "Castanha"
+      ],
+      "tipo": "Semente/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria (Xangô)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Xangô",
+        "Oxum"
+      ],
+      "orixas_texto": "Xangô, Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Xangô e Oxum.",
+      "observacoes": null
+    },
+    {
+      "nome": "Catinga de Mulata",
+      "nomes_alternativos": [
+        "Catinga de Mulata"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Água"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Exu, Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Exu e Iansã.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cavalinha",
+      "nomes_alternativos": [
+        "Cavalinha"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna",
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Geniturinário"
+        ],
+        "outros": [],
+        "descricao": "Fria/Morna; Sist. Geniturinário"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxumarê",
+        "Xangô"
+      ],
+      "orixas_texto": "Oxumarê, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Banho para equilíbrio de sentimentos. Uso fitoterápico geniturinário.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cebola / Casca de Cebola",
+      "nomes_alternativos": [
+        "Cebola",
+        "Casca de Cebola"
+      ],
+      "tipo": "Bulbo",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Masculina (casca)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Poderoso desintegrador de energias negativas complexas.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cebolinha",
+      "nomes_alternativos": [
+        "Cebolinha"
+      ],
+      "tipo": "Folha/Hortaliça",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Respiratório/tegumentar"
+        ],
+        "outros": [],
+        "descricao": "Sist. Respiratório/Tegumentar"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Uso fitoterápico (respiratório, tegumentar).",
+      "observacoes": null
+    },
+    {
+      "nome": "Cedro",
+      "nomes_alternativos": [
+        "Cedro"
+      ],
+      "tipo": "Folha/Madeira",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ogum",
+        "Oxóssi"
+      ],
+      "orixas_texto": "Ogum, Oxóssi",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Defumação lustral: acompanha meditações e reflexões, eleva preces; árvore da vida, queimado para expulsar forças negativas.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cenoura / Folha de Cenoura",
+      "nomes_alternativos": [
+        "Cenoura",
+        "Folha de Cenoura"
+      ],
+      "tipo": "Folha/Raiz",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Oyá/Iansã (folha)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Repositor de energias.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cinco Chagas",
+      "nomes_alternativos": [
+        "Cinco Chagas"
+      ],
+      "tipo": "Folha/Flor",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Omolu/Obaluayê"
+      ],
+      "orixas_texto": "Omolu/Obaluayê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Omolu/Obaluayê.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cipó Caboclo / Cipó",
+      "nomes_alternativos": [
+        "Cipó Caboclo",
+        "Cipó"
+      ],
+      "tipo": "Cipó/Trepadeira",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi"
+      ],
+      "orixas_texto": "Oxóssi",
+      "falanges": [
+        "Caboclo",
+        "Boiadeiro"
+      ],
+      "falanges_texto": "Caboclo, Boiadeiro",
+      "propriedades_usos": "Defumação de descarrego: elimina todas as larvas astrais do ambiente.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cipó Chumbo",
+      "nomes_alternativos": [
+        "Cipó Chumbo"
+      ],
+      "tipo": "Cipó/Trepadeira",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ogum",
+        "Ossain"
+      ],
+      "orixas_texto": "Ogum, Ossain",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuído a Ogum e Ossain.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cipó Cruz",
+      "nomes_alternativos": [
+        "Cipó Cruz"
+      ],
+      "tipo": "Cipó/Trepadeira",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva"
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva quente de limpeza/descarrego.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cipreste",
+      "nomes_alternativos": [
+        "Cipreste"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã"
+      ],
+      "orixas_texto": "Nanã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuído a Nanã.",
+      "observacoes": null
+    },
+    {
+      "nome": "Coentro",
+      "nomes_alternativos": [
+        "Coentro"
+      ],
+      "tipo": "Folha/Semente",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Amor/Sexualidade"
+        ],
+        "descricao": "Amor/Sexualidade"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Obá",
+        "Oxum"
+      ],
+      "orixas_texto": "Obá, Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Em banhos atua na proteção contra energias maléficas. Tempero que desperta prazer, paixão e sexualidade.",
+      "observacoes": null
+    },
+    {
+      "nome": "Colônia (Apolônia)",
+      "nomes_alternativos": [
+        "Colônia (Apolônia)"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria; Feminina; Terra (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ewá",
+        "Iemanjá",
+        "Nanã",
+        "Oyá/Iansã",
+        "Irokô"
+      ],
+      "orixas_texto": "Ewá, Iemanjá, Nanã, Oyá/Iansã, Irokô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Potente eliminador de mágoas e rancores; calmante; paz e equilíbrio mental e emocional.",
+      "observacoes": "Atribuída a quase todos os orixás femininos/Oxalá (Mata Virgem)."
+    },
+    {
+      "nome": "Comigo-Ninguém-Pode",
+      "nomes_alternativos": [
+        "Comigo-Ninguém-Pode"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "tóxica/venenosa"
+        ],
+        "descricao": "Tóxica (planta ornamental)"
+      },
+      "orixas": [
+        "Exu",
+        "Ogum"
+      ],
+      "orixas_texto": "Exu, Ogum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Afasta energias negativas do ambiente; com espada-de-são-jorge, quebra mau-olhado e mandinga. Plantar muda na entrada do lar.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cominho",
+      "nomes_alternativos": [
+        "Cominho"
+      ],
+      "tipo": "Semente/Tempero",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxum",
+        "Xangô"
+      ],
+      "orixas_texto": "Oxum, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Autoconfiança, poder de decisão.",
+      "observacoes": null
+    },
+    {
+      "nome": "Confrei",
+      "nomes_alternativos": [
+        "Confrei"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Tegumentar"
+        ],
+        "outros": [],
+        "descricao": "Sist. Tegumentar"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Obá"
+      ],
+      "orixas_texto": "Obá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Uso fitoterápico (sistema tegumentar).",
+      "observacoes": null
+    },
+    {
+      "nome": "Coroa de Ogum",
+      "nomes_alternativos": [
+        "Coroa de Ogum"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "não usar em banho"
+        ],
+        "descricao": "Não serve para banho"
+      },
+      "orixas": [
+        "Ogum"
+      ],
+      "orixas_texto": "Ogum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Quebra demandas; ótima para deixar na entrada e sugar energias negativas.",
+      "observacoes": "Não usada para banho (Mata Virgem)."
+    },
+    {
+      "nome": "Corda de Cânhamo / Algodão natural",
+      "nomes_alternativos": [
+        "Corda de Cânhamo",
+        "Algodão natural"
+      ],
+      "tipo": "Fibra",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Material p/ incenso"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Usado para amarrar/montar incensos naturais.",
+      "observacoes": null
+    },
+    {
+      "nome": "Cravo da Índia / Cravo",
+      "nomes_alternativos": [
+        "Cravo da Índia",
+        "Cravo"
+      ],
+      "tipo": "Botão floral/Tempero",
+      "classificacao": {
+        "temperatura": [
+          "Quente",
+          "Fria"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Tegumentar"
+        ],
+        "outros": [],
+        "descricao": "Quente (cravo, Oyá); Fria (cravo da índia); Masculina; Sist. Tegumentar"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Obá",
+        "Oyá/Iansã",
+        "Oxalá",
+        "Xangô"
+      ],
+      "orixas_texto": "Obá, Oyá/Iansã, Oxalá (folha de cravo), Xangô",
+      "falanges": [
+        "Cigano"
+      ],
+      "falanges_texto": "Cigano",
+      "propriedades_usos": "Acrescenta energia e poder em trabalhos espirituais. Defumação: protege contra más intenções; energias sexuais; insônia.",
+      "observacoes": null
+    },
+    {
+      "nome": "Crista de Galo / Folha de Crista de Galo",
+      "nomes_alternativos": [
+        "Crista de Galo",
+        "Folha de Crista de Galo"
+      ],
+      "tipo": "Flor/Folha",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fogo (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Irokô"
+      ],
+      "orixas_texto": "Exu, Irokô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Exu e Irokô. Fedegoso/Crista-de-galo em banhos fortes de descarrego.",
+      "observacoes": null
+    },
+    {
+      "nome": "Chuva de Ouro",
+      "nomes_alternativos": [
+        "Chuva de Ouro"
+      ],
+      "tipo": "Flor",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxumarê"
+      ],
+      "orixas_texto": "Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxumarê.",
+      "observacoes": null
+    },
+    {
+      "nome": "Dama-da-Noite (folha e flor)",
+      "nomes_alternativos": [
+        "Dama-da-Noite (folha e flor)"
+      ],
+      "tipo": "Flor/Folha",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna (folha); Ar"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ewá",
+        "Nanã",
+        "Oxum"
+      ],
+      "orixas_texto": "Ewá, Nanã, Oxum",
+      "falanges": [
+        "Pombo-Gira"
+      ],
+      "falanges_texto": "Pombo-Gira",
+      "propriedades_usos": "Atribuída a Ewá, Nanã, Oxum; uso em Pombo-Gira.",
+      "observacoes": null
+    },
+    {
+      "nome": "Damasco / Folha de Damasco",
+      "nomes_alternativos": [
+        "Damasco",
+        "Folha de Damasco"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi",
+        "Oxum"
+      ],
+      "orixas_texto": "Oxóssi (folha), Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Amor próprio, determinação.",
+      "observacoes": null
+    },
+    {
+      "nome": "Damiana",
+      "nomes_alternativos": [
+        "Damiana"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Amor/Sexualidade"
+        ],
+        "descricao": "Amor/Sexualidade"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Poderoso afrodisíaco (feitiçaria Hoodoo); erva de luxúria, amor, paixão e dominação; desperta o poder pessoal.",
+      "observacoes": null
+    },
+    {
+      "nome": "Dandá / Dandá da Costa",
+      "nomes_alternativos": [
+        "Dandá",
+        "Dandá da Costa"
+      ],
+      "tipo": "Raiz",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva"
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva quente de limpeza/descarrego.",
+      "observacoes": "Dandá da Costa = noz-moscada (Mata Virgem)."
+    },
+    {
+      "nome": "Dente de Leão",
+      "nomes_alternativos": [
+        "Dente de Leão"
+      ],
+      "tipo": "Flor/Folha",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxumarê"
+      ],
+      "orixas_texto": "Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Adivinhação, desejos, chamar espíritos (soprar chamando o mentor facilita o contato). Chá contra gripe, melhora trânsito intestinal, protege fígado.",
+      "observacoes": null
+    },
+    {
+      "nome": "Desata Nós / Desata Nó",
+      "nomes_alternativos": [
+        "Desata Nós",
+        "Desata Nó"
+      ],
+      "tipo": "Folha/Trepadeira",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi"
+      ],
+      "orixas_texto": "Oxóssi",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxóssi.",
+      "observacoes": null
+    },
+    {
+      "nome": "Dinheiro em Penca",
+      "nomes_alternativos": [
+        "Dinheiro em Penca"
+      ],
+      "tipo": "Folha/Suculenta",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi",
+        "Oxum",
+        "Oxumarê",
+        "Xangô"
+      ],
+      "orixas_texto": "Oxóssi, Oxum, Oxumarê, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a vários orixás; associada a prosperidade.",
+      "observacoes": null
+    },
+    {
+      "nome": "Dormideira / Folha de Dormideira",
+      "nomes_alternativos": [
+        "Dormideira",
+        "Folha de Dormideira"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fogo (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Exu.",
+      "observacoes": null
+    },
+    {
+      "nome": "Erva Capitão",
+      "nomes_alternativos": [
+        "Erva Capitão"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Água"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxum"
+      ],
+      "orixas_texto": "Oxum",
+      "falanges": [
+        "Marinheiro"
+      ],
+      "falanges_texto": "Marinheiro",
+      "propriedades_usos": "Atribuída a Oxum; uso em Marinheiro.",
+      "observacoes": null
+    },
+    {
+      "nome": "Erva da Bruxa",
+      "nomes_alternativos": [
+        "Erva da Bruxa"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxum"
+      ],
+      "orixas_texto": "Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Fertilidade, amor; cataplasma/pomada para inflamações de pele.",
+      "observacoes": null
+    },
+    {
+      "nome": "Erva de Passarinho",
+      "nomes_alternativos": [
+        "Erva de Passarinho"
+      ],
+      "tipo": "Folha/Parasita",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Ar"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã",
+        "Oxumarê",
+        "Ossain"
+      ],
+      "orixas_texto": "Nanã, Oxumarê, Ossain",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Nanã, Oxumarê e Ossain.",
+      "observacoes": null
+    },
+    {
+      "nome": "Erva de Santa Luzia",
+      "nomes_alternativos": [
+        "Erva de Santa Luzia"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ewá",
+        "Iemanjá",
+        "Oxum",
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Ewá, Iemanjá, Oxum, Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a vários orixás femininos.",
+      "observacoes": "'Olho de Santa Luzia' não usada para banho (Mata Virgem)."
+    },
+    {
+      "nome": "Erva de Santa Maria",
+      "nomes_alternativos": [
+        "Erva de Santa Maria"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxumarê",
+        "Xangô"
+      ],
+      "orixas_texto": "Oxumarê, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxumarê e Xangô.",
+      "observacoes": null
+    },
+    {
+      "nome": "Erva de São João",
+      "nomes_alternativos": [
+        "Erva de São João"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Xangô"
+      ],
+      "orixas_texto": "Xangô",
+      "falanges": [
+        "Boiadeiro"
+      ],
+      "falanges_texto": "Boiadeiro",
+      "propriedades_usos": "Atribuída a Xangô; uso em Boiadeiro.",
+      "observacoes": null
+    },
+    {
+      "nome": "Erva de São José",
+      "nomes_alternativos": [
+        "Erva de São José"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (em Obá)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Obá"
+      ],
+      "orixas_texto": "Obá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Obá.",
+      "observacoes": null
+    },
+    {
+      "nome": "Erva Doce",
+      "nomes_alternativos": [
+        "Erva Doce"
+      ],
+      "tipo": "Semente/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Amor/Sexualidade",
+          "Calmante"
+        ],
+        "descricao": "Morna; Feminina; Calmante; Amor"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Oxum"
+      ],
+      "orixas_texto": "Oxalá, Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Acalma e harmoniza o ambiente, desagregando energias enfermiças. Amor, conquista, adoçamento, romance. Defumação de energias sexuais. Chá para azia/digestão.",
+      "observacoes": "Usa-se mais as sementes."
+    },
+    {
+      "nome": "Erva de Bicho",
+      "nomes_alternativos": [
+        "Erva de Bicho"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Omolu/Obaluayê",
+        "Xangô"
+      ],
+      "orixas_texto": "Obaluaiê, Xangô (Mata Virgem)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Limpeza positiva; possante destruidora de fluidos negativos.",
+      "observacoes": null
+    },
+    {
+      "nome": "Erva Grossa",
+      "nomes_alternativos": [
+        "Erva Grossa"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria (Xangô)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ogum",
+        "Xangô"
+      ],
+      "orixas_texto": "Ogum, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Ogum e Xangô.",
+      "observacoes": null
+    },
+    {
+      "nome": "Erva Tostão",
+      "nomes_alternativos": [
+        "Erva Tostão"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ogum",
+        "Oyá/Iansã",
+        "Xangô"
+      ],
+      "orixas_texto": "Ogum, Iansã (Mata Virgem), Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Ogum, Iansã e Xangô.",
+      "observacoes": null
+    },
+    {
+      "nome": "Erva do Diabo",
+      "nomes_alternativos": [
+        "Erva do Diabo"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "tóxica/venenosa"
+        ],
+        "descricao": "TÓXICA / venenosa"
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Exu.",
+      "observacoes": "Planta tóxica — manuseio com cautela."
+    },
+    {
+      "nome": "Espada de Iansã / Espada de Santa Bárbara",
+      "nomes_alternativos": [
+        "Espada de Iansã",
+        "Espada de Santa Bárbara"
+      ],
+      "tipo": "Folha/Suculenta",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (espada de Oyá)"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "não usar em banho"
+        ],
+        "descricao": "Não serve para banho"
+      },
+      "orixas": [
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Quebra demandas; ótima para deixar na entrada e sugar energias negativas.",
+      "observacoes": "Não usada para banho (Mata Virgem)."
+    },
+    {
+      "nome": "Espada de Ogum / Espada de São Jorge",
+      "nomes_alternativos": [
+        "Espada de Ogum",
+        "Espada de São Jorge"
+      ],
+      "tipo": "Folha/Suculenta",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Terra"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "não usar em banho"
+        ],
+        "descricao": "Não serve para banho"
+      },
+      "orixas": [
+        "Ogum",
+        "Ossain"
+      ],
+      "orixas_texto": "Ogum, Ossain",
+      "falanges": [
+        "Caboclo",
+        "Baiano"
+      ],
+      "falanges_texto": "Caboclo, Bahiano",
+      "propriedades_usos": "Quebra demandas; proteção; deixar na entrada para sugar energias negativas; banho de abrir caminhos (com a planta inteira em ambiente).",
+      "observacoes": "Não usada para banho de imersão (Mata Virgem)."
+    },
+    {
+      "nome": "Eucalipto",
+      "nomes_alternativos": [
+        "Eucalipto"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Respiratório"
+        ],
+        "outros": [],
+        "descricao": "Quente (folha e casca em Oxalá); Fogo; Sist. Respiratório"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxalá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Cura espiritual e proteção. Defumação favorece a saúde; descargas fortes; evita pulgas. Citado por André Luiz em cura espiritual (Nosso Lar).",
+      "observacoes": null
+    },
+    {
+      "nome": "Fedegoso",
+      "nomes_alternativos": [
+        "Fedegoso"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Fogo (folha)"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva"
+      },
+      "orixas": [
+        "Exu",
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Exu, Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Fortíssimo elemento para limpezas pesadas em ambientes de trabalho e na casa. Banhos fortes de descarrego (afasta eguns).",
+      "observacoes": "Fedegoso/Crista-de-galo: 'o pó que faz bem' (Mata Virgem)."
+    },
+    {
+      "nome": "Figueira / Figo Benjamim",
+      "nomes_alternativos": [
+        "Figueira",
+        "Figo Benjamim"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxalá (folha de figueira)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Banhos fortes para pôr fim a obsessão.",
+      "observacoes": null
+    },
+    {
+      "nome": "Flecha de Ogum",
+      "nomes_alternativos": [
+        "Flecha de Ogum"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva"
+      },
+      "orixas": [
+        "Ogum"
+      ],
+      "orixas_texto": "Ogum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva quente de Ogum, limpeza/descarrego.",
+      "observacoes": null
+    },
+    {
+      "nome": "Folha da Costa",
+      "nomes_alternativos": [
+        "Folha da Costa"
+      ],
+      "tipo": "Folha/Suculenta",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Ossain"
+      ],
+      "orixas_texto": "Oxalá, Ossain",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxalá e Ossain.",
+      "observacoes": null
+    },
+    {
+      "nome": "Folha de Fogo",
+      "nomes_alternativos": [
+        "Folha de Fogo"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Fogo"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Oyá/Iansã",
+        "Xangô"
+      ],
+      "orixas_texto": "Exu, Oyá/Iansã (Mata Virgem), Xangô",
+      "falanges": [
+        "Exu"
+      ],
+      "falanges_texto": "Exu",
+      "propriedades_usos": "Folha quente/de fogo; uso em Exu e descargas.",
+      "observacoes": null
+    },
+    {
+      "nome": "Folha Santa",
+      "nomes_alternativos": [
+        "Folha Santa"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Fortalecedora de mediunidade"
+        ],
+        "descricao": "Fria; Híbrida; Água; Fortalecedora de mediunidade"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Oxum"
+      ],
+      "orixas_texto": "Oxalá, Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Potencializador de cura e atividade espiritual benéfica. Banho de purificação.",
+      "observacoes": null
+    },
+    {
+      "nome": "Fortuna",
+      "nomes_alternativos": [
+        "Fortuna"
+      ],
+      "tipo": "Folha/Suculenta",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Solar/Prosperidade"
+        ],
+        "descricao": "Solar/Prosperidade"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Omolu/Obaluayê",
+        "Oxum"
+      ],
+      "orixas_texto": "Obaluaiê (Mata Virgem), Oxum (folha de fortuna)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Abertura de caminhos, prosperidade e fartura. Famosa em práticas indígenas e cultos afro.",
+      "observacoes": null
+    },
+    {
+      "nome": "Fumo / Folha de Fumo",
+      "nomes_alternativos": [
+        "Fumo",
+        "Folha de Fumo"
+      ],
+      "tipo": "Folha",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Ar (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Ossain"
+      ],
+      "orixas_texto": "Exu (—), Ossain",
+      "falanges": [
+        "Caboclo",
+        "Baiano"
+      ],
+      "falanges_texto": "Caboclo, Bahiano",
+      "propriedades_usos": "Cauterizador de feridas astrais; cura espíritos feridos que obsediam causando doenças. Defumação de purificação contra más vibrações.",
+      "observacoes": null
+    },
+    {
+      "nome": "Gameleira Branca",
+      "nomes_alternativos": [
+        "Gameleira Branca"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (folha em Oxalá); Fogo"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Irokô"
+      ],
+      "orixas_texto": "Oxalá, Irokô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxalá e Irokô.",
+      "observacoes": null
+    },
+    {
+      "nome": "Gengibre",
+      "nomes_alternativos": [
+        "Gengibre"
+      ],
+      "tipo": "Raiz/Tempero",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Digestório/respiratório"
+        ],
+        "outros": [],
+        "descricao": "Quente (Oyá); Sist. Digestório/Respiratório"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxum",
+        "Oyá/Iansã",
+        "Xangô"
+      ],
+      "orixas_texto": "Oxum, Oyá/Iansã, Xangô",
+      "falanges": [
+        "Cigano"
+      ],
+      "falanges_texto": "Cigano",
+      "propriedades_usos": "Amor, dinheiro; condutor de boas decisões. Melhorar humor (banho com hortelã).",
+      "observacoes": null
+    },
+    {
+      "nome": "Gerânio / Folha de Gerânio",
+      "nomes_alternativos": [
+        "Gerânio",
+        "Folha de Gerânio"
+      ],
+      "tipo": "Folha/Flor",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (folha em Xangô)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Xangô"
+      ],
+      "orixas_texto": "Oxalá, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxalá e Xangô. Óleo de gerânio em escalda-pés (previne retenção de líquidos).",
+      "observacoes": null
+    },
+    {
+      "nome": "Gergelim",
+      "nomes_alternativos": [
+        "Gergelim"
+      ],
+      "tipo": "Semente",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi",
+        "Oxum"
+      ],
+      "orixas_texto": "Oxóssi, Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Melhorar humor (banho com hortelã).",
+      "observacoes": null
+    },
+    {
+      "nome": "Girassol / Pétala de Girassol",
+      "nomes_alternativos": [
+        "Girassol",
+        "Pétala de Girassol"
+      ],
+      "tipo": "Flor",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria; Água (folha e pétala)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Oxum",
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Oxalá (pétala), Oxum, Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Excelente condensador de fluidos positivos; aguça a intuição. Defumação: anula eguns e destrói larvas astrais; comércio; sorte; cansaço.",
+      "observacoes": "Pétalas colhidas antes do sol (Mata Virgem)."
+    },
+    {
+      "nome": "Goiaba / Goiabeira (folha)",
+      "nomes_alternativos": [
+        "Goiaba",
+        "Goiabeira (folha)"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Digestório"
+        ],
+        "outros": [],
+        "descricao": "Ar (folha de goiaba); Sist. Digestório"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi",
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Oxóssi (folha de goiabeira), Oyá/Iansã (folha de goiaba)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxóssi e Iansã. Uso fitoterápico digestório.",
+      "observacoes": null
+    },
+    {
+      "nome": "Graviola",
+      "nomes_alternativos": [
+        "Graviola"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Masculina",
+          "Híbrida"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna; Híbrida; Masculina (na V_F)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Oxum",
+        "Oxumarê"
+      ],
+      "orixas_texto": "Iemanjá, Oxum, Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Regenerador do campo astral.",
+      "observacoes": null
+    },
+    {
+      "nome": "Guabiroba / Guabiroba",
+      "nomes_alternativos": [
+        "Guabiroba",
+        "Guabiroba"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá"
+      ],
+      "orixas_texto": "Iemanjá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Iemanjá.",
+      "observacoes": null
+    },
+    {
+      "nome": "Guiné",
+      "nomes_alternativos": [
+        "Guiné"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Masculina; Terra (folha)"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva (muito temida)"
+      },
+      "orixas": [
+        "Omolu/Obaluayê",
+        "Oxóssi"
+      ],
+      "orixas_texto": "Omolu/Obaluayê, Oxóssi",
+      "falanges": [
+        "Preto-Velho",
+        "Caboclo",
+        "Boiadeiro"
+      ],
+      "falanges_texto": "Preto-Velho, Caboclo, Boiadeiro",
+      "propriedades_usos": "Limpeza de áurea com atuação cortante nas correntes do baixo astral; dissolve energias contrárias e fortalece o campo. Defumação: barra todo mal-feito, quebra feitiço.",
+      "observacoes": "Muito temida no baixo astral pela sua força."
+    },
+    {
+      "nome": "Hera / Folha de Hera",
+      "nomes_alternativos": [
+        "Hera",
+        "Folha de Hera"
+      ],
+      "tipo": "Folha/Trepadeira",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã",
+        "Omolu/Obaluayê"
+      ],
+      "orixas_texto": "Nanã, Omolu/Obaluayê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Aumento da intuição.",
+      "observacoes": null
+    },
+    {
+      "nome": "Hibisco / Folha de Hibisco",
+      "nomes_alternativos": [
+        "Hibisco",
+        "Folha de Hibisco"
+      ],
+      "tipo": "Flor/Folha",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna (folha em Xangô)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Xangô"
+      ],
+      "orixas_texto": "Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Xangô. Chá de hibisco reduz retenção de líquidos.",
+      "observacoes": null
+    },
+    {
+      "nome": "Hortelã / Menta",
+      "nomes_alternativos": [
+        "Hortelã",
+        "Menta"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Digestório/respiratório/tegumentar"
+        ],
+        "outros": [
+          "Solar/Prosperidade"
+        ],
+        "descricao": "Morna; Híbrida; Solar; Sist. Digestório/Respiratório/Tegumentar"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Oxóssi",
+        "Oxum",
+        "Oyá/Iansã",
+        "Ossain"
+      ],
+      "orixas_texto": "Oxalá (hortelã branco), Oxóssi, Oxum, Oyá/Iansã, Ossain",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Estimulante de sentidos, anima e eleva o astral; mudanças e movimento; agiliza desejos; limpeza. Antigripal, vermífugo. Escalda-pés refrescante; melhorar humor.",
+      "observacoes": "Menta = erva equilibradora e reconstrutora da aura."
+    },
+    {
+      "nome": "Inhame / Folha de Inhame (Oxaguiã)",
+      "nomes_alternativos": [
+        "Inhame",
+        "Folha de Inhame (Oxaguiã)"
+      ],
+      "tipo": "Folha/Tubérculo",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (folha em Oxalá)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Ogum"
+      ],
+      "orixas_texto": "Oxalá, Ogum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxalá (Oxaguiã) e Ogum.",
+      "observacoes": null
+    },
+    {
+      "nome": "Ipê-Roxo / Folha de Ipê-Roxo",
+      "nomes_alternativos": [
+        "Ipê-Roxo",
+        "Folha de Ipê-Roxo"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã",
+        "Omolu/Obaluayê"
+      ],
+      "orixas_texto": "Nanã, Omolu/Obaluayê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Nanã e Omolu.",
+      "observacoes": null
+    },
+    {
+      "nome": "Jaborandi / Folha de Jaborandi",
+      "nomes_alternativos": [
+        "Jaborandi",
+        "Folha de Jaborandi"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (Oyá/Xangô)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oyá/Iansã",
+        "Xangô"
+      ],
+      "orixas_texto": "Oyá/Iansã, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Iansã e Xangô.",
+      "observacoes": null
+    },
+    {
+      "nome": "Jabuticaba / Folha de Jabuticaba",
+      "nomes_alternativos": [
+        "Jabuticaba",
+        "Folha de Jabuticaba"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Omolu/Obaluayê",
+        "Oxóssi"
+      ],
+      "orixas_texto": "Exu, Omolu/Obaluayê, Oxóssi",
+      "falanges": [
+        "Exu"
+      ],
+      "falanges_texto": "Exu",
+      "propriedades_usos": "Banhos de limpeza e descarrego (filhos de Ogum); tomar ao menos quinzenalmente para haurir forças.",
+      "observacoes": null
+    },
+    {
+      "nome": "Jaca / Folha de Jaca / Jaqueira",
+      "nomes_alternativos": [
+        "Jaca",
+        "Folha de Jaca",
+        "Jaqueira"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (folha de jaqueira em Xangô); Fogo"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Xangô"
+      ],
+      "orixas_texto": "Xangô (folha de jaqueira)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha de jaca entre ervas de Fogo.",
+      "observacoes": null
+    },
+    {
+      "nome": "Jasmim",
+      "nomes_alternativos": [
+        "Jasmim"
+      ],
+      "tipo": "Flor",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Fortalecedora de mediunidade"
+        ],
+        "descricao": "Fria; Feminina; Fortalecedora de mediunidade"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ibeji",
+        "Iemanjá",
+        "Oxalá"
+      ],
+      "orixas_texto": "Ibeji, Iemanjá, Oxalá",
+      "falanges": [
+        "Erê"
+      ],
+      "falanges_texto": "Erê",
+      "propriedades_usos": "Amor, sensualidade, dinheiro, meditação. Desenvolvimento espiritual. Chá revigorante, calmante, relaxante.",
+      "observacoes": null
+    },
+    {
+      "nome": "Jibóia",
+      "nomes_alternativos": [
+        "Jibóia"
+      ],
+      "tipo": "Folha/Trepadeira",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Ar (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ewá",
+        "Oxumarê",
+        "Xangô"
+      ],
+      "orixas_texto": "Ewá, Oxumarê, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Ewá, Oxumarê e Xangô.",
+      "observacoes": null
+    },
+    {
+      "nome": "Jurema / Jureminha",
+      "nomes_alternativos": [
+        "Jurema",
+        "Jureminha"
+      ],
+      "tipo": "Casca/Folha",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (casca de jurema preta)"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva (casca)"
+      },
+      "orixas": [
+        "Oxóssi"
+      ],
+      "orixas_texto": "Oxóssi",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxóssi. Casca de jurema preta entre ervas quentes.",
+      "observacoes": null
+    },
+    {
+      "nome": "Jurubeba / Folha de Jurubeba",
+      "nomes_alternativos": [
+        "Jurubeba",
+        "Folha de Jurubeba"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Omolu/Obaluayê",
+        "Ossain"
+      ],
+      "orixas_texto": "Exu, Omolu/Obaluayê, Ossain",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Exu, Omolu e Ossain.",
+      "observacoes": null
+    },
+    {
+      "nome": "Laranjeira (flor, folha, casca)",
+      "nomes_alternativos": [
+        "Laranjeira (flor, folha, casca)"
+      ],
+      "tipo": "Flor/Folha/Casca",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (folha em Oxalá); Terra (folha de laranja)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Oxalá",
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Iemanjá (flor), Oxalá, Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Estimula o amor, torna mais atraente; torna o ambiente mais agradável e leve.",
+      "observacoes": null
+    },
+    {
+      "nome": "Lança de Ogum",
+      "nomes_alternativos": [
+        "Lança de Ogum"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "não usar em banho"
+        ],
+        "descricao": "Não serve para banho"
+      },
+      "orixas": [
+        "Ogum"
+      ],
+      "orixas_texto": "Ogum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Quebra demandas; deixar na entrada para sugar energias negativas.",
+      "observacoes": "Não usada para banho (Mata Virgem)."
+    },
+    {
+      "nome": "Leite / Folha de Leite / Rama de Leite",
+      "nomes_alternativos": [
+        "Leite",
+        "Folha de Leite",
+        "Rama de Leite"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Oxum"
+      ],
+      "orixas_texto": "Iemanjá (folha de leite), Oxum (rama de leite)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Iemanjá e Oxum.",
+      "observacoes": null
+    },
+    {
+      "nome": "Limão / Limoeiro (folha)",
+      "nomes_alternativos": [
+        "Limão",
+        "Limoeiro (folha)"
+      ],
+      "tipo": "Folha/Casca",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Digestório"
+        ],
+        "outros": [
+          "Solar/Prosperidade"
+        ],
+        "descricao": "Morna; Terra (folha); Solar/Limpeza; Sist. Digestório (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Ogum",
+        "Obá",
+        "Oxóssi",
+        "Oyá/Iansã",
+        "Nanã"
+      ],
+      "orixas_texto": "Exu, Ogum, Obá (limão cravo), Oxóssi, Oyá/Iansã, Nanã (limoeiro)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha queima fluidos negativos e enfermiços; forte limpeza, purificação; amplia poderes da mente; retira o que impede a prosperidade. Defumação de energias sexuais.",
+      "observacoes": "Casca de limão em descargas de energias sexuais."
+    },
+    {
+      "nome": "Língua de Vaca",
+      "nomes_alternativos": [
+        "Língua de Vaca"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna; Água"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Xangô"
+      ],
+      "orixas_texto": "Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Xangô (também Ogum, Mata Virgem).",
+      "observacoes": null
+    },
+    {
+      "nome": "Lírio",
+      "nomes_alternativos": [
+        "Lírio"
+      ],
+      "tipo": "Flor",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Feminina"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Torna mais puro, simples e humilde; estimula o lado compreensivo e amoroso.",
+      "observacoes": null
+    },
+    {
+      "nome": "Losna",
+      "nomes_alternativos": [
+        "Losna"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Masculina; Fogo (folha)"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva"
+      },
+      "orixas": [
+        "Nanã",
+        "Oxumarê"
+      ],
+      "orixas_texto": "Nanã, Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Pode ser empregada nos abô e banhos, tanto de descarrego quanto de limpeza.",
+      "observacoes": null
+    },
+    {
+      "nome": "Louro / Loureiro",
+      "nomes_alternativos": [
+        "Louro",
+        "Loureiro"
+      ],
+      "tipo": "Folha",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Solar/Prosperidade"
+        ],
+        "descricao": "Fria (Oyá); Masculina; Solar/Prosperidade"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "não usar em banho"
+        ],
+        "descricao": "Não serve para banho (Iansã)"
+      },
+      "orixas": [
+        "Obá",
+        "Oxóssi",
+        "Oxumarê",
+        "Oyá/Iansã",
+        "Oxalá"
+      ],
+      "orixas_texto": "Obá, Oxóssi, Oxumarê, Oyá/Iansã, Oxalá",
+      "falanges": [
+        "Cigano"
+      ],
+      "falanges_texto": "Cigano",
+      "propriedades_usos": "Mudança de hábitos e caminhos; prosperidade; símbolo de vitória, sucesso, dinheiro. Defumação para atrair recursos financeiros; atrair dinheiro.",
+      "observacoes": "Folha não serve para banho de Iansã (Mata Virgem)."
+    },
+    {
+      "nome": "Maçã / Macieira (flor, folha, casca)",
+      "nomes_alternativos": [
+        "Maçã",
+        "Macieira (flor, folha, casca)"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria (folha); Água (macieira)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Obá",
+        "Oxum",
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Obá, Oxum, Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Desperta a sensibilidade ao amor; aumenta o poder magnético de atrair o que agrada. Chá auxilia digestão, reduz inchaços.",
+      "observacoes": null
+    },
+    {
+      "nome": "Macela / Macela do Campo",
+      "nomes_alternativos": [
+        "Macela",
+        "Macela do Campo"
+      ],
+      "tipo": "Flor/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxalá (folha de macela)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Defumação lustral: acalma, atrai boas amizades e protege o lar.",
+      "observacoes": null
+    },
+    {
+      "nome": "Malva / Malva Branca / Malva Rosa",
+      "nomes_alternativos": [
+        "Malva",
+        "Malva Branca",
+        "Malva Rosa"
+      ],
+      "tipo": "Folha/Flor",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria; Feminina; Ar (malva branca)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Oxum",
+        "Oxumarê"
+      ],
+      "orixas_texto": "Iemanjá (branca), Oxum (rosa), Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Malva: aumento de autoestima e amor próprio. Malva branca: paz e equilíbrio mental. Malva rosa: elimina mágoas e rancores. Banho de amor.",
+      "observacoes": null
+    },
+    {
+      "nome": "Mamona",
+      "nomes_alternativos": [
+        "Mamona"
+      ],
+      "tipo": "Folha/Semente",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Fogo"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "tóxica/venenosa",
+          "não ingerir"
+        ],
+        "descricao": "VENENOSA / NÃO ingerir"
+      },
+      "orixas": [
+        "Exu",
+        "Omolu/Obaluayê",
+        "Ossain"
+      ],
+      "orixas_texto": "Exu, Omolu/Obaluayê, Ossain",
+      "falanges": [
+        "Exu",
+        "Baiano"
+      ],
+      "falanges_texto": "Exu, Bahiano",
+      "propriedades_usos": "Limpeza espiritual e dos caminhos; proteção.",
+      "observacoes": "ATENÇÃO: venenosa, não deve ser ingerida."
+    },
+    {
+      "nome": "Mangueira / Folha de Mangueira",
+      "nomes_alternativos": [
+        "Mangueira",
+        "Folha de Mangueira"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (em Obá); Terra (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Ogum",
+        "Obá"
+      ],
+      "orixas_texto": "Exu, Ogum, Obá",
+      "falanges": [
+        "Exu"
+      ],
+      "falanges_texto": "Exu",
+      "propriedades_usos": "Atrai proteção, prosperidade; fortalece e purifica espiritualmente. Banhos fortes (com aroeira, pinhão-roxo); citada na cura de André Luiz (Nosso Lar).",
+      "observacoes": null
+    },
+    {
+      "nome": "Manjericão / Manjericão Branco / Roxo",
+      "nomes_alternativos": [
+        "Manjericão",
+        "Manjericão Branco",
+        "Roxo"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna",
+          "Fria"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna; Híbrida; Fria (roxo)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Oxum",
+        "Nanã",
+        "Omolu/Obaluayê",
+        "Obá"
+      ],
+      "orixas_texto": "Oxalá (branco), Oxum (branco), Nanã (roxo), Omolu (roxo), Obá",
+      "falanges": [
+        "Preto-Velho"
+      ],
+      "falanges_texto": "Preto-Velho",
+      "propriedades_usos": "Manda o pessimismo e baixo astral para longe; acalma tensões. Roxo: elevação espiritual e descarrego. Branco: equilibrador. Defumação de dinheiro; previne raios (roxo seco).",
+      "observacoes": null
+    },
+    {
+      "nome": "Manjerona",
+      "nomes_alternativos": [
+        "Manjerona"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (em Obá)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Obá",
+        "Oyá/Iansã",
+        "Xangô"
+      ],
+      "orixas_texto": "Obá, Oyá/Iansã, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Fortalece o amor próprio, protege a casa, atrai pensamentos alegres, relaxa o corpo, trata depressão, aumenta a felicidade.",
+      "observacoes": null
+    },
+    {
+      "nome": "Maracujá (folha, flor, fruto)",
+      "nomes_alternativos": [
+        "Maracujá (folha, flor, fruto)"
+      ],
+      "tipo": "Folha/Flor/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Nervoso"
+        ],
+        "outros": [
+          "Calmante"
+        ],
+        "descricao": "Fria; Calmante; Sist. Nervoso"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ewá",
+        "Oxalá",
+        "Oxumarê"
+      ],
+      "orixas_texto": "Ewá, Oxalá (flor), Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Para fortalecer laços de amizade.",
+      "observacoes": null
+    },
+    {
+      "nome": "Mariwô / Mariô",
+      "nomes_alternativos": [
+        "Mariwô",
+        "Mariô"
+      ],
+      "tipo": "Folha de palmeira (dendê)",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ogum"
+      ],
+      "orixas_texto": "Ogum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuído a Ogum (folha desfiada da palmeira de dendê).",
+      "observacoes": null
+    },
+    {
+      "nome": "Melancia / Folha de Melancia",
+      "nomes_alternativos": [
+        "Melancia",
+        "Folha de Melancia"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Oxalá",
+        "Omolu/Obaluayê",
+        "Ewá"
+      ],
+      "orixas_texto": "Iemanjá, Oxalá, Omolu/Obaluayê, Ewá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a vários orixás.",
+      "observacoes": null
+    },
+    {
+      "nome": "Melão / Folha de Melão",
+      "nomes_alternativos": [
+        "Melão",
+        "Folha de Melão"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Oxum"
+      ],
+      "orixas_texto": "Iemanjá, Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a Iemanjá e Oxum.",
+      "observacoes": null
+    },
+    {
+      "nome": "Melissa / Erva-Cidreira",
+      "nomes_alternativos": [
+        "Melissa",
+        "Erva-Cidreira"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Nervoso"
+        ],
+        "outros": [
+          "Calmante"
+        ],
+        "descricao": "Fria; Calmante; Sist. Nervoso"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxum"
+      ],
+      "orixas_texto": "Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Banhos energéticos de purificação; atrai proteção, limpeza, intuição. Chá calmante, reduz estresse e ansiedade; ação narcótica leve.",
+      "observacoes": "Erva-cidreira como material de incenso natural."
+    },
+    {
+      "nome": "Milho / Milho de Galinha",
+      "nomes_alternativos": [
+        "Milho",
+        "Milho de Galinha"
+      ],
+      "tipo": "Grão/Cereal",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Logun-Edé",
+        "Oxóssi"
+      ],
+      "orixas_texto": "Logun-Edé, Oxóssi (milho)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Espigas em casa propiciam despensa farta. Defumação/banho de milho de galinha atrai sorte.",
+      "observacoes": null
+    },
+    {
+      "nome": "Mirra",
+      "nomes_alternativos": [
+        "Mirra"
+      ],
+      "tipo": "Resina/Folha",
+      "classificacao": {
+        "temperatura": [
+          "Morna",
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Resina (uso em defumação)"
+        ],
+        "descricao": "Fria/morna; resina (defumação); Ar (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Xangô"
+      ],
+      "orixas_texto": "Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Poder de limpeza leve, consistente e duradouro; promove bem-estar; fortes propriedades de proteção (vaso afasta energia negativa). Defumação de descarrego pesado.",
+      "observacoes": "Resina em tons avermelhados; presente dos reis magos."
+    },
+    {
+      "nome": "Morango / Folha de Morango",
+      "nomes_alternativos": [
+        "Morango",
+        "Folha de Morango"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (folha em Oyá)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oyá/Iansã",
+        "Xangô"
+      ],
+      "orixas_texto": "Oyá/Iansã, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Desperta o prazer em todos os sentidos.",
+      "observacoes": null
+    },
+    {
+      "nome": "Morcegueira / Angelim Amargoso",
+      "nomes_alternativos": [
+        "Morcegueira",
+        "Angelim Amargoso"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (em Nanã)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã"
+      ],
+      "orixas_texto": "Nanã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Banhos fortes de descarrego para destruir fluidos negativos.",
+      "observacoes": null
+    },
+    {
+      "nome": "Mostarda / Folha de Mostarda",
+      "nomes_alternativos": [
+        "Mostarda",
+        "Folha de Mostarda"
+      ],
+      "tipo": "Folha/Hortaliça",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã"
+      ],
+      "orixas_texto": "Nanã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a Nanã.",
+      "observacoes": null
+    },
+    {
+      "nome": "Mutamba",
+      "nomes_alternativos": [
+        "Mutamba"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ossain"
+      ],
+      "orixas_texto": "Ossain (e Iansã, Ogum, Xangô na Mata Virgem)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Ossain e a orixás quentes.",
+      "observacoes": null
+    },
+    {
+      "nome": "Narciso (folha e flor)",
+      "nomes_alternativos": [
+        "Narciso (folha e flor)"
+      ],
+      "tipo": "Flor/Folha",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxum",
+        "Ossain"
+      ],
+      "orixas_texto": "Oxum, Ossain",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxum e Ossain.",
+      "observacoes": null
+    },
+    {
+      "nome": "Noz-Moscada",
+      "nomes_alternativos": [
+        "Noz-Moscada"
+      ],
+      "tipo": "Semente/Tempero",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [
+        "Cigano"
+      ],
+      "falanges_texto": "Cigano",
+      "propriedades_usos": "Aguça a intuição, ajuda na comunicação astral, boa para a prosperidade. Pó espalhado melhora condições financeiras. Defumação/banho de dinheiro.",
+      "observacoes": "Dandá da Costa (Mata Virgem)."
+    },
+    {
+      "nome": "Nozes / Folha de Nozes",
+      "nomes_alternativos": [
+        "Nozes",
+        "Folha de Nozes"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Xangô"
+      ],
+      "orixas_texto": "Oxalá, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a Oxalá e Xangô.",
+      "observacoes": null
+    },
+    {
+      "nome": "Orégano",
+      "nomes_alternativos": [
+        "Orégano"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Híbrida"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxumarê"
+      ],
+      "orixas_texto": "Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Combate desequilíbrio emocional; restaura a saúde psicológica diante de compulsão, raiva, ressentimento; auxilia no perdão e autoestima. Banho contra cólicas.",
+      "observacoes": "Material de incenso natural."
+    },
+    {
+      "nome": "Oriri / Oripepê",
+      "nomes_alternativos": [
+        "Oriri",
+        "Oripepê"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxum"
+      ],
+      "orixas_texto": "Oxum",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxum.",
+      "observacoes": null
+    },
+    {
+      "nome": "Orquídea",
+      "nomes_alternativos": [
+        "Orquídea"
+      ],
+      "tipo": "Flor",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Amor/Sexualidade"
+        ],
+        "descricao": "Amor"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Oxalá"
+      ],
+      "orixas_texto": "Iemanjá, Oxalá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Desperta a libido; aproxima pessoas; traz amor e pureza para o lar; paz consigo e com o mundo.",
+      "observacoes": null
+    },
+    {
+      "nome": "Para-Raio",
+      "nomes_alternativos": [
+        "Para-Raio"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva"
+      },
+      "orixas": [
+        "Xangô",
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Xangô, Iansã (Mata Virgem)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva quente de limpeza/descarrego.",
+      "observacoes": null
+    },
+    {
+      "nome": "Patchouly",
+      "nomes_alternativos": [
+        "Patchouly"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Feminina"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxalá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Bom para o amor, prosperidade e intuição; fortalece o magnetismo pessoal. Banho de amor.",
+      "observacoes": null
+    },
+    {
+      "nome": "Pata de Vaca",
+      "nomes_alternativos": [
+        "Pata de Vaca"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Endócrino"
+        ],
+        "outros": [],
+        "descricao": "Morna; Terra; Sist. Endócrino"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã",
+        "Obá",
+        "Iemanjá"
+      ],
+      "orixas_texto": "Nanã, Obá, Iemanjá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Nanã, Obá, Iemanjá. Uso fitoterápico endócrino.",
+      "observacoes": null
+    },
+    {
+      "nome": "Pera / Folha de Pera",
+      "nomes_alternativos": [
+        "Pera",
+        "Folha de Pera"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi"
+      ],
+      "orixas_texto": "Oxóssi",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a Oxóssi.",
+      "observacoes": null
+    },
+    {
+      "nome": "Peregun (Verde, Amarelo, Roxo) / Peregum",
+      "nomes_alternativos": [
+        "Peregun (Verde, Amarelo, Roxo)",
+        "Peregum"
+      ],
+      "tipo": "Folha/Planta",
+      "classificacao": {
+        "temperatura": [
+          "Quente",
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (roxo); Morna (verde e verde/amarelo)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Logun-Edé",
+        "Nanã",
+        "Obá",
+        "Oxóssi",
+        "Oxalá",
+        "Oyá/Iansã",
+        "Ossain"
+      ],
+      "orixas_texto": "Logun-Edé (verde/amarelo), Nanã (roxo), Obá (roxo), Oxóssi (verde), Oxalá, Oyá/Iansã (roxo), Ossain (verde)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Verde: abre caminho, facilita a caminhada. Roxo: curador de ambientes carregados. Amarelo: movimentação e renovação dos caminhos.",
+      "observacoes": "Cor define a função e o orixá."
+    },
+    {
+      "nome": "Pêssego / Pessegueiro (folha)",
+      "nomes_alternativos": [
+        "Pêssego",
+        "Pessegueiro (folha)"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Xangô"
+      ],
+      "orixas_texto": "Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Propicia melhores condições mediúnicas, destrói fluidos negativos e afasta eguns (filhos de Xangô).",
+      "observacoes": null
+    },
+    {
+      "nome": "Picão Preto / Picão",
+      "nomes_alternativos": [
+        "Picão Preto",
+        "Picão"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Terra"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Omolu/Obaluayê"
+      ],
+      "orixas_texto": "Exu, Omolu/Obaluayê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva quente; uso em Exu e Omolu.",
+      "observacoes": null
+    },
+    {
+      "nome": "Pimenta",
+      "nomes_alternativos": [
+        "Pimenta"
+      ],
+      "tipo": "Fruto/Tempero",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente; Fogo (folha de pimentas)"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva"
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva quente, agressiva, de limpeza/descarrego.",
+      "observacoes": "Pimenta é de Exu, não usada para banho (Mata Virgem)."
+    },
+    {
+      "nome": "Pinhão Branco / Pinhão Roxo",
+      "nomes_alternativos": [
+        "Pinhão Branco",
+        "Pinhão Roxo"
+      ],
+      "tipo": "Folha/Semente",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (roxo); Fogo; Masculina (roxo)"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva",
+          "uso em quebra de magia/amarração"
+        ],
+        "descricao": "Agressiva; quebra de magia negra"
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu (não p/ banho)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Roxo: paralisa e corrige fluxos de energia desconexos; muito indicado p/ quebra de amarrações e magia negra. Branco: quebra encantos (banhos com aroeira).",
+      "observacoes": "Pinhão roxo de Exu, não usado para banho (Mata Virgem)."
+    },
+    {
+      "nome": "Pitanga / Pitangueira (folha)",
+      "nomes_alternativos": [
+        "Pitanga",
+        "Pitangueira (folha)"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Digestório/respiratório"
+        ],
+        "outros": [],
+        "descricao": "Morna; Sist. Digestório/Respiratório"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi",
+        "Oyá/Iansã",
+        "Ossain"
+      ],
+      "orixas_texto": "Oxóssi, Oyá/Iansã, Ossain",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Movimentação espiritual. Banho de prosperidade. Chá anti-inflamatório, analgésico, antitérmico.",
+      "observacoes": null
+    },
+    {
+      "nome": "Poejo",
+      "nomes_alternativos": [
+        "Poejo"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Respiratório"
+        ],
+        "outros": [],
+        "descricao": "Ar (folha); Sist. Respiratório"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxalá (algumas casas)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Ótimo para proteção e para acalmar os ânimos.",
+      "observacoes": null
+    },
+    {
+      "nome": "Quebra-Demanda / Quebra Pedra",
+      "nomes_alternativos": [
+        "Quebra-Demanda",
+        "Quebra Pedra"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Geniturinário"
+        ],
+        "outros": [],
+        "descricao": "Quente (quebra-demanda); Terra (quebra-pedra); Sist. Geniturinário (quebra pedra)"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva"
+        ],
+        "descricao": "Agressiva (quebra-demanda)"
+      },
+      "orixas": [
+        "Exu",
+        "Ogum",
+        "Omolu/Obaluayê",
+        "Ossain",
+        "Xangô"
+      ],
+      "orixas_texto": "Exu, Ogum, Omolu, Ossain (quebra pedra), Xangô",
+      "falanges": [
+        "Exu",
+        "Baiano"
+      ],
+      "falanges_texto": "Exu, Bahiano",
+      "propriedades_usos": "Quebra-demanda: proteção de ambientes; quebrador de demandas/magias mentais (olho gordo, inveja); banhos, benzimentos, bate-folhas.",
+      "observacoes": "Quebra-pedra usada no sistema geniturinário (fitoterapia)."
+    },
+    {
+      "nome": "Romã (folha, casca, fruto)",
+      "nomes_alternativos": [
+        "Romã (folha, casca, fruto)"
+      ],
+      "tipo": "Folha/Casca/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Masculina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Respiratório"
+        ],
+        "outros": [],
+        "descricao": "Morna; Masculina; Sist. Respiratório"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ogum",
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Ogum (folha), Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Prosperidade; protege contra emanações de inveja e ódio.",
+      "observacoes": null
+    },
+    {
+      "nome": "Rosa (todas as cores) / Pétala de Rosa",
+      "nomes_alternativos": [
+        "Rosa (todas as cores)",
+        "Pétala de Rosa"
+      ],
+      "tipo": "Flor",
+      "classificacao": {
+        "temperatura": [
+          "Morna",
+          "Fria"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Amor/Sexualidade"
+        ],
+        "descricao": "Morna (branca/vermelha); Fria (amarela); Feminina; Amor"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ibeji",
+        "Iemanjá",
+        "Obá",
+        "Oxum",
+        "Oyá/Iansã",
+        "Oxalá",
+        "Nanã"
+      ],
+      "orixas_texto": "Ibeji (todas), Iemanjá (branca), Obá (vermelha/branca), Oxum (amarela), Oyá/Iansã (vermelha), Oxalá (branca), Nanã (vermelha)",
+      "falanges": [
+        "Pombo-Gira",
+        "Marinheiro"
+      ],
+      "falanges_texto": "Pombo-Gira, Marinheiro (branca)",
+      "propriedades_usos": "Flor de Afrodite: transmite amor; vermelha estimula desejo e paixão. Branca: pureza, limpeza de chacras, potencializa mediunidade. Amarela: limpeza espiritual. Vermelha: afrodisíaca (Oyá/Pombogira).",
+      "observacoes": "A cor define função e orixá."
+    },
+    {
+      "nome": "Sabugueiro / Folha do Sabugueiro",
+      "nomes_alternativos": [
+        "Sabugueiro",
+        "Folha do Sabugueiro"
+      ],
+      "tipo": "Folha/Árvore",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Omolu/Obaluayê"
+      ],
+      "orixas_texto": "Omolu/Obaluayê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a Omolu.",
+      "observacoes": null
+    },
+    {
+      "nome": "Saião",
+      "nomes_alternativos": [
+        "Saião"
+      ],
+      "tipo": "Folha/Suculenta",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Respiratório"
+        ],
+        "outros": [],
+        "descricao": "Morna; Sist. Respiratório"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi",
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxóssi, Oxalá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Banhos de limpeza e descarrego; efeito terapêutico calmante e duradouro. Banho de purificação.",
+      "observacoes": null
+    },
+    {
+      "nome": "Salsa / Salsinha",
+      "nomes_alternativos": [
+        "Salsa",
+        "Salsinha"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Água (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Oxóssi"
+      ],
+      "orixas_texto": "Exu, Oxóssi",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Usada para a proteção; afasta a negatividade. Banho de prosperidade financeira (com noz-moscada); depressão.",
+      "observacoes": null
+    },
+    {
+      "nome": "Sálvia / Sávia",
+      "nomes_alternativos": [
+        "Sálvia",
+        "Sávia"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [
+          "Sistema Nervoso/endócrino"
+        ],
+        "outros": [],
+        "descricao": "Morna; Híbrida; Água; Sist. Nervoso/Endócrino"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxalá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva da saúde: limpeza, proteção e intuição; sabedoria; eleva a vibração espiritual. Defumação e óleos.",
+      "observacoes": "Material de incenso natural."
+    },
+    {
+      "nome": "Samambaia",
+      "nomes_alternativos": [
+        "Samambaia"
+      ],
+      "tipo": "Folha/Samambaia",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Fortalecedora de mediunidade"
+        ],
+        "descricao": "Morna; Híbrida; Fortalecedora de mediunidade"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi"
+      ],
+      "orixas_texto": "Oxóssi",
+      "falanges": [
+        "Caboclo"
+      ],
+      "falanges_texto": "Caboclo",
+      "propriedades_usos": "Potencializador energético; facilitador de processo mediúnico.",
+      "observacoes": null
+    },
+    {
+      "nome": "Sândalo (folha e flor)",
+      "nomes_alternativos": [
+        "Sândalo (folha e flor)"
+      ],
+      "tipo": "Folha/Madeira",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Calmante"
+        ],
+        "descricao": "Fria; Calmante"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxalá",
+      "falanges": [
+        "Cigano"
+      ],
+      "falanges_texto": "Cigano",
+      "propriedades_usos": "Defumação lustral (com manjericão): traz amor e espiritualidade positiva para o lar. Insônia.",
+      "observacoes": null
+    },
+    {
+      "nome": "São Gonçalinho",
+      "nomes_alternativos": [
+        "São Gonçalinho"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Terra"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ogum",
+        "Oxóssi"
+      ],
+      "orixas_texto": "Ogum, Oxóssi",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Ogum e Oxóssi.",
+      "observacoes": null
+    },
+    {
+      "nome": "Sete Sangrias",
+      "nomes_alternativos": [
+        "Sete Sangrias"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria; Terra"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [],
+      "orixas_texto": null,
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva fria de uso específico; também ligada à Terra.",
+      "observacoes": "Cuféia (Obaluaiê, algumas casas)."
+    },
+    {
+      "nome": "Taioba",
+      "nomes_alternativos": [
+        "Taioba"
+      ],
+      "tipo": "Folha/Tubérculo",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Água"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (em Oxóssi); Água"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "não usar em banho"
+        ],
+        "descricao": "Não serve para banho"
+      },
+      "orixas": [
+        "Oxóssi"
+      ],
+      "orixas_texto": "Oxóssi",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Oxóssi (e vários orixás na Mata Virgem).",
+      "observacoes": "Não usada para banho (Mata Virgem)."
+    },
+    {
+      "nome": "Tamarindo (folha e casca)",
+      "nomes_alternativos": [
+        "Tamarindo (folha e casca)"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fria"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Obá"
+      ],
+      "orixas_texto": "Obá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a Obá.",
+      "observacoes": null
+    },
+    {
+      "nome": "Tapete de Oxalá",
+      "nomes_alternativos": [
+        "Tapete de Oxalá"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá"
+      ],
+      "orixas_texto": "Oxalá",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Poderosa magnetizadora e fortalecedora do chacra coronal; anima, aquece o espírito e traz confiança para as práticas mediúnicas.",
+      "observacoes": "É o boldo (Mata Virgem)."
+    },
+    {
+      "nome": "Tento",
+      "nomes_alternativos": [
+        "Tento"
+      ],
+      "tipo": "Semente",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna; Híbrida"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Exu.",
+      "observacoes": null
+    },
+    {
+      "nome": "Terramicina",
+      "nomes_alternativos": [
+        "Terramicina"
+      ],
+      "tipo": "Folha/Suculenta",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Nanã"
+      ],
+      "orixas_texto": "Nanã",
+      "falanges": [
+        "Preto-Velho"
+      ],
+      "falanges_texto": "Preto-Velho",
+      "propriedades_usos": "Atribuída a Nanã; uso em Preto-Velho.",
+      "observacoes": null
+    },
+    {
+      "nome": "Tomate / Folha de Tomate",
+      "nomes_alternativos": [
+        "Tomate",
+        "Folha de Tomate"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Ar"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (folha em Oyá); Ar (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi",
+        "Oyá/Iansã",
+        "Xangô"
+      ],
+      "orixas_texto": "Oxóssi, Oyá/Iansã, Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a Oxóssi, Iansã e Xangô.",
+      "observacoes": null
+    },
+    {
+      "nome": "Tomilho",
+      "nomes_alternativos": [
+        "Tomilho"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi"
+      ],
+      "orixas_texto": "Oxóssi",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuído a Oxóssi.",
+      "observacoes": "Material de incenso natural."
+    },
+    {
+      "nome": "Trapoeraba (Roxa/Azul)",
+      "nomes_alternativos": [
+        "Trapoeraba (Roxa",
+        "Azul)"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente",
+          "Fria"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Terra"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (roxa); Fria (azul e roxa); Terra (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Iemanjá",
+        "Nanã"
+      ],
+      "orixas_texto": "Iemanjá (roxa), Nanã (roxa)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Iemanjá e Nanã. Folha entre ervas de Terra.",
+      "observacoes": "Marianinha/trapoeraba azul de Yemanjá (Mata Virgem)."
+    },
+    {
+      "nome": "Trevo",
+      "nomes_alternativos": [
+        "Trevo"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [
+          "Híbrida"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Híbrida"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxumarê",
+        "Oxum"
+      ],
+      "orixas_texto": "Oxumarê, Oxum (trevo azedo)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuído a Oxumarê e Oxum.",
+      "observacoes": null
+    },
+    {
+      "nome": "Urtiga / Urtiga-Mamão",
+      "nomes_alternativos": [
+        "Urtiga",
+        "Urtiga-Mamão"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente"
+      },
+      "risco": {
+        "tem_risco": true,
+        "tags": [
+          "agressiva",
+          "pode ser usada em ataques"
+        ],
+        "descricao": "Agressiva; ataques"
+      },
+      "orixas": [
+        "Exu"
+      ],
+      "orixas_texto": "Exu",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Erva poderosa para limpezas densas, quebra de feitiços e fortalecimentos energéticos (e ataques). Banhos fortes contra invasão de eguns (do pescoço p/ baixo).",
+      "observacoes": "De Exu; não usada para banho de imersão comum."
+    },
+    {
+      "nome": "Urucum / Folha de Urucum",
+      "nomes_alternativos": [
+        "Urucum",
+        "Folha de Urucum"
+      ],
+      "tipo": "Folha/Semente",
+      "classificacao": {
+        "temperatura": [
+          "Quente"
+        ],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Quente (folha em Xangô); Fogo"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Xangô"
+      ],
+      "orixas_texto": "Xangô",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha entre ervas de Fogo.",
+      "observacoes": null
+    },
+    {
+      "nome": "Uva / Uva Verde (folha)",
+      "nomes_alternativos": [
+        "Uva",
+        "Uva Verde (folha)"
+      ],
+      "tipo": "Folha/Fruto",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna (folha em Oxalá)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxalá",
+        "Oxum",
+        "Oyá/Iansã"
+      ],
+      "orixas_texto": "Oxalá (uva branca/verde), Oxum (uva verde), Oyá/Iansã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a Oxalá, Oxum e Iansã.",
+      "observacoes": null
+    },
+    {
+      "nome": "Valeriana / Folha de Valeriana",
+      "nomes_alternativos": [
+        "Valeriana",
+        "Folha de Valeriana"
+      ],
+      "tipo": "Folha/Raiz",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [
+          "Sistema Nervoso"
+        ],
+        "outros": [],
+        "descricao": "Fria; Feminina; Sist. Nervoso"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxumarê"
+      ],
+      "orixas_texto": "Oxumarê",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha atribuída a Oxumarê. Chá contra cãibras, arritmia, cólicas menstruais e menopausa.",
+      "observacoes": null
+    },
+    {
+      "nome": "Vassourinha",
+      "nomes_alternativos": [
+        "Vassourinha"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": null
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Xangô",
+        "Ossain"
+      ],
+      "orixas_texto": "Xangô, Ossain (Mata Virgem)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Vassourinhas (de botão, relógio, igreja) usadas em sacudimentos pessoais e domiciliares.",
+      "observacoes": null
+    },
+    {
+      "nome": "Vence-Demanda",
+      "nomes_alternativos": [
+        "Vence-Demanda"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [],
+        "sexo": [],
+        "elemento": [
+          "Fogo"
+        ],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Fogo (folha)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Oxóssi"
+      ],
+      "orixas_texto": "Oxóssi (Mata Virgem)",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Folha entre ervas de Fogo.",
+      "observacoes": null
+    },
+    {
+      "nome": "Verbena",
+      "nomes_alternativos": [
+        "Verbena"
+      ],
+      "tipo": "Folha/Erva",
+      "classificacao": {
+        "temperatura": [
+          "Fria"
+        ],
+        "sexo": [
+          "Feminina"
+        ],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [
+          "Amor/Sexualidade"
+        ],
+        "descricao": "Fria; Feminina; Amor"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Ossain"
+      ],
+      "orixas_texto": "Ossain",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Poderoso talismã que protege as relações; desperta o brilho pessoal e o empoderamento.",
+      "observacoes": "Bruxaria italiana e práticas afro-brasileiras."
+    },
+    {
+      "nome": "Violeta (folha e flor)",
+      "nomes_alternativos": [
+        "Violeta (folha e flor)"
+      ],
+      "tipo": "Flor/Folha",
+      "classificacao": {
+        "temperatura": [
+          "Morna"
+        ],
+        "sexo": [],
+        "elemento": [],
+        "sistema_fitoterapico": [],
+        "outros": [],
+        "descricao": "Morna (em Exu)"
+      },
+      "risco": {
+        "tem_risco": false,
+        "tags": [],
+        "descricao": null
+      },
+      "orixas": [
+        "Exu",
+        "Nanã"
+      ],
+      "orixas_texto": "Exu, Nanã",
+      "falanges": [],
+      "falanges_texto": null,
+      "propriedades_usos": "Atribuída a Exu e Nanã.",
+      "observacoes": null
+    }
+  ]
+}

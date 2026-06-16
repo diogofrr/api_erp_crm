@@ -130,35 +130,39 @@ enum UserRole {
 }
 
 model HerbCatalog {
-  key               String   @id
-  label             String
-  classification    String
-  energyTemperature String
-  allergyRisk       String
-  warningNote       String   @default("")
-  saintTags         String[]
-  properties        String[]
-  markers           HerbMarker[]
+  key              String       @id
+  name             String
+  alternativeNames String[]
+  type             String?
+  temperature      String[]
+  sex              String[]
+  element          String[]
+  systems          String[]
+  otherTags        String[]
+  classDesc        String?
+  hasRisk          Boolean      @default(false)
+  riskTags         String[]
+  riskDesc         String?
+  orixas           String[]
+  orixasText       String?
+  falanges         String[]
+  falangesText     String?
+  usage            String?
+  notes            String?
+  markers          HerbMarker[]
 }
 
 model HerbMarker {
-  id                String      @id @default(uuid())
-  herbKey           String
-  herbName          String
-  classification    String
-  energyTemperature String
-  allergyRisk       String
-  warningNote       String      @default("")
-  saintTags         String[]
-  properties        String[]
-  notes             String      @default("")
-  status            String
-  addressLabel      String      @default("")
-  lat               Float
-  lng               Float
-  createdAt         DateTime    @default(now())
-  updatedAt         DateTime    @updatedAt
-  catalog           HerbCatalog @relation(fields: [herbKey], references: [key])
+  id           String      @id @default(uuid())
+  herbKey      String
+  status       String
+  notes        String      @default("")
+  addressLabel String      @default("")
+  lat          Float
+  lng          Float
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  catalog      HerbCatalog @relation(fields: [herbKey], references: [key])
 
   @@index([status])
   @@index([updatedAt])

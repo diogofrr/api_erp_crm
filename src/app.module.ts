@@ -17,12 +17,12 @@ import { TicketsModule } from './modules/tickets/tickets.module';
     }),
     ThrottlerModule.forRoot([
       {
-        ttl: Number(process.env.MINUTE_THROTTLE_TTL),
-        limit: Number(process.env.MINUTE_THROTTLE_LIMIT),
+        ttl: Number(process.env.MINUTE_THROTTLE_TTL) || 60_000,
+        limit: Number(process.env.MINUTE_THROTTLE_LIMIT) || 100,
       },
       {
-        ttl: Number(process.env.HOUR_THROTTLE_TTL),
-        limit: Number(process.env.HOUR_THROTTLE_LIMIT),
+        ttl: Number(process.env.HOUR_THROTTLE_TTL) || 3_600_000,
+        limit: Number(process.env.HOUR_THROTTLE_LIMIT) || 1000,
       },
     ]),
     PrismaModule,

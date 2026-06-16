@@ -4,8 +4,11 @@ import {
   IsNumber,
   IsOptional,
   IsString,
+  Max,
   MaxLength,
+  Min,
 } from 'class-validator';
+import { UBERLANDIA_BOUNDS } from '../../../common/uberlandia';
 
 export class CreateHerbMarkerDto {
   @IsNotEmpty({ message: 'herbKey não pode ser vazio' })
@@ -28,9 +31,13 @@ export class CreateHerbMarkerDto {
 
   @IsNotEmpty({ message: 'lat não pode ser vazio' })
   @IsNumber()
+  @Min(UBERLANDIA_BOUNDS.south)
+  @Max(UBERLANDIA_BOUNDS.north)
   lat: number;
 
   @IsNotEmpty({ message: 'lng não pode ser vazio' })
   @IsNumber()
+  @Min(UBERLANDIA_BOUNDS.west)
+  @Max(UBERLANDIA_BOUNDS.east)
   lng: number;
 }
