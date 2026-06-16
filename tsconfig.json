@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "strictNullChecks": true,
     "paths": {
-      "@generated/prisma": ["./generated/prisma/client"]
+      "@generated/prisma": ["./src/generated/prisma/client"]
     },
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,

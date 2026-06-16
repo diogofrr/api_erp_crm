@@ -9,7 +9,6 @@
     "test",
     "__test__",
     "prisma",
-    "generated",
     "dist",
     "**/*spec.ts"
   ]
